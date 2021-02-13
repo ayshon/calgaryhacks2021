@@ -21,6 +21,14 @@ class App:
 
         pyxel.playm(0, loop=True)
 
+        a = "c3d2e2b3 a2b2c3b2"
+        b = "c3d2e2a3 a2b2c3a2"
+        pyxel.sound(0).set(a * 3 + b * 1, "t", "2", "nf", 30)
+        pyxel.sound(1).set("a1b1b1a1", "p", "2", "nf", 120)
+
+        pyxel.play(0, 0, loop=True)
+        pyxel.play(1, 1, loop=True)
+
         pyxel.run(self.update, self.draw)
     
     def update(self):
