@@ -24,9 +24,21 @@ class App:
         if pyxel.btnp(pyxel.KEY_Q):
             pyxel.quit()
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
-            self.option3.color = 0
-            if(pyxel.mouse_x > self.option1.x & pyxel.mouse_x < (self.option1.x + self.option1.side) & pyxel.mouse_y > self.option1.y & pyxel.mouse_y < (self.option1.y + self.option1.side)):
-                self.option1.color = 0
+            if(pyxel.mouse_x > self.option1.x and pyxel.mouse_x < (self.option1.x + self.option1.side) and pyxel.mouse_y > self.option1.y and pyxel.mouse_y < (self.option1.y + self.option1.side)):
+                if(self.option1.color == 12):
+                    self.option1.color = 0
+                else:
+                    self.option1.color = 12
+            if(pyxel.mouse_x > self.option2.x and pyxel.mouse_x < (self.option2.x + self.option2.side) and pyxel.mouse_y > self.option2.y and pyxel.mouse_y < (self.option2.y + self.option2.side)):
+                if(self.option2.color == 12):
+                    self.option2.color = 0
+                else:
+                    self.option2.color = 12
+            if(pyxel.mouse_x > self.option3.x and pyxel.mouse_x < (self.option3.x + self.option3.side) and pyxel.mouse_y > self.option3.y and pyxel.mouse_y < (self.option3.y + self.option3.side)):
+                if(self.option3.color == 12):
+                    self.option3.color = 0
+                else:
+                    self.option3.color = 12
 
     def draw(self):
         pyxel.cls(0)
