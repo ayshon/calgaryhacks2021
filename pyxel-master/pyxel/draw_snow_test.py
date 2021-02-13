@@ -32,7 +32,7 @@ class App:
         pyxel.cls(12)
 
         # draw sky
-        pyxel.blt(0, 0, 0, 0, 0, 248, 248)
+        pyxel.blt(0, 0, 0, 0, 0, 160, 120)
 
 
 App()
