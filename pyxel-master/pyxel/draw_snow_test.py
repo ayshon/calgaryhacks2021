@@ -7,7 +7,7 @@ class App:
     def __init__(self):
         pyxel.init(160, 120, caption="Pyxel Jump")
 
-        pyxel.load("assets/snow.pyxres")
+        pyxel.load("assets/backpack.pyxres")
         self.score = 0
         self.player_x = 72
         self.player_y = -16
@@ -31,8 +31,7 @@ class App:
     def draw(self):
         pyxel.cls(12)
 
-        # draw sky
+        # draw backpack
         pyxel.blt(0, 0, 0, 0, 0, 160, 120)
-
 
 App()
