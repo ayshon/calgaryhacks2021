@@ -2,7 +2,7 @@ import pyxel
 
 class App:
     def __init__(self):
-        pyxel.init(256, 256, caption="Sunset", fullscreen=True)
+        pyxel.init(256, 256, caption="Evening", fullscreen=True)
         pyxel.image(0).load(0, 0, "assets/sunset.png")
         pyxel.mouse(True)
 
