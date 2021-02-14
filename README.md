@@ -7,6 +7,8 @@ Group 80 - money masters. Chosen topic: Make a Canada themed game.
 - [cuevasm2](https://github.com/cuevasm2)
 - [ayshon](https://github.com/ayshon)
 
+**[Check out our video demo](https://www.youtube.com/watch?v=_-SNNqX3TdI)**
+
 # The Great Canadian Masterpiece
 For our hackathon project, we decided to make a text-based survival/adventure game that focuses on Canadian history and geography. 
 As the mysterious unknown eigth member of the [Group of Seven](https://en.wikipedia.org/wiki/Group_of_Seven_(artists)), you decide to embark on an adventure to paint all of Canada's famous landmarks.
