@@ -32,8 +32,8 @@ Music: Created through Editor in Pyxel. Original Composition
 - Lake Louise
 - Fire
 - Sunrise
-- Sunset
-- Forest
+- [Sunset Pixel Art](https://www.pinterest.ca/pin/459719074458952481/)
+- [Forest Pixel Art](https://www.pinterest.ca/pin/337699672029795006/)
 - Store
 - Two Paths
 - Silhouette
