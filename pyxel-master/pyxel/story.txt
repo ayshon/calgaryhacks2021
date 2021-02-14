@@ -18,7 +18,6 @@ an eighth person, who aspired to leave their mark on Canadian soil as well.
 [CHOOSE YOUR GENDER]
 1. Male
 2. Female
-3. Non-Binary
 
 /* Have pictures to represent male and female characters.*/
 
@@ -129,6 +128,22 @@ EXAMPLE:
 
 [BLURB - DAY 2 - MORNING - March 16, 1901 - Banff, Alberta]
 
+[MAIN CHOICES SCREEN - TRAVELLING]
+
+[EVENT 1 - CARIBOU TRACKS]
+
+"You encounter animal tracks along the trail you are traveling along. You are not an expert in wildlife so you are unsure as to whose prints it belongs to.
+However, your curiosity is getting the better of you. What do you do?"
+
+1. Follow the tracks.
+2. Keep going.
+
+% 1. Brings the user to an event. %
+
+[OPTION 1 - CONSEQUENCE]
+
+"You followed the tracks and it led you to a small creek where you spot a caribou, sipping a"
+% 2. Brings the user to a summary of the day blurb. %
 
 
 
