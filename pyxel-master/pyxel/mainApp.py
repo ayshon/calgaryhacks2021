@@ -36,7 +36,16 @@ class App:
         # ENETER NAME
         self.name = ""
         
-        # STORE SCENE
+        # GENERAL STORE SCENE
+        self.cart = [[],[]]
+        self.cash = 100
+        self.option1_g = Option(2,200,5,7)
+        self.option2_g = Option(2,210,5,7)
+        self.option3_g = Option(2,220,5,7)
+        self.option4_g = Option(2,230,5,7)
+        self.option_highlight = 0
+        self.storeText = 0
+        self.cartText = 0
 
         # TRAVELLING DAYS
         self.option1_t = Option(2,232,5,6)
@@ -154,11 +163,129 @@ class App:
                 pyxel.image(0).load(0, 0, "assets/lake.png")
         
 ########### STORE ##########
-        # elif self.active_scene == 3:
-        #     self.active_scene == 4
-
-########### TRAVELLING SCENE ##########
         elif self.active_scene == 3:
+            pyxel.image(0).load(0, 0, "assets/store.jpg")
+            if pyxel.btnp(pyxel.KEY_R):
+                self.storeText = 0
+                self.cartText = 0
+            if pyxel.btnp(pyxel.KEY_ENTER):
+                self.storeText = 0
+                self.active_scene = 4
+                #TRAVELLING NEW PHOTO. PUT IN SCENE BEFORE TRAVELING SCENES
+                pyxel.image(0).load(0, 0, "assets/morning.jpg")
+                #TRANSITION HERE
+            if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                if(pyxel.mouse_x > self.option1_g.x and pyxel.mouse_x < (self.option1_g.x + self.option1_g.side) and pyxel.mouse_y > self.option1_g.y and pyxel.mouse_y < (self.option1_g.y + self.option1_g.side)):
+                    if(self.storeText == 1):
+                        self.cash -= 2
+                        if("Maple Syrup" not in self.cart[0]):
+                            self.cart[0].append("Maple Syrup")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Maple Syrup")] += 1
+                    elif(self.storeText == 2):
+                        self.cash -= 3
+                        if("Mittens" not in self.cart[0]):
+                            self.cart[0].append("Mittens")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Mittens")] += 1
+                    elif(self.storeText == 3):
+                        self.cash -= 20
+                        if("Fishing Rod" not in self.cart[0]):
+                            self.cart[0].append("Fishing Rod")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Fishing Rod")] += 1
+                    if self.storeText == 0:
+                        self.storeText = 1
+                if(pyxel.mouse_x > self.option2_g.x and pyxel.mouse_x < (self.option2_g.x + self.option2_g.side) and pyxel.mouse_y > self.option2_g.y and pyxel.mouse_y < (self.option2_g.y + self.option2_g.side)):
+                    if(self.storeText == 1):
+                        self.cash -= 5
+                        if("Bread" not in self.cart[0]):
+                            self.cart[0].append("Bread")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Bread")] += 1
+                    elif(self.storeText == 2):
+                        self.cash -= 7
+                        if("Toque" not in self.cart[0]):
+                            self.cart[0].append("Toque")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Toque")] += 1
+                    elif(self.storeText == 3):
+                        self.cash -= 25
+                        if("Medicine" not in self.cart[0]):
+                            self.cart[0].append("Medicine")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Medicine")] += 1
+                    if self.storeText == 0:
+                        self.storeText = 3
+                if(pyxel.mouse_x > self.option3_g.x and pyxel.mouse_x < (self.option3_g.x + self.option3_g.side) and pyxel.mouse_y > self.option3_g.y and pyxel.mouse_y < (self.option3_g.y + self.option3_g.side)):
+                    if(self.storeText == 1):
+                        self.cash -= 10
+                        if("Canned Beans" not in self.cart[0]):
+                            self.cart[0].append("Canned Beans")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Canned Beans")] += 1
+                    elif(self.storeText == 2):
+                        self.cash -= 12
+                        if("Boots" not in self.cart[0]):
+                            self.cart[0].append("Boots")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Boots")] += 1
+                    elif(self.storeText == 3):
+                        self.cash -= 30
+                        if("Trap" not in self.cart[0]):
+                            self.cart[0].append("Trap")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Trap")] += 1
+                    if self.storeText == 0:
+                        self.storeText = 3
+                if(pyxel.mouse_x > self.option4_g.x and pyxel.mouse_x < (self.option4_g.x + self.option4_g.side) and pyxel.mouse_y > self.option4_g.y and pyxel.mouse_y < (self.option4_g.y + self.option4_g.side)):
+                    if(self.storeText == 1):
+                        self.cash -= 25
+                        if("Canadian Bacon" not in self.cart[0]):
+                            self.cart[0].append("Canadian Bacon")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Canadian Bacon")] += 1
+                    elif(self.storeText == 2):
+                        self.cash -= 20
+                        if("Coat" not in self.cart[0]):
+                            self.cart[0].append("Coat")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Coat")] += 1
+                    elif(self.storeText == 3):
+                        self.cash -= 50
+                        if("Tent" not in self.cart[0]):
+                            self.cart[0].append("Tent")
+                            self.cart[1].append(1)
+                        else:
+                            self.cart[1][self.cart[0].index("Tent")] += 1
+                    if self.storeText == 0:
+                        self.cartText = 1
+            if(pyxel.mouse_x > self.option1_g.x and pyxel.mouse_x < (self.option1_g.x + self.option1_g.side) and pyxel.mouse_y > self.option1_g.y and pyxel.mouse_y < (self.option1_g.y + self.option1_g.side)):
+                self.option_highlight = 1
+            elif(pyxel.mouse_x > self.option2_g.x and pyxel.mouse_x < (self.option2_g.x + self.option2_g.side) and pyxel.mouse_y > self.option2_g.y and pyxel.mouse_y < (self.option2_g.y + self.option2_g.side)):
+                self.option_highlight = 2
+            elif(pyxel.mouse_x > self.option3_g.x and pyxel.mouse_x < (self.option3_g.x + self.option3_g.side) and pyxel.mouse_y > self.option3_g.y and pyxel.mouse_y < (self.option3_g.y + self.option3_g.side)):
+                self.option_highlight = 3 
+            elif(pyxel.mouse_x > self.option4_g.x and pyxel.mouse_x < (self.option4_g.x + self.option4_g.side) and pyxel.mouse_y > self.option4_g.y and pyxel.mouse_y < (self.option4_g.y + self.option4_g.side)):
+                self.option_highlight = 4
+            else:
+                self.option_highlight = 0
+        
+########### TRAVELLING SCENE ##########
+        elif self.active_scene == 4:
+            # pyxel.image(0).load(0, 0, "assets/morning.jpg")
+
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             
                 #CHOICE THAT CHANGES DAY STATE
@@ -260,8 +387,12 @@ class App:
         elif(self.active_scene == 2):
             self.draw_name()
 
-        #   TRAVELLING SCENES
+        #   GENERAL STORE
         elif(self.active_scene == 3):
+            self.draw_general_store()
+
+        #   TRAVELLING SCENES
+        elif(self.active_scene == 4):
             self.draw_travelling()
 
         # OPTIONS
@@ -301,6 +432,101 @@ class App:
                 underScores += "_"
         pyxel.text(100, 132, underScores, 7)
         pyxel.text(85, 150, "Press ENTER to confirm", 7)
+
+########## TRAVELLING SCENES ############
+    def draw_general_store(self):
+        
+        pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+        pyxel.rect(0, 180, 256, 76, 0)
+
+        # TEXT
+        if(self.gender == 1):
+            self.genderText = "guy"
+        elif(self.gender == 2):
+            self.genderText = "gal"
+        else:
+            self.genderText = "pal"
+
+        pyxel.text(2, 182, "\"Mornin', what will a young " + self.genderText + " like yourself be buying today?\" the shopkeeper says gruffly.", 7)
+
+        # OPTIONS
+        # One letter - 5x4
+        # Where the remaining cash amount will be.
+        pyxel.rect(200, 0, 56, 10, 13)
+        pyxel.rectb(200, 0, 56, 10, 0)
+        pyxel.text(202, 3, "Cash:$" + str(self.cash), 0)
+
+        pyxel.rectb(self.option1_g.x, self.option1_g.y, self.option1_g.side, self.option1_g.side, self.option1_g.color)
+        pyxel.text(10, self.option1_g.y, "Food", 3)
+        pyxel.rectb(self.option2_g.x, self.option2_g.y, self.option2_g.side, self.option2_g.side, self.option2_g.color)
+        pyxel.text(10, self.option2_g.y, "Clothing", 3)
+        pyxel.rectb(self.option3_g.x, self.option3_g.y, self.option3_g.side, self.option3_g.side, self.option3_g.color)
+        pyxel.text(10, self.option3_g.y, "Supplies", 3)
+        pyxel.rectb(self.option4_g.x, self.option4_g.y, self.option4_g.side, self.option4_g.side, self.option4_g.color)
+        pyxel.text(10, self.option4_g.y, "Check your basket", 3)
+        pyxel.text(2, 250, "Press Enter to checkout your basket.", 2)
+
+        # SHOW FOOD
+        if(self.storeText == 1):
+            pyxel.rect(0, 180, 256, 76, 0)
+            pyxel.text(2, 182, "\"This is all the grub I have. Should keep your stomach filled.\"", 7)
+            pyxel.rectb(self.option1_g.x, self.option1_g.y, self.option1_g.side, self.option1_g.side, self.option1_g.color)
+            pyxel.text(10, self.option1_g.y, "Maple Syrup - $2", 2)
+            pyxel.rectb(self.option2_g.x, self.option2_g.y, self.option2_g.side, self.option2_g.side, self.option2_g.color)
+            pyxel.text(10, self.option2_g.y, "Bread - $5", 2)
+            pyxel.rectb(self.option3_g.x, self.option3_g.y, self.option3_g.side, self.option3_g.side, self.option3_g.color)
+            pyxel.text(10, self.option3_g.y, "Canned Beans - $10", 2)
+            pyxel.rectb(self.option4_g.x, self.option4_g.y, self.option4_g.side, self.option4_g.side, self.option4_g.color)
+            pyxel.text(10, self.option4_g.y, "Canadian Bacon - $25", 2)
+            pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
+
+        # SHOW CLOTHING
+        elif(self.storeText == 2):
+            pyxel.rect(0, 180, 256, 76, 0)
+            pyxel.text(2, 182, "\"Should keep yourselves warm. Gets pretty chilly here in Banff.\"", 7)
+            pyxel.rectb(self.option1_g.x, self.option1_g.y, self.option1_g.side, self.option1_g.side, self.option1_g.color)
+            pyxel.text(10, self.option1_g.y, "Mittens - $3", 2)
+            pyxel.rectb(self.option2_g.x, self.option2_g.y, self.option2_g.side, self.option2_g.side, self.option2_g.color)
+            pyxel.text(10, self.option2_g.y, "Toque - $7", 2)
+            pyxel.rectb(self.option3_g.x, self.option3_g.y, self.option3_g.side, self.option3_g.side, self.option3_g.color)
+            pyxel.text(10, self.option3_g.y, "Boots - $12", 2)
+            pyxel.rectb(self.option4_g.x, self.option4_g.y, self.option4_g.side, self.option4_g.side, self.option4_g.color)
+            pyxel.text(10, self.option4_g.y, "Coat - $20", 2)
+            pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
+
+        # SHOW SUPPLIES
+        elif(self.storeText == 3):
+            pyxel.rect(0, 180, 256, 76, 0)
+            pyxel.text(2, 182, "\"Ahh, you're one of those hiker folk. Got quality supplies here.\"", 7)
+            pyxel.rectb(self.option1_g.x, self.option1_g.y, self.option1_g.side, self.option1_g.side, self.option1_g.color)
+            pyxel.text(10, self.option1_g.y, "Fishing Rod - $20", 2)
+            pyxel.rectb(self.option2_g.x, self.option2_g.y, self.option2_g.side, self.option2_g.side, self.option2_g.color)
+            pyxel.text(10, self.option2_g.y, "Medicine - $25", 2)
+            pyxel.rectb(self.option3_g.x, self.option3_g.y, self.option3_g.side, self.option3_g.side, self.option3_g.color)
+            pyxel.text(10, self.option3_g.y, "Trap - $30", 2)
+            pyxel.rectb(self.option4_g.x, self.option4_g.y, self.option4_g.side, self.option4_g.side, self.option4_g.color)
+            pyxel.text(10, self.option4_g.y, "Tent - $50", 2)
+            pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
+
+        # HOVER ANIMATIONS
+        if(self.option_highlight == 1):
+            pyxel.rect(self.option1_g.x, self.option1_g.y, self.option1_g.side, self.option1_g.side, self.option1_g.color)
+        elif(self.option_highlight == 2):
+            pyxel.rect(self.option2_g.x, self.option2_g.y, self.option2_g.side, self.option2_g.side, self.option2_g.color)
+        elif(self.option_highlight == 3):
+            pyxel.rect(self.option3_g.x, self.option3_g.y, self.option3_g.side, self.option3_g.side, self.option3_g.color)
+        elif(self.option_highlight == 4):
+            pyxel.rect(self.option4_g.x, self.option4_g.y, self.option4_g.side, self.option4_g.side, self.option4_g.color)
+
+        # SHOW CART
+        if(self.cartText == 1):
+            pyxel.rect(0, 180, 256, 76, 0)
+            pyxel.text(2, 182, "Cart:", 7)
+            tempColumn = 190
+            for j in range(len(self.cart[0])):
+                pyxel.text(2, tempColumn, str(self.cart[0][j]) + " - " + str(self.cart[1][j]), 11)
+                tempColumn += 8
+            pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
 
 ########## TRAVELLING SCENES ############
     def draw_travelling(self):
