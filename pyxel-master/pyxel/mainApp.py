@@ -42,6 +42,8 @@ class App:
         # 7 - TRACKS
         # 8 - CARIBOU
 
+        self.day = 0
+        
         #   TITLE
         self.active_scene = 0
         self.blurbText = 0
@@ -444,10 +446,14 @@ class App:
                             self.previous_state = 3
                         elif(self.previous_state == 3):
                             self.active_scene = 5
-
                     else:
+                        if(self.day_state == 1):
+                            pyxel.image(0).load(0, 0, "assets/morning.jpg")
+                            self.previous_state = 1
+                            self.choice = 1
                         self.day_state = self.previous_state #ELSE GO TO MORNING
                         self.option1_t.color = 6
+                    self.option3_t.color = 6
                 #LOST CHOICE
                 if(pyxel.mouse_x > self.option2_t.x and pyxel.mouse_x < (self.option2_t.x + self.option2_t.side) and pyxel.mouse_y > self.option2_t.y and pyxel.mouse_y < (self.option2_t.y + self.option2_t.side)):
                     if(self.option2_t.color == 6):
@@ -455,12 +461,7 @@ class App:
                         pyxel.image(0).load(0, 0, "assets/lost.jpg")
                         self.day_state = 1  #MAINTAINS MORNING
                         self.choice = 2     #GOES INTO LOST CHOICE
-                    else:
-                        self.choice = 1     #MAINTAINS RIGHT CHOICE
-                        self.day_state = 1  #GOES INTO LOST CHOICE
-                        pyxel.image(0).load(0, 0, "assets/morning.jpg")
-                    self.option1_t.color = 6
-                    self.option3_t.color = 6
+                    # KEEP GETTING IF GO OPTION 2
 
                 #CAMP CHOICE
                 if(pyxel.mouse_x > self.option3_t.x and pyxel.mouse_x < (self.option3_t.x + self.option3_t.side) and pyxel.mouse_y > self.option3_t.y and pyxel.mouse_y < (self.option3_t.y + self.option3_t.side)):
@@ -469,11 +470,7 @@ class App:
                         pyxel.image(0).load(0, 0, "assets/camp.png")
                         self.day_state = 1
                         self.choice = 3  #GOES INTO CAMP CHOICE
-                    else:
-                        self.day_state = 1
-                        self.choice = 2
-                    self.option1_t.color = 6
-                    self.option2_t.color = 6
+                        self.day += 1
                     
 ########### CAMP NIGHT TIME  ##########
         elif(self.active_scene == 5):
@@ -920,29 +917,33 @@ class App:
                 pyxel.rect(0, 180, 256, 20, 0)
                 pyxel.line(0, 179, 256, 179, 7)
                 pyxel.line(0, 189, 256, 189, 7)
-                pyxel.text(2, 182, "Day 1 - MORNING - March 16, 1901 - Banff, Alberta", 7)
                 pyxel.text(85, 199, "Where would you like to go?", 7)
+                pyxel.text(2, 182, "Day " + str(1+self.day) + " - MORNING - March " + str(16 +self.day) + ", 1901 - Banff, Alberta", 7)
             elif self.choice == 2:
                 pyxel.rect(0, 180, 256, 20, 0)
-                pyxel.text(2, 182, "You got lost! Stay on track next time!", 7)
+                pyxel.line(0, 179, 256, 179, 7)
+                pyxel.line(0, 189, 256, 189, 7)
+                pyxel.text(10, 182, "You got lost! Stay on track next time!", 7)
                 pyxel.text(85, 199, "Where would you like to go?", 7)
             elif self.choice == 3:
                 pyxel.rect(0, 180, 256, 20, 0)
-                pyxel.text(2, 182, "You camped too early! A day is wasted. You will lose life.", 7)
+                pyxel.line(0, 179, 256, 179, 7)
+                pyxel.line(0, 189, 256, 189, 7)
+                pyxel.text(10, 182, "You camped too early! A day is wasted. You will lose life.", 7)
                 pyxel.text(85, 199, "Where would you like to go?", 7)
         elif self.day_state == 2:
             # SPEACH FOR AFTERNOON 
             pyxel.rect(0, 180, 256, 20, 0)
             pyxel.line(0, 179, 256, 179, 7)
             pyxel.line(0, 189, 256, 189, 7)
-            pyxel.text(2, 182, "Day 1 - AFTERNOON - March 16, 1901 - Banff, Alberta", 7)
+            pyxel.text(2, 182, "Day " + str(1+self.day) + " - AFTERNOON - March " + str(16 +self.day) + ", 1901 - Banff, Alberta", 7)
             pyxel.text(85, 199, "Where would you like to go?", 7)
         elif self.day_state == 3:
             # SPEACH FOR Evening 
             pyxel.rect(0, 180, 256, 20, 0)
             pyxel.line(0, 179, 256, 179, 7)
             pyxel.line(0, 189, 256, 189, 7)
-            pyxel.text(2, 182, "Day 1 - EVENING - March 16, 1901 - Banff, Alberta", 7)
+            pyxel.text(2, 182, "Day " + str(1+self.day) + " - EVENING - March " + str(16 +self.day) + ", 1901 - Banff, Alberta", 7)
             pyxel.text(85, 199, "Where would you like to go?", 7)
 
 ########## CAMP NIGHT TIME ############
@@ -977,9 +978,9 @@ class App:
         # TEXT
         pyxel.line(0, 179, 256, 179, 7)
         pyxel.line(0, 189, 256, 189, 7)
-        pyxel.text(2, 182, "Day 2 - MORNING - March 17, 1901 - Banff, Alberta", 7)
-        pyxel.text(2, 204, "You can hear the birds chirping outside.", 7)
-        pyxel.text(2, 214, "You yawn and stretch your stiff limbs.", 7)
+        pyxel.text(2, 182, "Day " + str(2+self.day) + " - March " + str(17 +self.day) + ", 1901.", 7)
+        pyxel.text(2, 214, "You can hear the birds chirping outside.", 7)
+        pyxel.text(2, 222, "You yawn and stretch your stiff limbs.", 7)
         
         pyxel.text(2, 228, "It's time to move.", 7)
 
@@ -1091,8 +1092,8 @@ class App:
         # TEXT
             pyxel.line(0, 179, 256, 179, 7)
             pyxel.line(0, 189, 256, 189, 7)
-            pyxel.text(2, 182, "Day 2 - EVENING - March 17, 1901 - Banff, Alberta", 7)
-            pyxel.text(2, 193, "You see two paths, one leads north, the other leads north west. \nThe north road looks dangerous.\nWhich way do you go?", 7)
+            pyxel.text(2, 182, "Day " + str(2+self.day) + " - EVENING - BANFF, ALBERTA\n\n", 7)
+            pyxel.text(2, 192, "You see two paths, one leads north, the other leads north west. \nThe north road looks dangerous.\nWhich way do you go?", 7)
 
             # OPTIONS
             pyxel.rectb(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
@@ -1103,8 +1104,8 @@ class App:
         elif self.split_road_state == 1:
             pyxel.line(0, 179, 256, 179, 7)
             pyxel.line(0, 189, 256, 189, 7)
-            pyxel.text(2, 182, "Day 2 - EVENING - March 17, 1901 - Banff, Alberta", 7)
-            pyxel.text(85, 199, "Where would you like to go?", 7)
+            pyxel.text(2, 182, "Day " + str(2+self.day) + " - EVENING - March " + str(17 +self.day) + ", 1901 - Banff, Alberta", 7)
+            pyxel.text(2, 192, "It's 6pm, in the evening. Where would you like to go?", 7)
 
             # OPTIONS
             pyxel.rectb(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
