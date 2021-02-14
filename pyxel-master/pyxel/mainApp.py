@@ -297,6 +297,7 @@ class App:
                 #CHOICE THAT CHANGES DAY STATE
                 if(pyxel.mouse_x > self.option1_t.x and pyxel.mouse_x < (self.option1_t.x + self.option1_t.side) and pyxel.mouse_y > self.option1_t.y and pyxel.mouse_y < (self.option1_t.y + self.option1_t.side)):
                     if(self.option1_t.color == 6):
+                        self.option1_t.color = 8
                         if(self.day_state == 1):
                             pyxel.image(0).load(0, 0, "assets/afternoon.jpg")
                             self.day_state = 2 #GOES INTO AFTERNOON WORDS
@@ -311,10 +312,12 @@ class App:
                     else:
                         self.day_state = self.previous_state #ELSE GO TO MORNING
                         pyxel.image(0).load(0, 0, "assets/morning.jpg")
-
+                    self.option2_t.color = 6
+                    self.option3_t.color = 6
                 #LOST CHOICE
                 if(pyxel.mouse_x > self.option2_t.x and pyxel.mouse_x < (self.option2_t.x + self.option2_t.side) and pyxel.mouse_y > self.option2_t.y and pyxel.mouse_y < (self.option2_t.y + self.option2_t.side)):
                     if(self.option2_t.color == 6):
+                        self.option2_t.color = 8
                         pyxel.image(0).load(0, 0, "assets/lost.jpg")
                         self.day_state = 1  #MAINTAINS MORNING
                         self.choice = 2     #GOES INTO LOST CHOICE
@@ -322,17 +325,22 @@ class App:
                         self.choice = 1     #MAINTAINS RIGHT CHOICE
                         self.day_state = 1  #GOES INTO LOST CHOICE
                         pyxel.image(0).load(0, 0, "assets/morning.jpg")
+                    self.option1_t.color = 6
+                    self.option3_t.color = 6
 
                 #CAMP CHOICE
                 if(pyxel.mouse_x > self.option3_t.x and pyxel.mouse_x < (self.option3_t.x + self.option3_t.side) and pyxel.mouse_y > self.option3_t.y and pyxel.mouse_y < (self.option3_t.y + self.option3_t.side)):
                     if(self.option3_t.color == 6):
+                        self.option3_t.color = 8
                         pyxel.image(0).load(0, 0, "assets/camp.png")
                         self.day_state = 1
                         self.choice = 3  #GOES INTO CAMP CHOICE
                     else:
                         self.day_state = 1
                         self.choice = 2
-
+                    self.option1_t.color = 6
+                    self.option2_t.color = 6
+                    
 ########### CAMP NIGHT TIME  ##########
         elif(self.active_scene == 5):
             pyxel.image(0).load(0, 0, "assets/camp.png")
