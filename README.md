@@ -40,7 +40,7 @@ Music: Created through Editor in Pyxel. Original Composition
 - [Camping Vector](https://www.istockphoto.com/vector/adventure-camping-night-scene-gm827243792-134519191)
 - [Caribou Vector](https://www.vecteezy.com/vector-art/138407-green-forest-background-vector)
 - Drive
-- Lake Louise
+- [Lake Louise](https://www.tripsavvy.com/thmb/eNPRdLn3mHQu731s_8NA5Js_jhk=/2121x1193/smart/filters:no_upscale()/LakeLouise_GettyImages-6b1e83ecabbb423c9cc66ea024c0e6bf.jpg)
 - Fire
 - Sunrise
 - [Sunset Pixel Art](https://www.pinterest.ca/pin/459719074458952481/)
