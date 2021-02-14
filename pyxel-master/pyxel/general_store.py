@@ -14,7 +14,6 @@ class App:
         
         pyxel.mouse(True)
 
-        self.inventory = ["Compass", "Cash" "Painting Supplies"]
         self.cart = [[],[]]
         self.cash = 100
         self.option1 = Option(2,200,5,7)
@@ -34,108 +33,106 @@ class App:
         if pyxel.btnp(pyxel.KEY_R):
             self.storeText = 0
             self.cartText = 0
+        if pyxel.btnp(pyxel.KEY_ENTER):
+            self.storeText = 0
+            #Transition!!
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             if(pyxel.mouse_x > self.option1.x and pyxel.mouse_x < (self.option1.x + self.option1.side) and pyxel.mouse_y > self.option1.y and pyxel.mouse_y < (self.option1.y + self.option1.side)):
-                    if(self.storeText == 1):
-                        self.cash -= 2
-                        if("Maple Syrup" not in self.cart[0]):
-                            self.cart[0].append("Maple Syrup")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Maple Syrup")] += 1
-                        self.storeText = 1
-                    elif(self.storeText == 2):
-                        self.cash -= 3
-                        if("Mittens" not in self.cart[0]):
-                            self.cart[0].append("Mittens")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Mittens")] += 1
-                        self.storeText = 2
-                    elif(self.storeText == 3):
-                        self.cash -= 20
-                        if("Fishing Rod" not in self.cart[0]):
-                            self.cart[0].append("Fishing Rod")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Fishing Rod")] += 1
-                        self.storeText = 3
+                if(self.storeText == 1):
+                    self.cash -= 2
+                    if("Maple Syrup" not in self.cart[0]):
+                        self.cart[0].append("Maple Syrup")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Maple Syrup")] += 1
+                elif(self.storeText == 2):
+                    self.cash -= 3
+                    if("Mittens" not in self.cart[0]):
+                        self.cart[0].append("Mittens")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Mittens")] += 1
+                elif(self.storeText == 3):
+                    self.cash -= 20
+                    if("Fishing Rod" not in self.cart[0]):
+                        self.cart[0].append("Fishing Rod")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Fishing Rod")] += 1
+                if self.storeText == 0:
                     self.storeText = 1
             if(pyxel.mouse_x > self.option2.x and pyxel.mouse_x < (self.option2.x + self.option2.side) and pyxel.mouse_y > self.option2.y and pyxel.mouse_y < (self.option2.y + self.option2.side)):
-                    if(self.storeText == 1):
-                        self.cash -= 5
-                        if("Bread" not in self.cart[0]):
-                            self.cart[0].append("Bread")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Bread")] += 1
-                        self.storeText = 1
-                    elif(self.storeText != 1 or self.storeText != 3 or self.storeText != 4):
-                        self.cash -= 7
-                        if("Toque" not in self.cart[0]):
-                            self.cart[0].append("Toque")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Toque")] += 1
-                        self.storeText = 2
-                    elif(self.storeText != 1 or self.storeText !=2  or self.storeText != 4):
-                        self.cash -= 25
-                        if("Medicine" not in self.cart[0]):
-                            self.cart[0].append("Medicine")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Medicine")] += 1
-                        self.storeText = 3
+                if(self.storeText == 1):
+                    self.cash -= 5
+                    if("Bread" not in self.cart[0]):
+                        self.cart[0].append("Bread")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Bread")] += 1
+                elif(self.storeText == 2):
+                    self.cash -= 7
+                    if("Toque" not in self.cart[0]):
+                        self.cart[0].append("Toque")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Toque")] += 1
+                elif(self.storeText == 3):
+                    self.cash -= 25
+                    if("Medicine" not in self.cart[0]):
+                        self.cart[0].append("Medicine")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Medicine")] += 1
+                if self.storeText == 0:
+                    self.storeText = 3
             if(pyxel.mouse_x > self.option3.x and pyxel.mouse_x < (self.option3.x + self.option3.side) and pyxel.mouse_y > self.option3.y and pyxel.mouse_y < (self.option3.y + self.option3.side)):
-                    if(self.storeText == 1):
-                        self.cash -= 10
-                        if("Canned Beans" not in self.cart[0]):
-                            self.cart[0].append("Cannned Beans")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Canned Beans")] += 1
-                        self.storeText = 1
-                    elif(self.storeText != 1 or self.storeText != 3 or self.storeText != 4):
-                        self.cash -= 12
-                        if("Boots" not in self.cart[0]):
-                            self.cart[0].append("Boots")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Boots")] += 1
-                        self.storeText = 2
-                    elif(self.storeText != 1 or self.storeText !=2  or self.storeText != 4):
-                        self.cash -= 30
-                        if("Trap" not in self.cart[0]):
-                            self.cart[0].append("Trap")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Trap")] += 1
-                        self.storeText = 3
+                if(self.storeText == 1):
+                    self.cash -= 10
+                    if("Canned Beans" not in self.cart[0]):
+                        self.cart[0].append("Canned Beans")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Canned Beans")] += 1
+                elif(self.storeText == 2):
+                    self.cash -= 12
+                    if("Boots" not in self.cart[0]):
+                        self.cart[0].append("Boots")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Boots")] += 1
+                elif(self.storeText == 3):
+                    self.cash -= 30
+                    if("Trap" not in self.cart[0]):
+                        self.cart[0].append("Trap")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Trap")] += 1
+                if self.storeText == 0:
+                    self.storeText = 3
             if(pyxel.mouse_x > self.option4.x and pyxel.mouse_x < (self.option4.x + self.option4.side) and pyxel.mouse_y > self.option4.y and pyxel.mouse_y < (self.option4.y + self.option4.side)):
-                    if(self.storeText == 1):
-                        self.cash -= 25
-                        if("Canadian Bacon" not in self.cart[0]):
-                            self.cart[0].append("Canadian Bacon")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Canadian Bacon")] += 1
-                        self.storeText = 1
-                    elif(self.storeText != 1 or self.storeText != 3 or self.storeText != 4):
-                        self.cash -= 20
-                        if("Coat" not in self.cart[0]):
-                            self.cart[0].append("Coat")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Coat")] += 1
-                        self.storeText = 2
-                    elif(self.storeText != 1 or self.storeText !=2  or self.storeText != 4):
-                        self.cash -= 50
-                        if("Tent" not in self.cart[0]):
-                            self.cart[0].append("Tent")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Tent")] += 1
-                        self.storeText = 3
+                if(self.storeText == 1):
+                    self.cash -= 25
+                    if("Canadian Bacon" not in self.cart[0]):
+                        self.cart[0].append("Canadian Bacon")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Canadian Bacon")] += 1
+                elif(self.storeText == 2):
+                    self.cash -= 20
+                    if("Coat" not in self.cart[0]):
+                        self.cart[0].append("Coat")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Coat")] += 1
+                elif(self.storeText == 3):
+                    self.cash -= 50
+                    if("Tent" not in self.cart[0]):
+                        self.cart[0].append("Tent")
+                        self.cart[1].append(1)
+                    else:
+                        self.cart[1][self.cart[0].index("Tent")] += 1
+                if self.storeText == 0:
+                    self.cartText = 1
 
     def draw(self):
         # CLEAR SCREEN
@@ -160,7 +157,6 @@ class App:
         pyxel.text(2, 182, "\"Mornin', what will a young " + self.genderText + " like yourself be buying today?\" the shopkeeper says gruffly.", 7)
 
         # OPTIONS
-        # pyxel.text(2, 232, str(self.option1.y), pyxel.frame_count % 16)
         # One letter - 5x4
         # Where the remaining cash amount will be.
         pyxel.rect(200, 0, 56, 10, 13)
@@ -175,6 +171,7 @@ class App:
         pyxel.text(10, self.option3.y, "Supplies", 3)
         pyxel.rect(self.option1.x, self.option4.y, self.option4.side, self.option1.side, self.option1.color)
         pyxel.text(10, self.option4.y, "Check your basket", 3)
+        pyxel.text(2, 250, "Press Enter to checkout your basket.", 2)
 
         if(self.storeText == 1):
             pyxel.rect(0, 180, 256, 76, 0)
@@ -223,5 +220,6 @@ class App:
             for j in range(len(self.cart[0])):
                 pyxel.text(2, tempColumn, str(self.cart[0][j]) + " - " + str(self.cart[1][j]), 11)
                 tempColumn += 8
+            pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
 
 App()

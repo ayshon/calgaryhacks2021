@@ -14,27 +14,44 @@ class App:
         
         pyxel.mouse(True)
 
+        # SCENE ORGANIZATION
+        self.scene = [0,1,2]
+        # 0 - TITLE
+        # 1 - GENDER CHOICE, 
+        # 2 - ENTER NAME,
+        # 3 - STORE
+        # 4 - Travelling Days
+        self.active_scene = 1 
+
         self.option1 = Option(2,232,5,6)
         self.option2 = Option(2,240,5,6)
         self.option3 = Option(2,248,5,6)
 
+        # CHOOSE YOUR GENDER
         self.gender_option_m = Option(2, 200, 5, 12)
         self.gender_option_f = Option(102,200,5,12)
-        
         self.gender = 0
 
+        # ENETER NAME
         self.name = ""
+        
+        # STORE SCENE
 
-        self.scene = [0,1,2]
-        self.active_scene = 1
+        # TRAVELLING DAYS
+        self.option1_t = Option(2,200,5,6)
+        self.option2_t = Option(2,210,5,6)
+        self.option3_t = Option(2,220,5,6)
+        self.day_state =1 #1 for morning, #2 for afternoon, #3 for evening 
+        self.choice = 1 #1 for new state, #2 for lost, #3 for camp
+        self.previous_state = 1
 
-        # self.testNum = 0
 
         # EVERYTHING MUST BE ABOVE THIS LINE
         pyxel.run(self.update, self.draw)
         
     def update(self):
-        # CHOOSE YOUR GENDER
+
+####### CHOOSE YOUR GENDER #######
         if self.active_scene == 1:
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
@@ -57,7 +74,7 @@ class App:
             if((self.gender == 1 or self.gender == 2) and pyxel.btnp(pyxel.KEY_ENTER)):
                 self.active_scene = 2
         
-        # INPUT YOUR NAME
+########### ENTER NAME ##########
         elif self.active_scene == 2:
             pyxel.image(0).load(0, 0, "assets/forest.png")
             if pyxel.btnp(pyxel.KEY_BACKSPACE) and self.name != "":
@@ -121,8 +138,62 @@ class App:
                 self.active_scene = 3
                 pyxel.image(0).load(0, 0, "assets/lake.png")
         
-        # FIRST SCENE
+########### STORE ##########
+        # elif self.active_scene == 3:
+        #     self.active_scene == 4
+
+########### TRAVELLING SCENE ##########
         elif self.active_scene == 3:
+            if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+            
+                #CHOICE THAT CHANGES DAY STATE
+                if(pyxel.mouse_x > self.option1_t.x and pyxel.mouse_x < (self.option1_t.x + self.option1_t.side) and pyxel.mouse_y > self.option1_t.y and pyxel.mouse_y < (self.option1_t.y + self.option1_t.side)):
+                    if(self.option1_t.color == 6):
+                        self.option1_t.color = 0
+                        if(self.day_state == 1):
+                            pyxel.image(0).load(0, 0, "assets/afternoon.jpg")
+                            self.day_state = 2 #GOES INTO AFTERNOON WORDS
+                            self.previous_state = 2
+                        elif(self.day_state == 2):
+                            pyxel.image(0).load(0, 0, "assets/sunset.png")
+                            self.day_state = 3 #GOES INTO EVENING WORDS
+                            self.previous_state = 3
+                        elif(self.previous_state == 3):
+                            self.active_scene = 5
+
+                    else:
+                        self.day_state = self.previous_state #ELSE GO TO MORNING
+                        self.option1_t.color = 6
+                        pyxel.image(0).load(0, 0, "assets/morning.jpg")
+
+                #LOST CHOICE
+                if(pyxel.mouse_x > self.option2_t.x and pyxel.mouse_x < (self.option2_t.x + self.option2_t.side) and pyxel.mouse_y > self.option2_t.y and pyxel.mouse_y < (self.option2_t.y + self.option2_t.side)):
+                    if(self.option2_t.color == 6):
+                        self.option2_t.color = 0
+                        pyxel.image(0).load(0, 0, "assets/lost.jpg")
+                        self.day_state = 1  #MAINTAINS MORNING
+                        self.choice = 2     #GOES INTO LOST CHOICE
+                    else:
+                        self.choice = 1     #MAINTAINS RIGHT CHOICE
+                        self.day_state = 1  #GOES INTO LOST CHOICE
+                        self.option2_t.color = 6
+                        pyxel.image(0).load(0, 0, "assets/morning.jpg")
+
+                #CAMP CHOICE
+                if(pyxel.mouse_x > self.option3_t.x and pyxel.mouse_x < (self.option3_t.x + self.option3_t.side) and pyxel.mouse_y > self.option3_t.y and pyxel.mouse_y < (self.option3_t.y + self.option3_t.side)):
+                    if(self.option3_t.color == 6):
+                        self.option3_t.color = 0
+                        pyxel.image(0).load(0, 0, "assets/camp.png")
+                        self.day_state = 1
+                        self.choice = 3  #GOES INTO CAMP CHOICE
+                    else:
+                        self.day_state = 1
+                        self.choice = 2
+                        self.option3_t.color = 6
+
+
+########### DEFAULT ##########        
+        else:
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                 if(pyxel.mouse_x > self.option1.x and pyxel.mouse_x < (self.option1.x + self.option1.side) and pyxel.mouse_y > self.option1.y and pyxel.mouse_y < (self.option1.y + self.option1.side)):
                     if(self.option1.color == 6):
@@ -144,6 +215,12 @@ class App:
                     else:
                         self.option3.color = 6
 
+
+#############################################################################
+#####################       DRAW FUNCTIONS     ##############################
+#############################################################################
+
+    #INDICATE WHICH DRAW FUNCTION IS ASSOSIATED WITH WHICH SCENE
     def draw(self):
         # CLEAR SCREEN
         pyxel.cls(0)
@@ -152,9 +229,6 @@ class App:
         # blt(x, y, img, u, v, w, h, [colkey]) colkey is optional
         pyxel.blt(0, 0, 0, 0, 0, 256, 256)
 
-        # # testing draw rectanlge 
-        # if self.testNum == 1:
-        #     pyxel.rect(60, 10, 100, 70, 0)
 
         # DRAW BLACK TEXTBOX
         # rect(x, y, w, h, col)
@@ -166,13 +240,18 @@ class App:
             self.draw_gender_options()
             
         #  ENTER NAME
-        if(self.active_scene ==2):
+        elif(self.active_scene == 2):
             self.draw_name()
+
+        #   TRAVELLING SCENES
+        elif(self.active_scene == 3):
+            self.draw_travelling()
 
         # OPTIONS
         elif(self.active_scene != 1):
             self.draw_options()
-        
+    
+########## GENDER OPTIONS ############
     def draw_gender_options(self):
         # TEXT
         pyxel.text(2, 182, "Choose your gender", 3)
@@ -189,6 +268,7 @@ class App:
         elif (self.gender == 2): 
             pyxel.text(96, 232, "You are male.", 2)
 
+########## ENTER NAME ############
     def draw_name(self):
         # VISUALS FOR INPUTTING NAME
         pyxel.rect(60, 102, 137, 70, 0)
@@ -201,6 +281,50 @@ class App:
         pyxel.text(100, 132, underScores, 7)
         pyxel.text(85, 150, "Press ENTER to confirm", 7)
 
+########## TRAVELLING SCENES ############
+    def draw_travelling(self):
+        # CLEAR SCREEN
+        # pyxel.cls(0)
+
+        pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+        pyxel.rect(0, 180, 256, 76, 0)
+        
+        #CONSTANT OPTIONS
+        pyxel.rect(self.option1_t.x, self.option1_t.y, self.option1_t.side, self.option1_t.side, self.option1_t.color)
+        pyxel.text(10, self.option1_t.y, "Go North", 3)
+        pyxel.rect(self.option2_t.x, self.option2_t.y, self.option2_t.side, self.option2_t.side, self.option2_t.color)
+        pyxel.text(10, self.option2_t.y, "See what's in the west", 4)
+        pyxel.rect(self.option3_t.x, self.option3_t.y, self.option3_t.side, self.option3_t.side, self.option3_t.color)
+        pyxel.text(10, self.option3_t.y, "Make Camp", 5)
+
+        pyxel.text(2, 182, "Day 2 - MORNING - March 16, 1901 - Banff, Alberta", 7)
+        pyxel.text(2, 189, "It's morning. Where would you like to go?", 7)
+        if self.day_state == 1:
+            # SPEACH FOR MORNING AND OTHER CHOICES
+            if self.choice == 1:
+                pyxel.rect(0, 180, 256, 20, 0)
+                pyxel.text(2, 182, "Day 2 - MORNING - March 16, 1901 - Banff, Alberta", 7)
+                pyxel.text(2, 189, "It's morning. Where would you like to go?", 7)
+            elif self.choice == 2:
+                pyxel.rect(0, 180, 256, 20, 0)
+                pyxel.text(2, 182, "You got lost! Stay on track next time!", 7)
+                pyxel.text(2, 189, "Where would you like to go?", 7)
+            elif self.choice == 3:
+                pyxel.rect(0, 180, 256, 20, 0)
+                pyxel.text(2, 182, "You camped too early! A day is wasted. You will lose more inventory.", 7)
+                pyxel.text(2, 189, "Where would you like to go?", 7)
+        elif self.day_state == 2:
+            # SPEACH FOR AFTERNOON 
+            pyxel.rect(0, 180, 256, 20, 0)
+            pyxel.text(2, 182, "Day 2 - AFTERNOON - March 16, 1901 - Banff, Alberta", 7)
+            pyxel.text(2, 189, "It's 12 in the afternoon. Where would you like to go?", 7)
+        elif self.day_state == 3:
+            # SPEACH FOR Evening 
+            pyxel.rect(0, 180, 256, 20, 0)
+            pyxel.text(2, 182, "Day 2 - EVENING - March 16, 1901 - Banff, Alberta", 7)
+            pyxel.text(2, 189, "It's 6pm, in the evening. Where would you like to go?", 7)
+
+########## DEFAULT ############
     def draw_options(self):
         # TEMPLATE FOR OPTION SELECT
         pyxel.text(2, 182, "There is text here gotem", 1)
