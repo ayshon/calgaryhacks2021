@@ -14,6 +14,14 @@ class App:
         
         pyxel.mouse(True)
 
+        a = "c3d2e2b3 a2b2c3b2"
+        b = "c3d2e2a3 a2b2c3a2"
+        
+        pyxel.sound(0).set(a * 3 + b * 1, "t", "2", "nf", 30)
+        pyxel.sound(1).set("a1b1b1a1", "p", "2", "nf", 120)
+        pyxel.sound(2).set("c3g3c4g3", "p", "1", "nf", 150)
+        pyxel.sound(3).set("c1d1e1d1 c2d2e2a1", "t", "2", "nf", 100)
+
         # SCENE ORGANIZATION
         self.scene = [0,1,2]
         # 0 - TITLE
@@ -69,13 +77,28 @@ class App:
 
         # EVERYTHING MUST BE ABOVE THIS LINE
         pyxel.run(self.update, self.draw)
-        
+
+    def stop_music(self):
+        pyxel.stop(0)
+        pyxel.stop(1)
+        pyxel.stop(2)
+        pyxel.stop(3)
+
+    def play_music(self, track):
+        if (track == 0):
+            pyxel.play(0, 0, loop=True)
+            pyxel.play(1, 1, loop=True)
+        elif (track == 1):
+            pyxel.play(2, 2, loop=True)
+            pyxel.play(3, 3 ,loop=True)
+
     def update(self):
 ####### CHOOSE YOUR GENDER #######
         if self.active_scene == 1:
+            #self.stop_music()
+
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
-                
                 # MALE
                 if(pyxel.mouse_x > self.gender_option_m.x and pyxel.mouse_x < (self.gender_option_m.x + self.gender_option_m.side) and pyxel.mouse_y > self.gender_option_m.y and pyxel.mouse_y < (self.gender_option_m.y + self.gender_option_m.side)):
                     if(self.gender_option_m.color == 12):
@@ -106,6 +129,7 @@ class App:
                         self.gender = 3
 
             if((self.gender == 1 or self.gender == 2 or self.gender == 3) and pyxel.btnp(pyxel.KEY_ENTER)):
+                self.play_music(0)
                 self.active_scene = 2
         
 ########### ENTER NAME ##########
