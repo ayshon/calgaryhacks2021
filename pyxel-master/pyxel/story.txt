@@ -22,7 +22,7 @@ an eighth person, who aspired to leave their mark on Canadian soil as well.
 
 [CHOOSE YOUR NAME]
 
-/* %User must be able to click on on-screen keyboard. MAX LIMIT: 8 characters for the name. Updates on-screen as user enters name.% */
+/* %User must be able to click on on-screen keyboard. MAX LIMIT: 15 characters for the name. Updates on-screen as user enters name.% */
 
 [CHOOSE CHAPTER]
 
@@ -51,7 +51,39 @@ in the general store.
 
 [GENERAL STORE]
 "Mornin', what will you be buying today?"
-1. 
+"Food"
+1. Maple Syrup - $2
+2. Canned Beans - $10
+3. Bread - $5
+4. Canadian Bacon - $25
+
+"Clothes"
+1. Toque - $7
+2. Mittens - $3
+3. Boots - $12
+4. Coat - $20
+
+"Supplies"
+1. Medicine - $25
+2. Tent - $50
+3. Fishing Rod - $20
+4. Trap - $30
+
+% The user clicks on an item and textbox changes that informs them that the item has been added to their basket. %
+"The item, [PUT ITEM NAME HERE], has been added to the basket."
+% Once the user clicks again, it brings them back to the general store options text. %
+% Must keep track of what is in the player's cart. Add up the values.' %
+% Should have an I'M READY button on the bottom right hand corner of screen. Once user clicks on it, text changes again.%
+
+"Are you sure?"
+1. Yes 
+2. No
+
+% 1. Yes -> Brings them to next scene.
+% 2. No -> Brings them back to the general store options text.
+
+/* All using the same background image I believe. */
+
 
 
 
