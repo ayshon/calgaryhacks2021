@@ -1046,14 +1046,12 @@ class App:
         elif self.split_road_state == 3 or self.split_road_state == 4:
             pyxel.text(2, 182, "You were found in the morning passed out from the darkness!", 7)
             pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \n offered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
-        
+            self.split_road_state = 4
+
         if self.option_r_highlight == 1:
             pyxel.rect(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
         elif self.option_r_highlight == 2:
             pyxel.rect(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
-        elif self.option_r_highlight == 3:
-            pyxel.rect(self.option3_r.x, self.option3_r.y, self.option3_r.side, self.option3_r.side, self.option3_r.color)
-            self.split_road_state = 4
             
 
 ########## LAKE LOUISE ############
