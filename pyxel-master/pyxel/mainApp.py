@@ -222,7 +222,7 @@ class App:
                         else:
                             self.cart[1][self.cart[0].index("Medicine")] += 1
                     if self.storeText == 0:
-                        self.storeText = 3
+                        self.storeText = 2
                 if(pyxel.mouse_x > self.option3_g.x and pyxel.mouse_x < (self.option3_g.x + self.option3_g.side) and pyxel.mouse_y > self.option3_g.y and pyxel.mouse_y < (self.option3_g.y + self.option3_g.side)):
                     if(self.storeText == 1):
                         self.cash -= 10
