@@ -1,17 +1,12 @@
 [] - New Image/Screen
 "" - Text
 /* - Comment
+% - Functionality
 
 """
 A group of Canadian artists built their fame across Canada for their paintings inspired by Canada's beautiful landscape. Famously known
 as the 'Group of Seven,' they have left their legacy in their world through their masterpieces. But unbeknownst to some others, there was
 an eighth person, who aspired to leave their mark on Canadian soil as well. 
-"""
-
-"""
-My dear friends, I am here to tell you the story of how I traveled across the majestic wonders that the great country of Canada has to offer.
-The great heights, depths and many unique encounters I had to face on my journey. With my paintbrush and oils in hand, I went off and started
-on my adventure to paint...
 """
 
 [TITLE SCREEN] - The Canadian Masterpiece
@@ -21,13 +16,42 @@ on my adventure to paint...
 [CHOOSE YOUR GENDER]
 1. Male
 2. Female
+3. Non-Binary
 
-/* Have
+/* Have pictures to represent male and female characters.*/
 
-[BLURB - March 14, 1901]
+[CHOOSE YOUR NAME]
+
+/* %User must be able to click on on-screen keyboard. MAX LIMIT: 8 characters for the name. Updates on-screen as user enters name.% */
+
+[CHOOSE CHAPTER]
+
+1. Forest {% Only chapter to be implemented.}
+2. The North [Locked]
+3. Mountain [Locked]
+4. The Great Lakes [Locked]
+
+/* Unlocks as you complete the preceding chapters. */
+
+[CHAPTER 1 - THE FOREST]
+
+[BLURB - March 14, 1901 - Banff, Alberta]
 
 """
-It was quite a sunny day
+It is quite a sunny day. The sun is beaming down and you are in the bustling town of Banff, ready to explore the
+great forests of Alberta. With its various coniferous trees and wandering animals, you are ecstatic to experience what land has to offer. A dear friend of yours has
+informed you of a spectacular lake known as Lake Louise. A wondrous oasis somewhere in the midst of Alberta's vast greenery. You are inspired to paint its sparkling waters
+against the backdrop of Banff Forest.
+"""
+
+"""
+You currently have your grandfather's trusty old compass, $100 in cash, painting oils and brushes. Before you start your expedition in the forest, you must purchase some supplies
+in the general store.
+"""
+
+[GENERAL STORE]
+"Mornin', what will you be buying today?"
+1. 
 
 
 
