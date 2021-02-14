@@ -1,5 +1,4 @@
 import pyxel
-gender = 1
 
 class Option:
     def __init__(self, x, y, side, color):
