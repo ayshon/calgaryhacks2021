@@ -35,6 +35,7 @@ class App:
         
     def update(self):
         if self.active_scene == 1:
+            pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                 if(pyxel.mouse_x > self.gender_option_m.x and pyxel.mouse_x < (self.gender_option_m.x + self.gender_option_m.side) and pyxel.mouse_y > self.gender_option_m.y and pyxel.mouse_y < (self.gender_option_m.y + self.gender_option_m.side)):
                     if(self.gender_option_m.color == 12):
@@ -52,9 +53,9 @@ class App:
                 self.active_scene = 2
         elif self.active_scene == 2:
             pyxel.image(0).load(0, 0, "assets/forest.png")
-            if len(self.name) < 15:
-                if pyxel.btnp(pyxel.KEY_BACKSPACE) and self.name != "":
+            if pyxel.btnp(pyxel.KEY_BACKSPACE) and self.name != "":
                     self.name = self.name[:-1]
+            if len(self.name) < 15:
                 if pyxel.btnp(pyxel.KEY_A):
                     self.name += 'A'
                 if pyxel.btnp(pyxel.KEY_B):
@@ -107,6 +108,8 @@ class App:
                     self.name += 'Y'
                 if pyxel.btnp(pyxel.KEY_Z):
                     self.name += 'Z'
+                if pyxel.btnp(pyxel.KEY_SPACE):
+                    self.name += ' '
             if pyxel.btnp(pyxel.KEY_ENTER):
                 self.active_scene = 3
                 pyxel.image(0).load(0, 0, "assets/lake.png")
