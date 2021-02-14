@@ -13,6 +13,7 @@ class App:
         pyxel.image(0).load(0, 0, "assets/group_of_seven.jpg")
         pyxel.image(2).load(0, 0, "assets/title.png")
         pyxel.image(1).load(0, 0, "assets/sunset.png")
+    
         
         pyxel.mouse(True)
 
@@ -126,6 +127,7 @@ class App:
             #self.stop_music()
 
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
+            pyxel.image(1).load(0, 0, "assets/nonbinary.jpg")
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                 # MALE
                 if(pyxel.mouse_x > self.gender_option_m.x and pyxel.mouse_x < (self.gender_option_m.x + self.gender_option_m.side) and pyxel.mouse_y > self.gender_option_m.y and pyxel.mouse_y < (self.gender_option_m.y + self.gender_option_m.side)):
@@ -571,6 +573,7 @@ class App:
             pyxel.text(103, 222, "You are male.", 2)
             pyxel.text(83, 240, "Press ENTER to confirm", 7)
         elif (self.gender == 3):
+            pyxel.blt(0, 0, 1, 0, 0, 256, 256)
             pyxel.text(91, 222, "You are non-binary.", 5)
             pyxel.text(83, 240, "Press ENTER to confirm", 7)
 
