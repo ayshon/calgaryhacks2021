@@ -1129,7 +1129,7 @@ class App:
     def draw_endcard(self):
         pyxel.blt(0, 0, 0, 0, 0, 256, 256)
         pyxel.rect(0, 180, 256, 76, 0)
-        
+
         pyxel.text(0, 190,
             """
             Congratulations! You have painted Lake Louise!
