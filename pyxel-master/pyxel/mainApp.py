@@ -24,6 +24,8 @@ class App:
         pyxel.sound(1).set("a1b1b1a1", "p", "2", "nf", 120)
         pyxel.sound(2).set("c3g3c4g3", "p", "1", "nf", 150)
         pyxel.sound(3).set("c1d1e1d1 c2d2e2a1", "t", "2", "nf", 100)
+        pyxel.sound(4).set("c1b1b1a1", "t", "7", "s", 1)
+        pyxel.sound(5).set("b1b1b1a1", "t", "7", "s", 1)
 
         # SCENE ORGANIZATION
         self.scene = [0,1,2]
@@ -128,6 +130,10 @@ class App:
         elif (track == 1):
             pyxel.play(2, 2, loop=True)
             pyxel.play(3, 3 ,loop=True)
+        elif(track == 2):
+            pyxel.play(0, 4, loop=False)
+        else:
+            pyxel.play(0, 5, loop=False)
 
     def update(self):
 ####### TITLE #######
@@ -148,6 +154,7 @@ class App:
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                 # MALE
                 if(pyxel.mouse_x > self.gender_option_m.x and pyxel.mouse_x < (self.gender_option_m.x + self.gender_option_m.side) and pyxel.mouse_y > self.gender_option_m.y and pyxel.mouse_y < (self.gender_option_m.y + self.gender_option_m.side)):
+                    self.play_music(2)
                     if(self.gender_option_m.color == 12):
                         # if(self.gender_option_f.color == 0 and self.gender_option_b == 0):
                         self.gender_option_f.color = 12
@@ -159,6 +166,7 @@ class App:
                 
                 # FEMALE
                 if(pyxel.mouse_x > self.gender_option_f.x and pyxel.mouse_x < (self.gender_option_f.x + self.gender_option_f.side) and pyxel.mouse_y > self.gender_option_f.y and pyxel.mouse_y < (self.gender_option_f.y + self.gender_option_f.side)):
+                    self.play_music(2)
                     if(self.gender_option_f.color == 12):
                         # if(self.gender_option_m.color == 0 and self.gender_option_b == 0):
                         self.gender_option_m.color = 12
@@ -168,6 +176,7 @@ class App:
 
                 # NON-BINARY
                 if(pyxel.mouse_x > self.gender_option_b.x and pyxel.mouse_x < (self.gender_option_b.x + self.gender_option_b.side) and pyxel.mouse_y > self.gender_option_b.y and pyxel.mouse_y < (self.gender_option_b.y + self.gender_option_b.side)):
+                    self.play_music(2)
                     if(self.gender_option_b.color == 12):
                         # if(self.gender_option_m.color == 0 and self.gender_option_f.color == 0):
                         self.gender_option_m.color = 12
@@ -176,68 +185,96 @@ class App:
                         self.gender = 3
 
             if((self.gender == 1 or self.gender == 2 or self.gender == 3) and pyxel.btnp(pyxel.KEY_ENTER)):
-                # self.play_music(0)
+                self.play_music(0)
                 self.active_scene = 2
         
 ########### ENTER NAME ##########
         elif self.active_scene == 2:
             pyxel.image(0).load(0, 0, "assets/forest.png")
             if pyxel.btnp(pyxel.KEY_BACKSPACE) and self.name != "":
+                    self.play_music(3)
                     self.name = self.name[:-1]
             if len(self.name) < 15:
                 if pyxel.btnp(pyxel.KEY_A):
+                    self.play_music(3)
                     self.name += 'A'
                 if pyxel.btnp(pyxel.KEY_B):
+                    self.play_music(3)
                     self.name += 'B'
                 if pyxel.btnp(pyxel.KEY_C):
+                    self.play_music(3)
                     self.name += 'C'
                 if pyxel.btnp(pyxel.KEY_D):
+                    self.play_music(3)
                     self.name += 'D'
                 if pyxel.btnp(pyxel.KEY_E):
+                    self.play_music(3)
                     self.name += 'E'
                 if pyxel.btnp(pyxel.KEY_F):
+                    self.play_music(3)
                     self.name += 'F'
                 if pyxel.btnp(pyxel.KEY_G):
+                    self.play_music(3)
                     self.name += 'G'
                 if pyxel.btnp(pyxel.KEY_H):
+                    self.play_music(3)
                     self.name += 'H'
                 if pyxel.btnp(pyxel.KEY_I):
+                    self.play_music(3)
                     self.name += 'I'
                 if pyxel.btnp(pyxel.KEY_J):
+                    self.play_music(3)
                     self.name += 'J'
                 if pyxel.btnp(pyxel.KEY_K):
+                    self.play_music(3)
                     self.name += 'K'
                 if pyxel.btnp(pyxel.KEY_L):
+                    self.play_music(3)
                     self.name += 'L'
                 if pyxel.btnp(pyxel.KEY_M):
+                    self.play_music(3)
                     self.name += 'M'
                 if pyxel.btnp(pyxel.KEY_N):
+                    self.play_music(3)
                     self.name += 'N'
                 if pyxel.btnp(pyxel.KEY_O):
+                    self.play_music(3)
                     self.name += 'O'
                 if pyxel.btnp(pyxel.KEY_P):
+                    self.play_music(3)
                     self.name += 'P'
                 if pyxel.btnp(pyxel.KEY_Q):
+                    self.play_music(3)
                     self.name += 'Q'
                 if pyxel.btnp(pyxel.KEY_R):
+                    self.play_music(3)
                     self.name += 'R'
                 if pyxel.btnp(pyxel.KEY_S):
+                    self.play_music(3)
                     self.name += 'S'
                 if pyxel.btnp(pyxel.KEY_T):
+                    self.play_music(3)
                     self.name += 'T'
                 if pyxel.btnp(pyxel.KEY_U):
+                    self.play_music(3)
                     self.name += 'U'
                 if pyxel.btnp(pyxel.KEY_V):
+                    self.play_music(3)
                     self.name += 'V'
                 if pyxel.btnp(pyxel.KEY_W):
+                    self.play_music(3)
                     self.name += 'W'
                 if pyxel.btnp(pyxel.KEY_X):
+                    self.play_music(3)
                     self.name += 'X'
                 if pyxel.btnp(pyxel.KEY_Y):
+                    self.play_music(3)
                     self.name += 'Y'
                 if pyxel.btnp(pyxel.KEY_Z):
+                    self.play_music(3)
                     self.name += 'Z'
                 if pyxel.btnp(pyxel.KEY_SPACE):
+                    self.play_music(3)
                     self.name += ' '
             if pyxel.btnp(pyxel.KEY_ENTER):
                 self.active_scene = 25
@@ -249,21 +286,25 @@ class App:
             if(pyxel.mouse_x > self.option1_chapter.x and pyxel.mouse_x < (self.option1_chapter.x + self.option1_chapter.side) and pyxel.mouse_y > self.option1_chapter.y and pyxel.mouse_y < (self.option1_chapter.y + self.option1_chapter.side)):
                 self.option_chapter_highlight = 1
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    self.play_music(2)
                     self.active_scene = 3
                  
 ########### STORE ##########
         elif self.active_scene == 3:
             pyxel.image(0).load(0, 0, "assets/store.jpg")
             if pyxel.btnp(pyxel.KEY_R):
+                self.play_music(2)
                 self.storeText = 0
                 self.cartText = 0
             if pyxel.btnp(pyxel.KEY_ENTER):
+                self.play_music(2)
                 self.storeText = 0
                 self.active_scene = 4
                 #TRAVELLING NEW PHOTO. PUT IN SCENE BEFORE TRAVELING SCENES
                 pyxel.image(0).load(0, 0, "assets/morning.jpg")
                 #TRANSITION HERE
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                self.play_music(2)
                 if(pyxel.mouse_x > self.option1_g.x and pyxel.mouse_x < (self.option1_g.x + self.option1_g.side) and pyxel.mouse_y > self.option1_g.y and pyxel.mouse_y < (self.option1_g.y + self.option1_g.side)):
                     if(self.storeText == 1):
                         self.cash -= 2
@@ -375,7 +416,7 @@ class App:
         elif self.active_scene == 4:
 
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
-            
+                self.play_music(2)
                 #CHOICE THAT CHANGES DAY STATE
                 if(pyxel.mouse_x > self.option1_t.x and pyxel.mouse_x < (self.option1_t.x + self.option1_t.side) and pyxel.mouse_y > self.option1_t.y and pyxel.mouse_y < (self.option1_t.y + self.option1_t.side)):
                     if(self.option1_t.color == 6):
@@ -425,12 +466,14 @@ class App:
         elif(self.active_scene == 5):
             pyxel.image(0).load(0, 0, "assets/fire.jpg")
             if pyxel.btnp(pyxel.KEY_ENTER):
+                self.play_music(2)
                 self.active_scene = 6
 
 ########### MORNING ############
         elif(self.active_scene == 6):
             pyxel.image(0).load(0, 0, "assets/morning.jpg")
             if pyxel.btnp(pyxel.KEY_ENTER):
+                self.play_music(2)
                 self.active_scene = 7
 
 ########### TRACKS ############
@@ -439,10 +482,12 @@ class App:
             if(pyxel.mouse_x > self.option1_tracks.x and pyxel.mouse_x < (self.option1_tracks.x + self.option1_tracks.side) and pyxel.mouse_y > self.option1_tracks.y and pyxel.mouse_y < (self.option1_tracks.y + self.option1_tracks.side)):
                 self.option_tracks_highlight = 1
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    self.play_music(2)
                     self.active_scene = 8
             if(pyxel.mouse_x > self.option2_tracks.x and pyxel.mouse_x < (self.option2_tracks.x + self.option2_tracks.side) and pyxel.mouse_y > self.option2_tracks.y and pyxel.mouse_y < (self.option2_tracks.y + self.option2_tracks.side)):
                 self.option_tracks_highlight = 2
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    self.play_music(2)
                     self.option2_tracks.color = 8
                     # GO TO 2 PATHS
 
@@ -452,12 +497,14 @@ class App:
             if(pyxel.mouse_x > self.option1_caribou.x and pyxel.mouse_x < (self.option1_caribou.x + self.option1_caribou.side) and pyxel.mouse_y > self.option1_caribou.y and pyxel.mouse_y < (self.option1_caribou.y + self.option1_caribou.side)):
                 self.option_caribou_highlight = 1
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    self.play_music(2)
                     self.option1_caribou.color = 8
                     self.active_scene = 9
                     # GO TO CONSEQUENCE
             if(pyxel.mouse_x > self.option2_caribou.x and pyxel.mouse_x < (self.option2_caribou.x + self.option2_caribou.side) and pyxel.mouse_y > self.option2_caribou.y and pyxel.mouse_y < (self.option2_caribou.y + self.option2_caribou.side)):
                 self.option_caribou_highlight = 2
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    self.play_music(2)
                     self.option2_caribou.color = 8
                     self.active_scene = 10
                     # GO TO 2 PATHS
@@ -466,6 +513,7 @@ class App:
         elif(self.active_scene == 9):
             pyxel.image(0).load(0, 0, "assets/fall.jpg")
             if self.page ==4 and pyxel.btnp(pyxel.KEY_ENTER):
+                self.play_music(2)
                 self.active_scene = 10
                 pyxel.image(0).load(0, 0, "assets/sunset.png")
         
@@ -473,6 +521,7 @@ class App:
         elif(self.active_scene == 10):
            
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                self.play_music(2)
                 if(pyxel.mouse_x > self.option1_r.x and pyxel.mouse_x < (self.option1_r.x + self.option1_r.side) and pyxel.mouse_y > self.option1_r.y and pyxel.mouse_y < (self.option1_r.y + self.option1_r.side)):
                     if(self.option1_r.color == 6):
                         if self.split_road_state == 1:
@@ -483,6 +532,7 @@ class App:
                             pyxel.image(0).load(0, 0, "assets/drive2.jpg")
                             self.split_road_state =3
                             if pyxel.btnp(pyxel.KEY_ENTER):
+                                self.play_music(2)
                                 pyxel.quit()
                                 self.active_scene = 11
                                 #TRANSITION HERE REPLACE THE PYXEL.QUIT()
@@ -500,6 +550,7 @@ class App:
 ########### DEFAULT ##########        
         else:
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                self.play_music(2)
                 if(pyxel.mouse_x > self.option1.x and pyxel.mouse_x < (self.option1.x + self.option1.side) and pyxel.mouse_y > self.option1.y and pyxel.mouse_y < (self.option1.y + self.option1.side)):
                     if(self.option1.color == 6):
                         self.option1.color = 0
