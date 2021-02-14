@@ -1,12 +1,144 @@
 [] - New Image/Screen
 "" - Text
+/* - Comment
+% - Functionality
+
+[BLURB]
+
+"""
+A group of Canadian artists built their fame across Canada for their paintings inspired by Canada's beautiful landscape. Famously known
+as the 'Group of Seven,' they have left their legacy in their world through their masterpieces. But unbeknownst to some others, there was
+an eighth person, who aspired to leave their mark on Canadian soil as well. 
+"""
+
+[TITLE SCREEN] - The Canadian Masterpiece
+
+"Press Enter to Begin"
+
+[CHOOSE YOUR GENDER]
+1. Male
+2. Female
+3. Non-Binary
+
+/* Have pictures to represent male and female characters.*/
+
+[CHOOSE YOUR NAME]
+
+/* %User must be able to click on on-screen keyboard. MAX LIMIT: 15 characters for the name. Updates on-screen as user enters name.% */
+
+[CHOOSE CHAPTER]
+
+1. Forest {% Only chapter to be implemented.}
+2. The North [Locked]
+3. Mountain [Locked]
+4. The Great Lakes [Locked]
+
+/* Unlocks as you complete the preceding chapters. */
+
+[CHAPTER 1 - THE FOREST]
+
+[BLURB - March 14, 1901 - Banff, Alberta]
+
+"""
+It is quite a sunny day. The sun is beaming down and you are in the bustling town of Banff, ready to explore the
+great forests of Alberta. With its various coniferous trees and wandering animals, you are ecstatic to experience what land has to offer. A dear friend of yours has
+informed you of a spectacular lake known as Lake Louise. A wondrous oasis somewhere in the midst of Alberta's vast greenery. You are inspired to paint its sparkling waters
+against the backdrop of Banff Forest. They have given you the directions in the way you need to go in order to reach your destination.
+
+"""
+
+[BLURB - YOUR INVENTORY]
+
+"""
+You currently have your grandfather's trusty old compass, $100 in cash, painting oils and brushes. Before you start your expedition in the forest, you must purchase some supplies
+in the general store. You will begin your travels tomorrow morning.
+"""
+
+[GENERAL STORE]
+"Mornin', what will you be buying today?"
+"Food"
+1. Maple Syrup - $2
+2. Canned Beans - $10
+3. Bread - $5
+4. Canadian Bacon - $25
+
+"Clothes"
+1. Toque - $7
+2. Mittens - $3
+3. Boots - $12
+4. Coat - $20
+
+"Supplies"
+1. Medicine - $25
+2. Tent - $50
+3. Fishing Rod - $20
+4. Trap - $30
+
+% The user clicks on an item and textbox changes that informs them that the item has been added to their basket. %
+"The item, [PUT ITEM NAME HERE], has been added to the basket."
+% Once the user clicks again, it brings them back to the general store options text. %
+% Must keep track of what is in the player's cart. Add up the values.' %
+% Should have an 'I'M READY' button on the bottom right hand corner of screen. Once user clicks on it, text changes again. %
+
+"Are you sure?"
+1. Yes 
+2. No
+
+% 1. Yes -> Brings them to next scene.
+% 2. No -> Brings them back to the general store options text.
+
+/* All using the same background image I believe. */
+
+[BLURB - DAY 1 - EVENING - March 15, 1901 - Banff, Alberta]
+
+"You have arrived earlier this morning in Banff Forest. You have been trekking for hours and wish to rest as you notice it is getting late."
+
+[INVENTORY]
+
+% Game lists out all of the items initially owned by the user and the items purchased from the general store.%
+% Should be able to update based on events. %
+
+List Format: 
+Key Items:
+"Compass"
+
+Useable:
+"Canned Beans xQUANTITY - NUMBER"
+
+% Should have a GO BACK button to go back to MAIN CHOICES SCREEN - TRAVELLING screen. %
+
+[MAIN CHOICES SCREEN - TRAVELLING]
+
+1. Keep going.
+2. Make camp.
+
+% User can check their inventory on the right hand side of screen by clicking on it.
+
+% 1. Brings the user to an event. The day progresses. Days have three stages. MORNING, AFTERNOON, EVENING. %
+% 2. Brings the user to a summary of the day blurb. %
+
+[BLURB - SUMMARY OF THE DAY]
+"You have decided to make camp and rest for the next day. You have decided to eat [INSERT FOOD ITEM HERE]."
+
+"Changes in Inventory"
+
+EXAMPLE:
+
+"- Baked Beans -1"
+"- Salmon Fish +1"
+
+[BLURB - DAY 2 - MORNING - March 16, 1901 - Banff, Alberta]
 
 
-[TITLE SCREEN] - The Great Canadian Expedition
 
-"Press Enter to Begin Your Adventure Through Canada"
 
-[BLURB - March 14, 1901]
+
+
+
+
+
+
+
 
 
 
