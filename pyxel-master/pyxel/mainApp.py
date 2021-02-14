@@ -9,7 +9,7 @@ class Option:
 
 class App:
     def __init__(self):
-        pyxel.init(256, 256, caption="Evening", fullscreen=True)
+        pyxel.init(256, 256, caption="The Great Canadian Masterpiece", fullscreen=True)
         pyxel.image(0).load(0, 0, "assets/sunset.png")
         
         pyxel.mouse(True)
@@ -25,15 +25,25 @@ class App:
         # SCENE ORGANIZATION
         self.scene = [0,1,2]
         # 0 - TITLE
-        # 1 - GENDER CHOICE, 
-        # 2 - ENTER NAME,
+        # 1 - GENDER CHOICE
+        # 2 - ENTER NAME
+        # 25 - CHAPTER
         # 3 - STORE
         # 4 - Travelling Days
+        
         self.active_scene = 1 
 
         self.option1 = Option(2,232,5,6)
         self.option2 = Option(2,240,5,6)
         self.option3 = Option(2,248,5,6)
+
+        # CHAPTER
+        self.option1_chapter = Option(10, 206, 5, 12)
+        self.option2_chapter = Option(10, 216, 5,12)
+        self.option3_chapter = Option(10, 226, 5, 12)
+        self.option4_chapter = Option(10, 236, 5, 12)
+        self.option_chapter_highlight = 0
+
 
         # CHOOSE YOUR GENDER
         self.gender_option_m = Option(2, 200, 5, 12)
@@ -193,9 +203,18 @@ class App:
                 if pyxel.btnp(pyxel.KEY_SPACE):
                     self.name += ' '
             if pyxel.btnp(pyxel.KEY_ENTER):
-                self.active_scene = 3
+                self.active_scene = 25
                 pyxel.image(0).load(0, 0, "assets/lake.png")
-        
+
+########### SELECT CHAPTER ##########
+        elif self.active_scene == 25:
+            pyxel.image(0).load(0, 0, "assets/camp.png")
+            if(pyxel.mouse_x > self.option1_chapter.x and pyxel.mouse_x < (self.option1_chapter.x + self.option1_chapter.side) and pyxel.mouse_y > self.option1_chapter.y and pyxel.mouse_y < (self.option1_chapter.y + self.option1_chapter.side)):
+                self.option_chapter_highlight = 1
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    self.active_scene = 3
+                 
+
 ########### STORE ##########
         elif self.active_scene == 3:
             pyxel.image(0).load(0, 0, "assets/store.jpg")
@@ -424,7 +443,6 @@ class App:
         # blt(x, y, img, u, v, w, h, [colkey]) colkey is optional
         pyxel.blt(0, 0, 0, 0, 0, 256, 256)
 
-
         # DRAW BLACK TEXTBOX
         # rect(x, y, w, h, col)
         if self.active_scene != 2:
@@ -437,6 +455,10 @@ class App:
         #  ENTER NAME
         elif(self.active_scene == 2):
             self.draw_name()
+
+        #   SELECT CHAPTER 
+        elif(self.active_scene == 25):
+            self.draw_chapter()
 
         #   GENERAL STORE
         elif(self.active_scene == 3):
@@ -491,6 +513,22 @@ class App:
                 underScores += "_"
         pyxel.text(100, 132, underScores, 7)
         pyxel.text(85, 150, "Press ENTER to confirm", 7)
+
+########## SELECT CHAPTER ############    
+    def draw_chapter(self):
+        pyxel.rectb(self.option1_chapter.x, self.option1_chapter.y, self.option1_chapter.side, self.option1_chapter.side, self.option1_chapter.color)
+        pyxel.text(20, self.option1_chapter.y, "Forest", 2)
+        pyxel.rectb(self.option2_chapter.x, self.option2_chapter.y, self.option2_chapter.side, self.option2_chapter.side, self.option2_chapter.color)
+        pyxel.text(20, self.option2_chapter.y, "Lake             [Locked]", 8)
+        pyxel.rectb(self.option3_chapter.x, self.option3_chapter.y, self.option3_chapter.side, self.option3_chapter.side, self.option3_chapter.color)
+        pyxel.text(20, self.option3_chapter.y, "Mountain         [Locked]", 8)
+        pyxel.rectb(self.option4_chapter.x, self.option4_chapter.y, self.option4_chapter.side, self.option4_chapter.side, self.option4_chapter.color)
+        pyxel.text(20, self.option4_chapter.y, "The Great Lakes  [Locked]", 8)
+
+        if self.option_chapter_highlight == 1:
+            pyxel.rect(self.option1_chapter.x, self.option1_chapter.y, self.option1_chapter.side, self.option1_chapter.side, self.option1_chapter.color)
+        
+        pyxel.text(6, 192, "Chapter Select", 7)
 
 ########## GENERAL STORE ############
     def draw_general_store(self):
