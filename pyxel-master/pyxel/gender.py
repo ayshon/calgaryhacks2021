@@ -54,7 +54,7 @@ class App:
         # BACKGROUND
         # blt(x, y, img, u, v, w, h, [colkey]) colkey is optional
         pyxel.blt(0, 0, 0, 0, 0, 256, 256)
-
+        
         # DRAW BLACK TEXTBOX
         # rect(x, y, w, h, col)
         pyxel.rect(0, 180, 256, 76, 0)
@@ -72,6 +72,6 @@ class App:
         if (self.gender == 1):
             pyxel.text(96, 232, "You are female.", 8)
         elif (self.gender == 2): 
-            pyxel.text(96, 232, "You are male.", 2)   
+            pyxel.text(96, 232, "You are male.", 2)
 
 App()
