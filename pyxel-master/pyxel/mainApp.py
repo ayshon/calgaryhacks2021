@@ -525,7 +525,7 @@ class App:
 ########## GENDER OPTIONS ############
     def draw_gender_options(self):
         # TEXT
-        pyxel.text(2, 182, "Choose your gender and press ENTER", 3)
+        pyxel.text(91, 186, "Choose your gender:", 7)
 
         # OPTIONS
         pyxel.rect(self.gender_option_m.x, self.gender_option_m.y, self.gender_option_m.side, self.gender_option_m.side, self.gender_option_m.color)
@@ -537,11 +537,14 @@ class App:
 
         # TEXT CONFIRMATION AFTER SELECTION
         if (self.gender == 1):
-            pyxel.text(96, 232, "You are female.", 8)
+            pyxel.text(100, 222, "You are female.", 8)
+            pyxel.text(83, 240, "Press ENTER to confirm", 7)
         elif (self.gender == 2): 
-            pyxel.text(96, 232, "You are male.", 2)
+            pyxel.text(103, 222, "You are male.", 2)
+            pyxel.text(83, 240, "Press ENTER to confirm", 7)
         elif (self.gender == 3):
-            pyxel.text(96, 232, "You are non-binary.", 5)
+            pyxel.text(91, 222, "You are non-binary.", 5)
+            pyxel.text(83, 240, "Press ENTER to confirm", 7)
 
 ########## ENTER NAME ############
     def draw_name(self):
