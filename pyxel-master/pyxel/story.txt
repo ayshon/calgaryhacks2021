@@ -55,6 +55,11 @@ in the general store. You will begin your travels tomorrow morning.
 
 [GENERAL STORE]
 "Mornin', what will you be buying today?"
+
+[Talk]
+"What do you sell?"
+"Anything and everything a young [MAN / GAL / PAL] like you could ever ask for," the shopkeeper says gruffly.
+
 "Food"
 1. Maple Syrup - $2
 2. Canned Beans - $10
@@ -142,7 +147,25 @@ However, your curiosity is getting the better of you. What do you do?"
 
 [OPTION 1 - CONSEQUENCE]
 
-"You followed the tracks and it led you to a small creek where you spot a caribou, sipping a"
+"You followed the tracks and it led you to a small creek where you spot a caribou drinking from the clear waters. Its horns are long and curved.
+It lifts its head up upon your approach. The majestic creature shifts nervously, and upon closer inspection, you can see that the fur on its front leg is matted with blood."
+
+1. Go closer.
+2. Stay where you are.
+
+[OPTION 1 - CONSEQUENCE]
+"This is the first time you've seen such a beautiful animal up close. You have to get closer to it, drink in all the details, else you'd never be able to pick up your paintbrush again!
+You slink behind a tree and squat down. The caribou stands still for a moment longer before dipping its head back into the water. 
+You swallow your nervousness before slipping out of your hiding place.
+
+A mistake! The creature locks eyes with you, and with a shrill cry, he dips his head and charges at you! You try to move, but it's too late.
+
+[-20 Health.]
+
+Pain shoots through your spine as your back hits the sharp rocks on the edge of the creek. The caribou pays you no mind and keeps running, quickly disappearing into the forest.
+You grimace as you pull yourself back to your feet. Your clothes are wet and your back throbs. You lift your shirt to examine your injuries.
+There is an open gash where the caribou's horn pierced your skin, but thankfully it's not too deep.
+
 % 2. Brings the user to a summary of the day blurb. %
 
 
