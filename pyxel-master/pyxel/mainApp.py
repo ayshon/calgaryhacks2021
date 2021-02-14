@@ -10,7 +10,8 @@ class Option:
 class App:
     def __init__(self):
         pyxel.init(256, 256, caption="The Great Canadian Masterpiece", fullscreen=True)
-        pyxel.image(0).load(0, 0, "assets/sunset.png")
+        pyxel.image(0).load(0, 0, "assets/group_of_seven.jpg")
+        pyxel.image(1).load(0, 0, "assets/sunset.png")
         
         pyxel.mouse(True)
 
@@ -31,7 +32,9 @@ class App:
         # 3 - STORE
         # 4 - Travelling Days
         
-        self.active_scene = 1 
+        #   TITLE
+        self.active_scene = 0
+        self.blurbText = 0
 
         self.option1 = Option(2,232,5,6)
         self.option2 = Option(2,240,5,6)
@@ -43,7 +46,6 @@ class App:
         self.option3_chapter = Option(10, 226, 5, 12)
         self.option4_chapter = Option(10, 236, 5, 12)
         self.option_chapter_highlight = 0
-
 
         # CHOOSE YOUR GENDER
         self.gender_option_m = Option(2, 200, 5, 12)
@@ -103,8 +105,15 @@ class App:
             pyxel.play(3, 3 ,loop=True)
 
     def update(self):
+####### TITLE #######
+        if self.active_scene == 0:
+            if pyxel.btnp(pyxel.KEY_ENTER):
+                if(self.blurbText == 1):
+                    self.active_scene = 1
+                self.blurbText = 1
+
 ####### CHOOSE YOUR GENDER #######
-        if self.active_scene == 1:
+        elif self.active_scene == 1:
             #self.stop_music()
 
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
@@ -448,6 +457,10 @@ class App:
         if self.active_scene != 2:
             pyxel.rect(0, 180, 256, 76, 0)
 
+        # TITLE SCREEN
+        if(self.active_scene == 0):
+            self.draw_title()
+
         # GENDER OPTIONS
         if(self.active_scene == 1):
             self.draw_gender_options()
@@ -477,9 +490,38 @@ class App:
             self.draw_morning()
 
         # OPTIONS
-        elif(self.active_scene != 1):
-            self.draw_options()
+        # elif(self.active_scene != 1):
+        #     self.draw_options()
     
+########## TITLE ############
+    def draw_title(self):
+        # BACKGROUND
+        # blt(x, y, img, u, v, w, h, [colkey]) colkey is optional
+        pyxel.blt(0, 0, 1, 0, 0, 256, 256)
+        # DRAW BLACK TEXTBOX
+        # rect(x, y, w, h, col)
+        
+        if(self.blurbText == 0):
+            pyxel.text(0, 190,
+            """
+                Press ENTER to begin your adventure...
+            """, 7)
+
+        elif(self.blurbText == 1):
+        # TEXT
+            pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+            pyxel.text(0, 185, 
+        """
+        A group of Canadian artists built their fame across 
+         Canada for their paintings inspired by Canada's
+            beautiful landscape. Famously known as the
+          'Group of Seven,' they have left their legacy
+            in their world through their masterpieces. 
+        But unbeknownst to some others, there was an eighth 
+           person, one who aspired to leave their mark 
+                  on Canadian soil as well.
+                  """, 7)
+
 ########## GENDER OPTIONS ############
     def draw_gender_options(self):
         # TEXT
