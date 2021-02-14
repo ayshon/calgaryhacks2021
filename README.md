@@ -48,5 +48,7 @@ Music: Created through Editor in Pyxel. Original Composition
 - Store
 - Two Paths
 - Silhouette
+- [Easel](https://www.collinsdictionary.com/images/full/canvas_477755755_1000.jpg)
+- [Wood Texture](https://i.imgur.com/kfUmn2y.png)
 
 Note: We do not claim any of the images or assets used as "ours." This project is private and not for public distribution.
