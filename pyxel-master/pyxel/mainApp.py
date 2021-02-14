@@ -803,13 +803,13 @@ class App:
         elif(self.option_t_highlight == 3):
             pyxel.rect(self.option3_t.x, self.option3_t.y, self.option3_t.side, self.option3_t.side, self.option3_t.color)
 
-        pyxel.text(2, 182, "Day 2 - MORNING - March 16, 1901 - Banff, Alberta", 7)
+        pyxel.text(2, 182, "Day 1 - MORNING - March 16, 1901 - Banff, Alberta", 7)
         pyxel.text(2, 189, "It's morning. Where would you like to go?", 7)
         if self.day_state == 1:
             # SPEACH FOR MORNING AND OTHER CHOICES
             if self.choice == 1:
                 pyxel.rect(0, 180, 256, 20, 0)
-                pyxel.text(2, 182, "Day 2 - MORNING - March 16, 1901 - Banff, Alberta", 7)
+                pyxel.text(2, 182, "Day 1 - MORNING - March 16, 1901 - Banff, Alberta", 7)
                 pyxel.text(2, 189, "It's morning. Where would you like to go?", 7)
             elif self.choice == 2:
                 pyxel.rect(0, 180, 256, 20, 0)
@@ -822,12 +822,12 @@ class App:
         elif self.day_state == 2:
             # SPEACH FOR AFTERNOON 
             pyxel.rect(0, 180, 256, 20, 0)
-            pyxel.text(2, 182, "Day 2 - AFTERNOON - March 16, 1901 - Banff, Alberta", 7)
+            pyxel.text(2, 182, "Day 1 - AFTERNOON - March 16, 1901 - Banff, Alberta", 7)
             pyxel.text(2, 189, "It's 12 in the afternoon. Where would you like to go?", 7)
         elif self.day_state == 3:
             # SPEACH FOR Evening 
             pyxel.rect(0, 180, 256, 20, 0)
-            pyxel.text(2, 182, "Day 2 - EVENING - March 16, 1901 - Banff, Alberta", 7)
+            pyxel.text(2, 182, "Day 1 - EVENING - March 16, 1901 - Banff, Alberta", 7)
             pyxel.text(2, 189, "It's 6pm, in the evening. Where would you like to go?", 7)
 
 ########## CAMP NIGHT TIME ############
@@ -860,7 +860,7 @@ class App:
         pyxel.rect(0, 180, 256, 76, 0)
 
         # TEXT
-        pyxel.text(2, 188, "It's March 16, 1901.", 7)
+        pyxel.text(2, 188, "It's Day 2 - March 16, 1901.", 7)
         pyxel.text(2, 204, "You can hear the birds chirping outside.", 7)
         pyxel.text(2, 214, "You yawn and stretch your stiff limbs.", 7)
         
@@ -981,7 +981,7 @@ class App:
             pyxel.rect(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
             pyxel.text(10, self.option2_r.y, "Go Nort West Road", 4)
 
-        elif self.split_road_state ==1:
+        elif self.split_road_state == 1:
             pyxel.text(2, 182, "Day 2 - EVENING - March 16, 1901 - Banff, Alberta", 7)
             pyxel.text(2, 189, "It's 6pm, in the evening. Where would you like to go?", 7)
 
@@ -995,7 +995,7 @@ class App:
         
         elif self.split_road_state == 3:
             pyxel.text(2, 182, "You were found in the morning passed out from the darkness!", 7)
-            pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \n offered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
+            pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \noffered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
             
 
 ########## DEFAULT ############
