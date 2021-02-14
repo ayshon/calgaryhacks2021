@@ -36,23 +36,23 @@ class App:
             self.cartText = 0
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             if(pyxel.mouse_x > self.option1.x and pyxel.mouse_x < (self.option1.x + self.option1.side) and pyxel.mouse_y > self.option1.y and pyxel.mouse_y < (self.option1.y + self.option1.side)):
-                    if(self.storeText == 1):
-                        self.cash -= 2
-                        if("Maple Syrup" not in self.cart[0]):
-                            self.cart[0].append("Maple Syrup")
-                            self.cart[1].append(1)
-                        else:
-                            self.cart[1][self.cart[0].index("Maple Syrup")] += 1
-                    self.storeText = 1
-            if(pyxel.mouse_x > self.option2.x and pyxel.mouse_x < (self.option2.x + self.option2.side) and pyxel.mouse_y > self.option2.y and pyxel.mouse_y < (self.option2.y + self.option2.side)):
-                    if(self.storeText == 1):
-                        self.cash -= 2
-                    self.storeText = 1
-            if(pyxel.mouse_x > self.option4.x and pyxel.mouse_x < (self.option4.x + self.option4.side) and pyxel.mouse_y > self.option4.y and pyxel.mouse_y < (self.option4.y + self.option4.side)):
-                    if(self.cartText == 0):
-                        self.cartText = 1 
+                if(self.storeText == 1):
+                    self.cash -= 2
+                    if("Maple Syrup" not in self.cart[0]):
+                        self.cart[0].append("Maple Syrup")
+                        self.cart[1].append(1)
                     else:
-                        self.cartText = 0
+                        self.cart[1][self.cart[0].index("Maple Syrup")] += 1
+                self.storeText = 1
+            if(pyxel.mouse_x > self.option2.x and pyxel.mouse_x < (self.option2.x + self.option2.side) and pyxel.mouse_y > self.option2.y and pyxel.mouse_y < (self.option2.y + self.option2.side)):
+                if(self.storeText == 1):
+                    self.cash -= 2
+                self.storeText = 1
+            if(pyxel.mouse_x > self.option4.x and pyxel.mouse_x < (self.option4.x + self.option4.side) and pyxel.mouse_y > self.option4.y and pyxel.mouse_y < (self.option4.y + self.option4.side)):
+                if(self.cartText == 0):
+                    self.cartText = 1 
+                else:
+                    self.cartText = 0
 
     def draw(self):
         # CLEAR SCREEN
@@ -104,7 +104,7 @@ class App:
             pyxel.text(10, self.option3.y, "Canned Beans - $10", 2)
             pyxel.rect(self.option1.x, self.option4.y, self.option4.side, self.option1.side, self.option1.color)
             pyxel.text(10, self.option4.y, "Canadian Bacon - $25", 2)
-            pyxel.text(2, 240, self.cart[0][0] + " - " + str(self.cart[1][0]), 11)
+            # pyxel.text(2, 240, self.cart[0][0] + " - " + str(self.cart[1][0]), 11)
             pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
 
 
@@ -112,11 +112,8 @@ class App:
             pyxel.rect(0, 180, 256, 76, 0)
             pyxel.text(2, 182, "Cart:", 7)
             tempColumn = 190
-            for i in self.cart:
-                for j in self.cart[i][j]:
-                    pyxel.text(2, tempColumn, self.cart[i][j] + " - " + str(self.cart[i][j]), 11)
-
-
-
+            for j in range(len(self.cart[0])):
+                pyxel.text(2, tempColumn, str(self.cart[0][j]) + " - " + str(self.cart[1][j]), 11)
+                tempColumn += 8
 
 App()
