@@ -20,7 +20,8 @@ The last thing you want to do is to freeze or starve before you can finish paint
 # How to Run
 1. Download the GitHub repository.
 2. Navigate to directory Pyxel Master
-3. Run command `python mainApp.py`
+3. Navigate to directory Pyxel
+4. Run command `python mainApp.py`
 
 ## Project Details
 Language: [Python](https://www.python.org/) 
