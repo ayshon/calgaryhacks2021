@@ -26,6 +26,8 @@ class App:
         pyxel.sound(3).set("c1d1e1d1 c2d2e2a1", "t", "2", "nf", 100)
         pyxel.sound(4).set("c1b1b1a1", "t", "7", "s", 1)
         pyxel.sound(5).set("b1b1b1a1", "t", "7", "s", 1)
+        pyxel.play(0, 2, loop=True)
+        pyxel.play(1, 3, loop=True)
 
         # SCENE ORGANIZATION
         self.scene = [0,1,2]
@@ -130,26 +132,23 @@ class App:
             pyxel.play(0, 0, loop=True)
             pyxel.play(1, 1, loop=True)
         elif (track == 1):
-            pyxel.play(2, 2, loop=True)
-            pyxel.play(3, 3 ,loop=True)
+            pyxel.play(0, 2, loop=True)
+            pyxel.play(1, 3 ,loop=True)
         elif(track == 2):
-            pyxel.play(0, 4, loop=False)
+            pyxel.play(2, 4, loop=False)
         else:
-            pyxel.play(0, 5, loop=False)
+            pyxel.play(3, 5, loop=False)
 
     def update(self):
 ####### TITLE #######
         if self.active_scene == 0:
             if pyxel.btnp(pyxel.KEY_ENTER):
-                self.play_music(0)
                 if(self.blurbText == 1):
                     self.active_scene = 1
                 self.blurbText = 1
 
 ####### CHOOSE YOUR GENDER #######
         elif self.active_scene == 1:
-            #self.stop_music()
-
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
             pyxel.image(1).load(0, 0, "assets/nonbinary.jpg")
             pyxel.image(2).load(0, 0, "assets/female.jpg")
@@ -309,6 +308,8 @@ class App:
                 self.storeText = 0
                 self.cartText = 0
             if pyxel.btnp(pyxel.KEY_ENTER):
+                self.stop_music()
+                self.play_music(0)
                 self.play_music(2)
                 self.storeText = 0
                 self.active_scene = 4
@@ -577,6 +578,8 @@ class App:
         elif(self.active_scene == 11):
             pyxel.image(0).load(0, 0, "assets/lake_louise.jpg")
             if pyxel.btnp(pyxel.KEY_ENTER):
+                self.stop_music()
+                self.play_music(1)
                 self.active_scene = 12
                 pyxel.image(0).load(0, 0, "assets/endcard.png")
 
@@ -1098,7 +1101,7 @@ class App:
         
         elif self.split_road_state == 3 or self.split_road_state == 4:
             pyxel.text(2, 182, "You were found in the morning passed out from the darkness!", 7)
-            pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \n offered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
+            pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \noffered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
             self.split_road_state = 4
 
         if self.option_r_highlight == 1:
