@@ -65,7 +65,7 @@ class App:
                         self.gender_option_b.color = 12
                         #^shift tab
 
-                        self.gender_option_m.color = 0
+                        self.gender_option_m.color = 10
                         self.gender = 2
                 
                 # FEMALE
@@ -74,7 +74,7 @@ class App:
                         # if(self.gender_option_m.color == 0 and self.gender_option_b == 0):
                         self.gender_option_m.color = 12
                         self.gender_option_b.color = 12
-                        self.gender_option_f.color = 0
+                        self.gender_option_f.color = 10
                         self.gender = 1
 
                 # NON-BINARY
@@ -83,7 +83,7 @@ class App:
                         # if(self.gender_option_m.color == 0 and self.gender_option_f.color == 0):
                         self.gender_option_m.color = 12
                         self.gender_option_f.color = 12
-                        self.gender_option_b.color = 0
+                        self.gender_option_b.color = 10
                         self.gender = 3
 
             if((self.gender == 1 or self.gender == 2) and pyxel.btnp(pyxel.KEY_ENTER)):
