@@ -1,4 +1,4 @@
-# This is the scene following the tracks scenario
+# This is the scene after the morning scene
 import pyxel
 
 class Option:
@@ -15,8 +15,8 @@ class App:
         
         pyxel.mouse(True)
 
-        self.option1 = Option(66,242,5,12)
-        self.option2 = Option(146,242,5,12)
+        self.option1 = Option(64,236,5,12)
+        self.option2 = Option(146,236,5,12)
         
         self.activeBank = 0
         self.gender = 0
@@ -62,14 +62,13 @@ class App:
         # OPTIONS
         # pyxel.text(2, 232, str(self.option1.y), pyxel.frame_count % 16)
         pyxel.rect(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
-        pyxel.text(76, self.option1.y, "Go closer", 2)
+        pyxel.text(74, self.option1.y, "Investigate", 2)
         pyxel.rect(self.option2.x, self.option2.y, self.option2.side, self.option2.side, self.option2.color)
-        pyxel.text(156, self.option2.y, "Stay still", 8)
+        pyxel.text(156, self.option2.y, "Ignore them", 8)
 
-        pyxel.text(2, 188, "You followed the tracks and it led you to a small creek where", 7)
-        pyxel.text(2, 198, "you spot a caribou drinking from the clear waters. Its horns ", 7)
-        pyxel.text(2, 208, "are long and curved. It lifts its head up upon your approach.", 7)
-        pyxel.text(2, 218, "The majestic creature shifts nervously, and upon closer", 7)
-        pyxel.text(2, 228, "inspection, you can see that its fur is matted with blood.", 7)
+        pyxel.text(4, 188, "You encounter animal tracks along the trail you are traveling", 7)
+        pyxel.text(4, 198, "along. You are not an expert in wildlife so you are unsure", 7)
+        pyxel.text(4, 208, "as to whose prints it belongs to. However, your curiosity is ", 7)
+        pyxel.text(4, 218, "getting the better of you. What do you do?", 7)
 
 App()
