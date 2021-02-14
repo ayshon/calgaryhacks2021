@@ -55,6 +55,13 @@ class App:
         self.choice = 1 #1 for new state, #2 for lost, #3 for camp
         self.previous_state = 1
 
+        #  CAMP NIGHT TIME
+        self.activeBank = 0
+        self.gender = 0
+        self.inventory = [["Canadian Bacon", 2], ["Dummy", 1]]
+        self.status = 0  # ENSURES INVENTORY IS ONLY UPDATED ONCE
+        self.consumed = 0 # WHAT WAS EATEN
+
         self.option_t_highlight = 0
 
         # EVERYTHING MUST BE ABOVE THIS LINE
@@ -284,7 +291,6 @@ class App:
         
 ########### TRAVELLING SCENE ##########
         elif self.active_scene == 4:
-            # pyxel.image(0).load(0, 0, "assets/morning.jpg")
 
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             
@@ -326,6 +332,12 @@ class App:
                     else:
                         self.day_state = 1
                         self.choice = 2
+
+########### CAMP NIGHT TIME  ##########
+        elif(self.active_scene == 5):
+            pyxel.image(0).load(0, 0, "assets/camp.png")
+            if pyxel.btnp(pyxel.KEY_ENTER):
+                self.active_scene = 6
 
 ########### DEFAULT ##########        
         else:
@@ -394,6 +406,10 @@ class App:
         #   TRAVELLING SCENES
         elif(self.active_scene == 4):
             self.draw_travelling()
+        
+        #   CAMP NIGHT TIME
+        elif(self.active_scene == 5):
+            self.draw_camp()
 
         # OPTIONS
         elif(self.active_scene != 1):
@@ -433,7 +449,7 @@ class App:
         pyxel.text(100, 132, underScores, 7)
         pyxel.text(85, 150, "Press ENTER to confirm", 7)
 
-########## TRAVELLING SCENES ############
+########## GENERAL STORE ############
     def draw_general_store(self):
         
         pyxel.blt(0, 0, 0, 0, 0, 256, 256)
@@ -578,6 +594,31 @@ class App:
             pyxel.rect(0, 180, 256, 20, 0)
             pyxel.text(2, 182, "Day 2 - EVENING - March 16, 1901 - Banff, Alberta", 7)
             pyxel.text(2, 189, "It's 6pm, in the evening. Where would you like to go?", 7)
+
+########## CAMP NIGHT TIME ############
+    def draw_camp(self):
+        pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+        pyxel.rect(0, 180, 256, 76, 0)
+
+        # TEXT
+        if (self.status < 1):
+            self.consumed = self.inventory[0][0]
+
+        pyxel.text(2, 188, "You have decided to make camp and rest for the next day.", 7)
+        pyxel.text(2, 198, "You have decided to eat one " + self.consumed + ".", 7)
+
+        pyxel.text(2, 212, "Changes in inventory:", 7)
+        pyxel.text(2, 222, "-" + self.consumed + "      -1", 7)
+
+        pyxel.text(2, 238, "Press ENTER to continue.", 7)
+        # NOTE: REQUIRES CODE TO TRANSITION INTO NEXT SCENE
+
+        if(self.status < 1):
+            self.inventory[0][1] -= 1
+            if (self.inventory[0][1] == 0):
+                self.inventory.pop(0)
+        self.status = 1
+
 
 ########## DEFAULT ############
     def draw_options(self):

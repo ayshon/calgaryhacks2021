@@ -22,7 +22,7 @@ class App:
         pyxel.run(self.update, self.draw)
         
     def update(self):
-        if pyxel.btnp(pyxel.KEY_Q):
+        if pyxel.btnp(pyxel.Any):
             pyxel.quit()
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             if(pyxel.mouse_x > self.option1.x and pyxel.mouse_x < (self.option1.x + self.option1.side) and pyxel.mouse_y > self.option1.y and pyxel.mouse_y < (self.option1.y + self.option1.side)):
