@@ -895,6 +895,7 @@ class App:
         pyxel.blt(0, 0, 0, 0, 0, 256, 256)
         pyxel.rect(0, 180, 256, 76, 0)
         
+        
         #CONSTANT OPTIONS
         pyxel.rectb(self.option1_t.x, self.option1_t.y, self.option1_t.side, self.option1_t.side, self.option1_t.color)
         pyxel.text(10, self.option1_t.y, "Go North", 3)
@@ -912,31 +913,37 @@ class App:
             pyxel.rect(self.option3_t.x, self.option3_t.y, self.option3_t.side, self.option3_t.side, self.option3_t.color)
 
         pyxel.text(2, 182, "Day 1 - MORNING - March 16, 1901 - Banff, Alberta", 7)
-        pyxel.text(2, 189, "It's morning. Where would you like to go?", 7)
+        pyxel.text(85, 199, "Where would you like to go?", 7)
         if self.day_state == 1:
             # SPEACH FOR MORNING AND OTHER CHOICES
             if self.choice == 1:
                 pyxel.rect(0, 180, 256, 20, 0)
+                pyxel.line(0, 179, 256, 179, 7)
+                pyxel.line(0, 189, 256, 189, 7)
                 pyxel.text(2, 182, "Day 1 - MORNING - March 16, 1901 - Banff, Alberta", 7)
-                pyxel.text(2, 189, "It's morning. Where would you like to go?", 7)
+                pyxel.text(85, 199, "Where would you like to go?", 7)
             elif self.choice == 2:
                 pyxel.rect(0, 180, 256, 20, 0)
                 pyxel.text(2, 182, "You got lost! Stay on track next time!", 7)
-                pyxel.text(2, 189, "Where would you like to go?", 7)
+                pyxel.text(85, 199, "Where would you like to go?", 7)
             elif self.choice == 3:
                 pyxel.rect(0, 180, 256, 20, 0)
                 pyxel.text(2, 182, "You camped too early! A day is wasted. You will lose life.", 7)
-                pyxel.text(2, 189, "Where would you like to go?", 7)
+                pyxel.text(85, 199, "Where would you like to go?", 7)
         elif self.day_state == 2:
             # SPEACH FOR AFTERNOON 
             pyxel.rect(0, 180, 256, 20, 0)
+            pyxel.line(0, 179, 256, 179, 7)
+            pyxel.line(0, 189, 256, 189, 7)
             pyxel.text(2, 182, "Day 1 - AFTERNOON - March 16, 1901 - Banff, Alberta", 7)
-            pyxel.text(2, 189, "It's 12 in the afternoon. Where would you like to go?", 7)
+            pyxel.text(85, 199, "Where would you like to go?", 7)
         elif self.day_state == 3:
             # SPEACH FOR Evening 
             pyxel.rect(0, 180, 256, 20, 0)
+            pyxel.line(0, 179, 256, 179, 7)
+            pyxel.line(0, 189, 256, 189, 7)
             pyxel.text(2, 182, "Day 1 - EVENING - March 16, 1901 - Banff, Alberta", 7)
-            pyxel.text(2, 189, "It's 6pm, in the evening. Where would you like to go?", 7)
+            pyxel.text(85, 199, "Where would you like to go?", 7)
 
 ########## CAMP NIGHT TIME ############
     def draw_camp(self):
@@ -968,7 +975,9 @@ class App:
         pyxel.rect(0, 180, 256, 76, 0)
 
         # TEXT
-        pyxel.text(2, 188, "It's Day 2 - March 16, 1901.", 7)
+        pyxel.line(0, 179, 256, 179, 7)
+        pyxel.line(0, 189, 256, 189, 7)
+        pyxel.text(2, 182, "Day 2 - MORNING - March 17, 1901 - Banff, Alberta", 7)
         pyxel.text(2, 204, "You can hear the birds chirping outside.", 7)
         pyxel.text(2, 214, "You yawn and stretch your stiff limbs.", 7)
         
@@ -1080,8 +1089,10 @@ class App:
 
         if self.split_road_state == 2:
         # TEXT
-            pyxel.text(2, 182, "DAY 2 - EVENING - BANFF, ALBERTA\n\n", 7)
-            pyxel.text(2, 189, "You see two paths, one leads north, the other leads north west. \nThe north road looks dangerous.\nWhich way do you go?", 7)
+            pyxel.line(0, 179, 256, 179, 7)
+            pyxel.line(0, 189, 256, 189, 7)
+            pyxel.text(2, 182, "Day 2 - EVENING - March 17, 1901 - Banff, Alberta", 7)
+            pyxel.text(2, 193, "You see two paths, one leads north, the other leads north west. \nThe north road looks dangerous.\nWhich way do you go?", 7)
 
             # OPTIONS
             pyxel.rectb(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
@@ -1090,8 +1101,10 @@ class App:
             pyxel.text(10, self.option2_r.y, "Go Nort West Road", 4)
 
         elif self.split_road_state == 1:
-            pyxel.text(2, 182, "Day 2 - EVENING - March 16, 1901 - Banff, Alberta", 7)
-            pyxel.text(2, 189, "It's 6pm, in the evening. Where would you like to go?", 7)
+            pyxel.line(0, 179, 256, 179, 7)
+            pyxel.line(0, 189, 256, 189, 7)
+            pyxel.text(2, 182, "Day 2 - EVENING - March 17, 1901 - Banff, Alberta", 7)
+            pyxel.text(85, 199, "Where would you like to go?", 7)
 
             # OPTIONS
             pyxel.rectb(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
