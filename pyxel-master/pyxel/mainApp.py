@@ -55,13 +55,16 @@ class App:
         self.choice = 1 #1 for new state, #2 for lost, #3 for camp
         self.previous_state = 1
 
-        #  CAMP NIGHT TIME
+        # CAMP NIGHT TIME
         self.activeBank = 0
         self.gender = 0
         self.inventory = [["Canadian Bacon", 2], ["Dummy", 1]]
         self.status = 0  # ENSURES INVENTORY IS ONLY UPDATED ONCE
         self.consumed = 0 # WHAT WAS EATEN
 
+        # MORNING - NO OTHER VARIABLES
+
+        # TRAVELLING HIGHLIGHT
         self.option_t_highlight = 0
 
         # EVERYTHING MUST BE ABOVE THIS LINE
@@ -343,9 +346,13 @@ class App:
                     
 ########### CAMP NIGHT TIME  ##########
         elif(self.active_scene == 5):
-            pyxel.image(0).load(0, 0, "assets/camp.png")
+            pyxel.image(0).load(0, 0, "assets/fire.jpg")
             if pyxel.btnp(pyxel.KEY_ENTER):
                 self.active_scene = 6
+
+# ########## MORNING ############
+#         elif(self.active_scene == 6):
+#             py
 
 ########### DEFAULT ##########        
         else:
