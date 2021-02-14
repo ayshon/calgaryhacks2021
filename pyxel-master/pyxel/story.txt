@@ -140,18 +140,16 @@ EXAMPLE:
 "You encounter animal tracks along the trail you are traveling along. You are not an expert in wildlife so you are unsure as to whose prints it belongs to.
 However, your curiosity is getting the better of you. What do you do?"
 
-1. Follow the tracks.
-2. Keep going.
-
-% 1. Brings the user to an event. %
+1. Follow the tracks.       % 1. Brings the user to an event. %
+2. Keep going.              % 2. Brings the user to a summary of the day blurb. %
 
 [OPTION 1 - CONSEQUENCE]
 
 "You followed the tracks and it led you to a small creek where you spot a caribou drinking from the clear waters. Its horns are long and curved.
 It lifts its head up upon your approach. The majestic creature shifts nervously, and upon closer inspection, you can see that the fur on its front leg is matted with blood."
 
-1. Go closer.
-2. Stay where you are.
+1. Go closer.               % 1. Continues event. %
+2. Stay where you are.      % 2. Continues event. %
 
 [OPTION 1 - CONSEQUENCE]
 "This is the first time you've seen such a beautiful animal up close. You have to get closer to it, drink in all the details, else you'd never be able to pick up your paintbrush again!
@@ -164,9 +162,18 @@ A mistake! The creature locks eyes with you, and with a shrill cry, he dips his 
 
 Pain shoots through your spine as your back hits the sharp rocks on the edge of the creek. The caribou pays you no mind and keeps running, quickly disappearing into the forest.
 You grimace as you pull yourself back to your feet. Your clothes are wet and your back throbs. You lift your shirt to examine your injuries.
-There is an open gash where the caribou's horn pierced your skin, but thankfully it's not too deep.
+There is an open gash where the caribou's horn pierced your skin, but thankfully it's not too deep. You hobble out of the water, cursing your luck."
 
-% 2. Brings the user to a summary of the day blurb. %
+[OPTION 2 - CONSEQUENCE]
+You freeze, hardly daring to breathe. This is the first time you've seen such a beautiful animal up close. You don't want to scare it away.
+However, despite your efforts, the caribou snorts and leaps away, melting into the shadows of the forest.
+
+You let out a disappointed sigh. If only he stayed a bit longer. You could've etched every detail of those horns into your memory, and your paintbrush would've brought them to life.
+Oh well. You're sure there's bound to be more opportunities later. Your journey's just getting started, after all.
+
+[BLURB - DAY 2 - NOON]
+
+
 
 
 
