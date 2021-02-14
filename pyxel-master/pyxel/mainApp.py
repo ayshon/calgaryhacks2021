@@ -588,16 +588,18 @@ class App:
         pyxel.text(110, self.gender_option_b.y, "Non-Binary", 5)
 
         # TEXT CONFIRMATION AFTER SELECTION
+        # replaces background image
+        pyxel.image(0).load(0, 0, "assets/male.jpg")
         if (self.gender == 1):
-            pyxel.bltm(0, 0, 2, 0, 0, 256, 180)
+            pyxel.blt(0, 0, 2, 0, 0, 256, 180)
             pyxel.text(100, 222, "You are female.", 8)
             pyxel.text(83, 240, "Press ENTER to confirm", 7)
         elif (self.gender == 2): 
-            pyxel.bltm(0, 0, 3, 0, 0, 256, 180)
+            pyxel.blt(0, 0, 0, 0, 0, 256, 180)
             pyxel.text(103, 222, "You are male.", 2)
             pyxel.text(83, 240, "Press ENTER to confirm", 7)
         elif (self.gender == 3):
-            pyxel.bltm(0, 0, 1, 0, 0, 256, 180)
+            pyxel.blt(0, 0, 1, 0, 0, 256, 180)
             pyxel.text(91, 222, "You are non-binary.", 5)
             pyxel.text(83, 240, "Press ENTER to confirm", 7)
 
@@ -807,7 +809,7 @@ class App:
 
         # TEXT
         pyxel.text(2, 188, "It's March 16, 1901.", 7)
-        pyxel.text(2, 204, "You can hear the birds chiriping outside.", 7)
+        pyxel.text(2, 204, "You can hear the birds chirping outside.", 7)
         pyxel.text(2, 214, "You yawn and stretch your stiff limbs.", 7)
         
         pyxel.text(2, 228, "It's time to move.", 7)
