@@ -33,6 +33,9 @@ class App:
         if pyxel.btnp(pyxel.KEY_R):
             self.storeText = 0
             self.cartText = 0
+        if pyxel.btnp(pyxel.KEY_ENTER):
+            self.storeText = 0
+            #Transition!!
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             if(pyxel.mouse_x > self.option1.x and pyxel.mouse_x < (self.option1.x + self.option1.side) and pyxel.mouse_y > self.option1.y and pyxel.mouse_y < (self.option1.y + self.option1.side)):
                 if(self.storeText == 1):
@@ -86,7 +89,7 @@ class App:
                 if(self.storeText == 1):
                     self.cash -= 10
                     if("Canned Beans" not in self.cart[0]):
-                        self.cart[0].append("Cannned Beans")
+                        self.cart[0].append("Canned Beans")
                         self.cart[1].append(1)
                     else:
                         self.cart[1][self.cart[0].index("Canned Beans")] += 1
@@ -168,6 +171,7 @@ class App:
         pyxel.text(10, self.option3.y, "Supplies", 3)
         pyxel.rect(self.option1.x, self.option4.y, self.option4.side, self.option1.side, self.option1.color)
         pyxel.text(10, self.option4.y, "Check your basket", 3)
+        pyxel.text(2, 250, "Press Enter to checkout your basket.", 2)
 
         if(self.storeText == 1):
             pyxel.rect(0, 180, 256, 76, 0)
@@ -216,5 +220,6 @@ class App:
             for j in range(len(self.cart[0])):
                 pyxel.text(2, tempColumn, str(self.cart[0][j]) + " - " + str(self.cart[1][j]), 11)
                 tempColumn += 8
+            pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
 
 App()
