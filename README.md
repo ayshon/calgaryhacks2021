@@ -1,5 +1,11 @@
 # calgaryhacks2021
-Group 80 - money masters. Chosen topic: Make a Canada themed game
+Group 80 - money masters. Chosen topic: Make a Canada themed game.
+
+Group Members:
+- [dengpris]()https://github.com/dengpris)
+- [ruizhann](https://github.com/ruizhann)
+- [ceuvasm2](https://github.com/cuevasm2)
+- [ayshon](https://github.com/ayshon)
 
 # The Great Canadian Masterpiece
 For our hackathon project, we decided to make a text-based survival/adventure game that focuses on Canadian history and geography. 
