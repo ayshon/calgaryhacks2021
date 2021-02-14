@@ -26,8 +26,14 @@ class App:
         pyxel.sound(0).set(a * 3 + b * 1, "t", "2", "nf", 30)
         pyxel.sound(1).set("a1b1b1a1", "p", "2", "nf", 120)
 
-        pyxel.play(0, 0, loop=True)
-        pyxel.play(1, 1, loop=True)
+        #pyxel.play(0, 0, loop=True)
+        #pyxel.play(1, 1, loop=True)
+
+
+        pyxel.sound(2).set("c3g3c4g3", "p", "1", "nf", 150)
+        pyxel.sound(3).set("c1d1e1d1 c2d2e2a1", "t", "2", "nf", 100) # 階段
+        pyxel.play(2,2,loop=True)
+        pyxel.play(3,3,loop=True)
 
         pyxel.run(self.update, self.draw)
     
