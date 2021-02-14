@@ -505,7 +505,7 @@ class App:
         if(self.blurbText == 0):
             pyxel.text(0, 190,
             """
-                Press ENTER to begin your adventure...
+                Press ENTER to begin your adventure
             """, 7)
 
         elif(self.blurbText == 1):
