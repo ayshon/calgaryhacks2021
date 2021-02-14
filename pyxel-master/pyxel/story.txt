@@ -1,13 +1,33 @@
 [] - New Image/Screen
 "" - Text
+/* - Comment
 
+"""
+A group of Canadian artists built their fame across Canada for their paintings inspired by Canada's beautiful landscape. Famously known
+as the 'Group of Seven,' they have left their legacy in their world through their masterpieces. But unbeknownst to some others, there was
+an eighth person, who aspired to leave their mark on Canadian soil as well. 
+"""
 
-[TITLE SCREEN] - The Great Canadian Expedition
+"""
+My dear friends, I am here to tell you the story of how I traveled across the majestic wonders that the great country of Canada has to offer.
+The great heights, depths and many unique encounters I had to face on my journey. With my paintbrush and oils in hand, I went off and started
+on my adventure to paint...
+"""
 
-"Press Enter to Begin Your Adventure Through Canada"
+[TITLE SCREEN] - The Canadian Masterpiece
+
+"Press Enter to Begin"
+
+[CHOOSE YOUR GENDER]
+1. Male
+2. Female
+
+/* Have
 
 [BLURB - March 14, 1901]
 
+"""
+It was quite a sunny day
 
 
 
