@@ -39,15 +39,18 @@ Music: Created through Editor in Pyxel. Original Composition
 - [Mirror Lake](https://www.reddit.com/r/PixelArt/comments/aaeps2/oc_mirror_lake/)
 - [Camping Vector](https://www.istockphoto.com/vector/adventure-camping-night-scene-gm827243792-134519191)
 - [Caribou Vector](https://www.vecteezy.com/vector-art/138407-green-forest-background-vector)
-- Drive
+- [Drive](https://www.youtube.com/watch?app=desktop&v=YiqJn6epqgY&ab_channel=Saabkyle04)
 - [Lake Louise 1](https://www.tripsavvy.com/thmb/eNPRdLn3mHQu731s_8NA5Js_jhk=/2121x1193/smart/filters:no_upscale()/LakeLouise_GettyImages-6b1e83ecabbb423c9cc66ea024c0e6bf.jpg)
-- Fire
-- Sunrise
+- [Lake Louise 2](https://www.authentikcanada.com/gb-en/travel-guide/tourist-office-lake-louise)
+- [Fire](https://i.ytimg.com/vi/iz7wtTO7roQ/hqdefault.jpg)
+- [Sunrise](https://adventuremotorcycletravel.com/listing/trans-canada-adventure-trail-tcat/)
 - [Sunset Pixel Art](https://www.pinterest.ca/pin/459719074458952481/)
 - [Forest Pixel Art](https://www.pinterest.ca/pin/337699672029795006/)
-- Store
-- Two Paths
-- Silhouette
+- [Store](https://www.alamy.com/stock-photo-alabama-al-south-pike-county-troy-pioneer-museum-of-alabama-al-south-12032429.html)
+- [Two Paths](https://www.alamy.com/stock-photo/two-paths-fork-forest.html)
+- [male Silhouette](http://www.pngmart.com/image/95776)
+- [female Silhouette](https://www.russelloliver.co.uk/silhouette/woman-silhouette-photos/)
+- [nonbinary Silhouette](http://clipart-library.com/free/standing-man-silhouette.html)
 - [Easel](https://www.collinsdictionary.com/images/full/canvas_477755755_1000.jpg)
 - [Wood Texture](https://i.imgur.com/kfUmn2y.png)
 
