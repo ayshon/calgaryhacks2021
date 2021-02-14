@@ -103,6 +103,15 @@ class App:
         self.option2_caribou = Option(146,242,5,12)
         self.option_caribou_highlight = 0
 
+        #   CONSEQUENCE
+        self.page = 0
+
+        #   TWOPATHS
+        self.option1_r = Option(2,232,5,6)
+        self.option2_r = Option(2,240,5,6)
+        self.option3_r = Option(2,248,5,6)
+        self.split_road_state = 1
+
         # EVERYTHING MUST BE ABOVE THIS LINE
         pyxel.run(self.update, self.draw)
 
@@ -444,12 +453,49 @@ class App:
                 self.option_caribou_highlight = 1
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     self.option1_caribou.color = 8
+                    self.active_scene = 9
                     # GO TO CONSEQUENCE
             if(pyxel.mouse_x > self.option2_caribou.x and pyxel.mouse_x < (self.option2_caribou.x + self.option2_caribou.side) and pyxel.mouse_y > self.option2_caribou.y and pyxel.mouse_y < (self.option2_caribou.y + self.option2_caribou.side)):
                 self.option_caribou_highlight = 2
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     self.option2_caribou.color = 8
+                    self.active_scene = 10
                     # GO TO 2 PATHS
+
+########### CONSEQUENCE ############
+        elif(self.active_scene == 9):
+            pyxel.image(0).load(0, 0, "assets/fall.jpg")
+            if self.page ==4 and pyxel.btnp(pyxel.KEY_ENTER):
+                self.active_scene = 10
+                pyxel.image(0).load(0, 0, "assets/sunset.png")
+        
+########### TWO PATHS ############
+        elif(self.active_scene == 10):
+           
+            if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                if(pyxel.mouse_x > self.option1_r.x and pyxel.mouse_x < (self.option1_r.x + self.option1_r.side) and pyxel.mouse_y > self.option1_r.y and pyxel.mouse_y < (self.option1_r.y + self.option1_r.side)):
+                    if(self.option1_r.color == 6):
+                        if self.split_road_state == 1:
+                            self.split_road_state = 2
+                            pyxel.image(0).load(0, 0, "assets/twopaths.jpg")
+                        else:
+                            self.option1_r.color = 0
+                            pyxel.image(0).load(0, 0, "assets/drive2.jpg")
+                            self.split_road_state =3
+                            if pyxel.btnp(pyxel.KEY_ENTER):
+                                pyxel.quit()
+                                self.active_scene = 11
+                                #TRANSITION HERE REPLACE THE PYXEL.QUIT()
+                    else:
+                        self.option1_r.color = 6
+
+                if(pyxel.mouse_x > self.option2_r.x and pyxel.mouse_x < (self.option2_r.x + self.option2_r.side) and pyxel.mouse_y > self.option2_r.y and pyxel.mouse_y < (self.option2_r.y + self.option2_r.side)):
+                    if(self.option2_r.color == 6):
+                        self.option2_r.color = 0
+                        pyxel.image(0).load(0, 0, "assets/lost.jpg")
+                    else:
+                        self.option2_r.color = 6
+                        pyxel.image(0).load(0, 0, "assets/twopaths.jpg")
 
 ########### DEFAULT ##########        
         else:
@@ -540,6 +586,12 @@ class App:
 
         elif(self.active_scene == 8):
             self.draw_caribou()
+
+        elif(self.active_scene == 9):
+            self.draw_consequence()
+        
+        elif(self.active_scene == 10):
+            self.draw_twopaths()
 
         # OPTIONS
         # elif(self.active_scene != 1):
@@ -802,7 +854,7 @@ class App:
                 self.inventory.pop(0)
         self.status = 1
 
-########## CAMP NIGHT TIME ############
+########## MORNING ############
     def draw_morning(self):
         pyxel.blt(0, 0, 0, 0, 0, 256, 256)
         pyxel.rect(0, 180, 256, 76, 0)
@@ -848,6 +900,103 @@ class App:
         pyxel.text(2, 208, "are long and curved. It lifts its head up upon your approach.", 7)
         pyxel.text(2, 218, "The majestic creature shifts nervously, and upon closer", 7)
         pyxel.text(2, 228, "inspection, you can see that its fur is matted with blood.", 7)
+
+########## CONSEQUENCE ############
+
+    def draw_consequence(self):
+        pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+        
+        pyxel.rect(0, 180, 256, 76, 0)
+
+        # TEXT
+        if (self.page == 0):      
+            pyxel.text(4, 186, "This is the first time you've seen such a beautiful animal up", 7)
+            pyxel.text(4, 196, "close. You have to get closer to it, drink in all the details,", 7)
+            pyxel.text(4, 206, "else you'd never be able to pick up your paintbrush again!", 7)
+            pyxel.text(4, 216, "You slink behind a tree and squat down. The caribou stands", 7)
+            pyxel.text(4, 226, "still for a moment longer before dipping its head back.", 7)
+            pyxel.text(4, 236, "into the water. You swallow your nervousness before", 7)
+            pyxel.text(4, 246, "slipping out of your hiding place.", 7)         
+            
+            if pyxel.btnp(pyxel.KEY_ENTER):  
+                self.page = 1
+
+
+        if (self.page == 1 or self.page == 2):
+            if pyxel.btnp(pyxel.KEY_ENTER) == False:                            
+                # BACKGROUND
+                # blt(x, y, img, u, v, w, h, [colkey]) colkey is optional
+                pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+                
+                # DRAW BLACK TEXTBOX
+                # rect(x, y, w, h, col)
+                pyxel.rect(0, 180, 256, 76, 0)
+
+                pyxel.text(4, 188, "A mistake! The creature locks eyes with you, and with a", 7)
+                pyxel.text(4, 198, "shrill cry, he dips his head and charges at you!", 7)
+                pyxel.text(4, 212, "You try to move, but it's too late.", 7)
+
+                pyxel.text(4, 226, "Pain shoots through your spine as your back hits the sharp", 7)
+                pyxel.text(4, 236, "rocks on the edge of the creek. The caribou pays you no", 7)
+                pyxel.text(4, 246, "mind and keeps running, quickly disappearing into the forest.", 7) 
+
+                self.page = 2
+
+        if (self.page == 2 and pyxel.btnp(pyxel.KEY_ENTER)):
+            self.page = 3
+            
+        if (self.page == 3 or self.page == 4):  
+            pyxel.cls(0)
+
+            # BACKGROUND
+            # blt(x, y, img, u, v, w, h, [colkey]) colkey is optional
+            pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+            
+            # DRAW BLACK TEXTBOX
+            # rect(x, y, w, h, col)
+            pyxel.rect(0, 180, 256, 76, 0)
+
+            pyxel.text(4, 188, "You grimace as you pull yourself back to your feet. Your", 7)
+            pyxel.text(4, 198, "clothes are wet and your back throbs. You lift your shirt", 7)
+            pyxel.text(4, 212, "to examine your injuries. There is an open gash where the", 7)
+            pyxel.text(4, 222, "caribou's horn pierced your skin, but thankfully it's not", 7)
+            pyxel.text(4, 232, "too deep. You hobble out of the water, cursing your luck.", 7)
+
+            self.page = 4
+
+########## TWOPATHS ############
+    def draw_twopaths(self):
+
+        pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+        pyxel.rect(0, 180, 256, 76, 0)
+
+        if self.split_road_state == 2:
+        # TEXT
+            pyxel.text(2, 182, "DAY 2 - EVENING - BANFF, ALBERTA\n\n", 7)
+            pyxel.text(2, 189, "You see two paths, one leads north, the other leads north west. \nThe north road looks dangerous.\nWhich way do you go?", 7)
+
+            # OPTIONS
+            pyxel.rect(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
+            pyxel.text(10, self.option1_r.y, "Go North Road", 3)
+            pyxel.rect(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
+            pyxel.text(10, self.option2_r.y, "Go Nort West Road", 4)
+
+        elif self.split_road_state ==1:
+            pyxel.text(2, 182, "Day 2 - EVENING - March 16, 1901 - Banff, Alberta", 7)
+            pyxel.text(2, 189, "It's 6pm, in the evening. Where would you like to go?", 7)
+
+            # OPTIONS
+            pyxel.rect(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
+            pyxel.text(10, self.option1_r.y, "Go North", 3)
+            pyxel.rect(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
+            pyxel.text(10, self.option2_r.y, "Go West", 4)
+            pyxel.rect(self.option3_r.x, self.option3_r.y, self.option3_r.side, self.option3_r.side, self.option3_r.color)
+            pyxel.text(10, self.option3_r.y, "Make Camp", 5)
+        
+        elif self.split_road_state == 3:
+            pyxel.text(2, 182, "You were found in the morning passed out from the darkness!", 7)
+            pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \n offered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
+            
 
 ########## DEFAULT ############
     def draw_options(self):
