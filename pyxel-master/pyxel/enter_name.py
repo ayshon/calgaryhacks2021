@@ -67,6 +67,8 @@ class App:
                 self.name += 'Y'
             if pyxel.btnp(pyxel.KEY_Z):
                 self.name += 'Z'
+            if pyxel.btnp(pyxel.KEY_SPACE):
+                self.name += ' '
         # if pyxel.btnp(pyxel.KEY_ENTER):
         #         # go to next scene
 
@@ -84,4 +86,5 @@ class App:
         pyxel.text(100, 132, underScores, 7)
         pyxel.text(85, 150, "Press ENTER to confirm", 7)
 
+    #THERES A BUG: CAN'T BACKSPACE IF YOU EXCEED THE LETTER COUNT
 App()
