@@ -11,7 +11,7 @@ class Option:
 class App:
     def __init__(self):
         pyxel.init(256, 256, caption="gender", fullscreen=True)
-        pyxel.image(0).load(0, 0, "assets/caribou.png")
+        pyxel.image(0).load(0, 0, "assets/moose_tracks.jpg")
         
         pyxel.mouse(True)
 
