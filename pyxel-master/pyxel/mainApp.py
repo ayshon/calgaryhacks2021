@@ -573,6 +573,8 @@ class App:
                 self.option_r_highlight = 3
             else:
                 self.option_r_highlight = 0
+            if self.split_road_state == 3 or self.split_road_state == 4:
+                self.option_r_highlight = 0
 
 ########### ARRIVING AT LAKE LOUISE ############
         elif(self.active_scene == 11):
