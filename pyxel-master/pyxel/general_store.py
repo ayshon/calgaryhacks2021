@@ -219,11 +219,8 @@ class App:
             pyxel.rect(0, 180, 256, 76, 0)
             pyxel.text(2, 182, "Cart:", 7)
             tempColumn = 190
-            for i in self.cart:
-                for j in self.cart[i][j]:
-                    pyxel.text(2, tempColumn, self.cart[i][j] + " - " + str(self.cart[i][j]), 11)
-
-
-
+            for j in range(len(self.cart[0])):
+                pyxel.text(2, tempColumn, str(self.cart[0][j]) + " - " + str(self.cart[1][j]), 11)
+                tempColumn += 8
 
 App()
