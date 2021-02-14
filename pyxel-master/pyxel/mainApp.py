@@ -11,6 +11,7 @@ class App:
     def __init__(self):
         pyxel.init(256, 256, caption="The Great Canadian Masterpiece", fullscreen=True)
         pyxel.image(0).load(0, 0, "assets/group_of_seven.jpg")
+        pyxel.image(2).load(0, 0, "assets/title.png")
         pyxel.image(1).load(0, 0, "assets/sunset.png")
         
         pyxel.mouse(True)
@@ -497,7 +498,7 @@ class App:
     def draw_title(self):
         # BACKGROUND
         # blt(x, y, img, u, v, w, h, [colkey]) colkey is optional
-        pyxel.blt(0, 0, 1, 0, 0, 256, 256)
+        pyxel.blt(0, 0, 2, 0, 0, 256, 256)
         # DRAW BLACK TEXTBOX
         # rect(x, y, w, h, col)
         
