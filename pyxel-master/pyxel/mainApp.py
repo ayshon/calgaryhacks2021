@@ -583,8 +583,8 @@ class App:
 ########### PAINTING ENDING ############
         elif(self.active_scene == 12):
             pyxel.image(0).load(0, 0, "assets/endcard.png")
-            if pyxel.btnp(pyxel.KEY_ENTER):
-                self.active_scene = 13
+            # if pyxel.btnp(pyxel.KEY_ENTER):
+            #     self.active_scene = 13
 
 ########### DEFAULT ##########        
         else:
@@ -1109,25 +1109,27 @@ class App:
 
 ########## LAKE LOUISE ############
     def draw_lakeLouise(self):
-        pyxel.image(0).load(0, 0, "assets/lake_louise.jpg")
-        pyxel.blt(0, 0, 1, 0, 0, 256, 256)
-        pyxel.text(0, 190,
-            """
-        You arrive at a beautiful blue-green lake.
-        You can see a soaring white mountain in the background and 
-        the sun just peaking from behind.
+        pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+        pyxel.rect(0, 180, 256, 76, 0)
 
-        Your sould overwhelms with awe and wonder and you turn to 
-        your paintbrush. Your hands move careful as to capture every
-        inch of its beauty. You have traveled long and far but alas, 
-        you have found your new muse.
+        pyxel.text(0, 190,
+        """
+        You arrive at a beautiful blue-green lake.
+        You can see a soaring white mountain in the  
+        background and the sun just peaking from behind.
+
+        Your sould overwhelms with awe and wonder and you  
+        turn to your paintbrush. Your hands move careful as 
+        to capture every inch of its beauty. You have traveled  
+        long and far but alas, you have found your new muse.
                 
-            """, 7)
+        """, 7)
 
     ########## END CARD ############
     def draw_endcard(self):
-        pyxel.image(0).load(0, 0, "assets/endcard.png")
-        pyxel.blt(0, 0, 1, 0, 0, 256, 256)
+        pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+        pyxel.rect(0, 180, 256, 76, 0)
+        
         pyxel.text(0, 190,
             """
             Congratulations! You have painted Lake Louise!
