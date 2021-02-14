@@ -9,7 +9,7 @@ However, Canada can be a cold and harsh place. As a sheltered artist, you're not
 Explore beautiful landmarks in this 8-bit game. Be sure to stay away from wild animals, protect yourself from the cold, and make sure you have enough supplies for the night.
 The last thing you want to do is to freeze or starve before you can finish painting all of Canada!
 
-![The Great Canadian Masterpiece](https://i.imgur.com/Rw6zIQl.png)
+![The Great Canadian Masterpiece](https://i.imgur.com/Rw6zIQl.png =250x250)
 
 ## Project Details
 Language: [Python](https://www.python.org/) \\
