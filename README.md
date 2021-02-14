@@ -36,5 +36,6 @@ Music: Created through Editor in Pyxel. Original Composition
 - Forest
 - Store
 - Two Paths
+- Silhouette
 
 Note: We do not claim any of the images or assets used as "ours." This project is private and not for public distribution.
