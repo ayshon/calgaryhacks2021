@@ -46,12 +46,12 @@ class App:
         self.choice = 1 #1 for new state, #2 for lost, #3 for camp
         self.previous_state = 1
 
+        self.option_t_highlight = 0
 
         # EVERYTHING MUST BE ABOVE THIS LINE
         pyxel.run(self.update, self.draw)
         
     def update(self):
-
 ####### CHOOSE YOUR GENDER #######
         if self.active_scene == 1:
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
@@ -164,7 +164,6 @@ class App:
                 #CHOICE THAT CHANGES DAY STATE
                 if(pyxel.mouse_x > self.option1_t.x and pyxel.mouse_x < (self.option1_t.x + self.option1_t.side) and pyxel.mouse_y > self.option1_t.y and pyxel.mouse_y < (self.option1_t.y + self.option1_t.side)):
                     if(self.option1_t.color == 6):
-                        self.option1_t.color = 0
                         if(self.day_state == 1):
                             pyxel.image(0).load(0, 0, "assets/afternoon.jpg")
                             self.day_state = 2 #GOES INTO AFTERNOON WORDS
@@ -178,34 +177,28 @@ class App:
 
                     else:
                         self.day_state = self.previous_state #ELSE GO TO MORNING
-                        self.option1_t.color = 6
                         pyxel.image(0).load(0, 0, "assets/morning.jpg")
 
                 #LOST CHOICE
                 if(pyxel.mouse_x > self.option2_t.x and pyxel.mouse_x < (self.option2_t.x + self.option2_t.side) and pyxel.mouse_y > self.option2_t.y and pyxel.mouse_y < (self.option2_t.y + self.option2_t.side)):
                     if(self.option2_t.color == 6):
-                        self.option2_t.color = 0
                         pyxel.image(0).load(0, 0, "assets/lost.jpg")
                         self.day_state = 1  #MAINTAINS MORNING
                         self.choice = 2     #GOES INTO LOST CHOICE
                     else:
                         self.choice = 1     #MAINTAINS RIGHT CHOICE
                         self.day_state = 1  #GOES INTO LOST CHOICE
-                        self.option2_t.color = 6
                         pyxel.image(0).load(0, 0, "assets/morning.jpg")
 
                 #CAMP CHOICE
                 if(pyxel.mouse_x > self.option3_t.x and pyxel.mouse_x < (self.option3_t.x + self.option3_t.side) and pyxel.mouse_y > self.option3_t.y and pyxel.mouse_y < (self.option3_t.y + self.option3_t.side)):
                     if(self.option3_t.color == 6):
-                        self.option3_t.color = 0
                         pyxel.image(0).load(0, 0, "assets/camp.png")
                         self.day_state = 1
                         self.choice = 3  #GOES INTO CAMP CHOICE
                     else:
                         self.day_state = 1
                         self.choice = 2
-                        self.option3_t.color = 6
-
 
 ########### DEFAULT ##########        
         else:
@@ -230,6 +223,15 @@ class App:
                     else:
                         self.option3.color = 6
 
+########### HIGHLIGHT TRAVELLING SCENE #########
+        if(pyxel.mouse_x > self.option1_t.x and pyxel.mouse_x < (self.option1_t.x + self.option1_t.side) and pyxel.mouse_y > self.option1_t.y and pyxel.mouse_y < (self.option1_t.y + self.option1_t.side)):
+            self.option_t_highlight = 1
+        elif(pyxel.mouse_x > self.option2_t.x and pyxel.mouse_x < (self.option2_t.x + self.option2_t.side) and pyxel.mouse_y > self.option2_t.y and pyxel.mouse_y < (self.option2_t.y + self.option2_t.side)):
+            self.option_t_highlight = 2
+        elif(pyxel.mouse_x > self.option3_t.x and pyxel.mouse_x < (self.option3_t.x + self.option3_t.side) and pyxel.mouse_y > self.option3_t.y and pyxel.mouse_y < (self.option3_t.y + self.option3_t.side)):
+            self.option_t_highlight = 3 
+        else:
+            self.option_t_highlight = 0      
 
 #############################################################################
 #####################       DRAW FUNCTIONS     ##############################
@@ -309,12 +311,20 @@ class App:
         pyxel.rect(0, 180, 256, 76, 0)
         
         #CONSTANT OPTIONS
-        pyxel.rect(self.option1_t.x, self.option1_t.y, self.option1_t.side, self.option1_t.side, self.option1_t.color)
+        pyxel.rectb(self.option1_t.x, self.option1_t.y, self.option1_t.side, self.option1_t.side, self.option1_t.color)
         pyxel.text(10, self.option1_t.y, "Go North", 3)
-        pyxel.rect(self.option2_t.x, self.option2_t.y, self.option2_t.side, self.option2_t.side, self.option2_t.color)
+        pyxel.rectb(self.option2_t.x, self.option2_t.y, self.option2_t.side, self.option2_t.side, self.option2_t.color)
         pyxel.text(10, self.option2_t.y, "See what's in the west", 4)
-        pyxel.rect(self.option3_t.x, self.option3_t.y, self.option3_t.side, self.option3_t.side, self.option3_t.color)
+        pyxel.rectb(self.option3_t.x, self.option3_t.y, self.option3_t.side, self.option3_t.side, self.option3_t.color)
         pyxel.text(10, self.option3_t.y, "Make Camp", 5)
+        
+        # HOVER ANIMATIONS
+        if(self.option_t_highlight == 1):
+            pyxel.rect(self.option1_t.x, self.option1_t.y, self.option1_t.side, self.option1_t.side, self.option1_t.color)
+        elif(self.option_t_highlight == 2):
+            pyxel.rect(self.option2_t.x, self.option2_t.y, self.option2_t.side, self.option2_t.side, self.option2_t.color)
+        elif(self.option_t_highlight == 3):
+            pyxel.rect(self.option3_t.x, self.option3_t.y, self.option3_t.side, self.option3_t.side, self.option3_t.color)
 
         pyxel.text(2, 182, "Day 2 - MORNING - March 16, 1901 - Banff, Alberta", 7)
         pyxel.text(2, 189, "It's morning. Where would you like to go?", 7)
