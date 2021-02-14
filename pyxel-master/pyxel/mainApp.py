@@ -29,7 +29,8 @@ class App:
 
         # CHOOSE YOUR GENDER
         self.gender_option_m = Option(2, 200, 5, 12)
-        self.gender_option_f = Option(102,200,5,12)
+        self.gender_option_f = Option(202,200,5,12)
+        self.gender_option_b = Option(102,200,5,12)
         self.gender = 0
 
         # ENETER NAME
@@ -56,21 +57,35 @@ class App:
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                 
-                # FEMALE 
+                # MALE
                 if(pyxel.mouse_x > self.gender_option_m.x and pyxel.mouse_x < (self.gender_option_m.x + self.gender_option_m.side) and pyxel.mouse_y > self.gender_option_m.y and pyxel.mouse_y < (self.gender_option_m.y + self.gender_option_m.side)):
                     if(self.gender_option_m.color == 12):
-                        if(self.gender_option_f.color == 0):
-                            self.gender_option_f.color = 12
+                        # if(self.gender_option_f.color == 0 and self.gender_option_b == 0):
+                        self.gender_option_f.color = 12
+                        self.gender_option_b.color = 12
+                        #^shift tab
+
                         self.gender_option_m.color = 0
                         self.gender = 2
                 
-                # MALE
+                # FEMALE
                 if(pyxel.mouse_x > self.gender_option_f.x and pyxel.mouse_x < (self.gender_option_f.x + self.gender_option_f.side) and pyxel.mouse_y > self.gender_option_f.y and pyxel.mouse_y < (self.gender_option_f.y + self.gender_option_f.side)):
                     if(self.gender_option_f.color == 12):
-                        if(self.gender_option_m.color == 0):
-                            self.gender_option_m.color = 12
+                        # if(self.gender_option_m.color == 0 and self.gender_option_b == 0):
+                        self.gender_option_m.color = 12
+                        self.gender_option_b.color = 12
                         self.gender_option_f.color = 0
                         self.gender = 1
+
+                # NON-BINARY
+                if(pyxel.mouse_x > self.gender_option_b.x and pyxel.mouse_x < (self.gender_option_b.x + self.gender_option_b.side) and pyxel.mouse_y > self.gender_option_b.y and pyxel.mouse_y < (self.gender_option_b.y + self.gender_option_b.side)):
+                    if(self.gender_option_b.color == 12):
+                        # if(self.gender_option_m.color == 0 and self.gender_option_f.color == 0):
+                        self.gender_option_m.color = 12
+                        self.gender_option_f.color = 12
+                        self.gender_option_b.color = 0
+                        self.gender = 3
+
             if((self.gender == 1 or self.gender == 2) and pyxel.btnp(pyxel.KEY_ENTER)):
                 self.active_scene = 2
         
@@ -254,19 +269,23 @@ class App:
 ########## GENDER OPTIONS ############
     def draw_gender_options(self):
         # TEXT
-        pyxel.text(2, 182, "Choose your gender", 3)
+        pyxel.text(2, 182, "Choose your gender and press ENTER", 3)
 
         # OPTIONS
         pyxel.rect(self.gender_option_m.x, self.gender_option_m.y, self.gender_option_m.side, self.gender_option_m.side, self.gender_option_m.color)
         pyxel.text(10, self.gender_option_m.y, "Male", 2)
         pyxel.rect(self.gender_option_f.x, self.gender_option_f.y, self.gender_option_f.side, self.gender_option_f.side, self.gender_option_f.color)
-        pyxel.text(110, self.gender_option_f.y, "Female", 8)
+        pyxel.text(210, self.gender_option_f.y, "Female", 8)
+        pyxel.rect(self.gender_option_b.x, self.gender_option_b.y, self.gender_option_b.side, self.gender_option_b.side, self.gender_option_b.color)
+        pyxel.text(110, self.gender_option_b.y, "Non-Binary", 5)
 
         # TEXT CONFIRMATION AFTER SELECTION
         if (self.gender == 1):
             pyxel.text(96, 232, "You are female.", 8)
         elif (self.gender == 2): 
             pyxel.text(96, 232, "You are male.", 2)
+        elif (self.gender == 3):
+            pyxel.text(96, 232, "You are non-binary.", 5)
 
 ########## ENTER NAME ############
     def draw_name(self):
@@ -311,7 +330,7 @@ class App:
                 pyxel.text(2, 189, "Where would you like to go?", 7)
             elif self.choice == 3:
                 pyxel.rect(0, 180, 256, 20, 0)
-                pyxel.text(2, 182, "You camped too early! A day is wasted. You will lose more inventory.", 7)
+                pyxel.text(2, 182, "You camped too early! A day is wasted. You will lose life.", 7)
                 pyxel.text(2, 189, "Where would you like to go?", 7)
         elif self.day_state == 2:
             # SPEACH FOR AFTERNOON 
