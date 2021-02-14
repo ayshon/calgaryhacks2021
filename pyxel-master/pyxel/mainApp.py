@@ -338,9 +338,7 @@ class App:
 
                     else:
                         self.day_state = self.previous_state #ELSE GO TO MORNING
-                        pyxel.image(0).load(0, 0, "assets/morning.jpg")
-                    self.option2_t.color = 6
-                    self.option3_t.color = 6
+                        self.option1_t.color = 6
                 #LOST CHOICE
                 if(pyxel.mouse_x > self.option2_t.x and pyxel.mouse_x < (self.option2_t.x + self.option2_t.side) and pyxel.mouse_y > self.option2_t.y and pyxel.mouse_y < (self.option2_t.y + self.option2_t.side)):
                     if(self.option2_t.color == 6):
@@ -375,8 +373,10 @@ class App:
                 self.active_scene = 6
 
 # ########## MORNING ############
-#         elif(self.active_scene == 6):
-#             py
+        elif(self.active_scene == 6):
+            pyxel.image(0).load(0, 0, "assets/morning.jpg")
+            if pyxel.btnp(pyxel.KEY_ENTER):
+                self.active_scene = 7
 
 ########### DEFAULT ##########        
         else:
@@ -449,6 +449,10 @@ class App:
         #   CAMP NIGHT TIME
         elif(self.active_scene == 5):
             self.draw_camp()
+
+        #   MORNING
+        elif(self.active_scene == 6):
+            self.draw_morning()
 
         # OPTIONS
         elif(self.active_scene != 1):
@@ -658,6 +662,17 @@ class App:
                 self.inventory.pop(0)
         self.status = 1
 
+########## CAMP NIGHT TIME ############
+    def draw_morning(self):
+        pyxel.blt(0, 0, 0, 0, 0, 256, 256)
+        pyxel.rect(0, 180, 256, 76, 0)
+
+        # TEXT
+        pyxel.text(2, 188, "It's March 16, 1901.", 7)
+        pyxel.text(2, 204, "You can hear the birds chiriping outside.", 7)
+        pyxel.text(2, 214, "You yawn and stretch your stiff limbs.", 7)
+        
+        pyxel.text(2, 228, "It's time to move.", 7)
 
 ########## DEFAULT ############
     def draw_options(self):
