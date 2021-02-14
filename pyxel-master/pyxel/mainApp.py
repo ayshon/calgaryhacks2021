@@ -38,12 +38,16 @@ class App:
         if self.active_scene == 1:
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                
+                # FEMALE 
                 if(pyxel.mouse_x > self.gender_option_m.x and pyxel.mouse_x < (self.gender_option_m.x + self.gender_option_m.side) and pyxel.mouse_y > self.gender_option_m.y and pyxel.mouse_y < (self.gender_option_m.y + self.gender_option_m.side)):
                     if(self.gender_option_m.color == 12):
                         if(self.gender_option_f.color == 0):
                             self.gender_option_f.color = 12
                         self.gender_option_m.color = 0
                         self.gender = 2
+                
+                # MALE
                 if(pyxel.mouse_x > self.gender_option_f.x and pyxel.mouse_x < (self.gender_option_f.x + self.gender_option_f.side) and pyxel.mouse_y > self.gender_option_f.y and pyxel.mouse_y < (self.gender_option_f.y + self.gender_option_f.side)):
                     if(self.gender_option_f.color == 12):
                         if(self.gender_option_m.color == 0):
