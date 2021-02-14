@@ -34,6 +34,7 @@ class App:
         pyxel.run(self.update, self.draw)
         
     def update(self):
+        # CHOOSE YOUR GENDER
         if self.active_scene == 1:
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
@@ -51,6 +52,8 @@ class App:
                         self.gender = 1
             if((self.gender == 1 or self.gender == 2) and pyxel.btnp(pyxel.KEY_ENTER)):
                 self.active_scene = 2
+        
+        # INPUT YOUR NAME
         elif self.active_scene == 2:
             pyxel.image(0).load(0, 0, "assets/forest.png")
             if pyxel.btnp(pyxel.KEY_BACKSPACE) and self.name != "":
@@ -113,6 +116,8 @@ class App:
             if pyxel.btnp(pyxel.KEY_ENTER):
                 self.active_scene = 3
                 pyxel.image(0).load(0, 0, "assets/lake.png")
+        
+        # FIRST SCENE
         elif self.active_scene == 3:
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                 if(pyxel.mouse_x > self.option1.x and pyxel.mouse_x < (self.option1.x + self.option1.side) and pyxel.mouse_y > self.option1.y and pyxel.mouse_y < (self.option1.y + self.option1.side)):
@@ -174,12 +179,14 @@ class App:
         pyxel.rect(self.gender_option_f.x, self.gender_option_f.y, self.gender_option_f.side, self.gender_option_f.side, self.gender_option_f.color)
         pyxel.text(110, self.gender_option_f.y, "Female", 8)
 
+        # TEXT CONFIRMATION AFTER SELECTION
         if (self.gender == 1):
             pyxel.text(96, 232, "You are female.", 8)
         elif (self.gender == 2): 
             pyxel.text(96, 232, "You are male.", 2)
 
     def draw_name(self):
+        # VISUALS FOR INPUTTING NAME
         pyxel.rect(60, 102, 137, 70, 0)
         pyxel.text(95, 118, "Type in your name", 7)
         pyxel.text(100, 130, self.name, 7)
@@ -191,6 +198,7 @@ class App:
         pyxel.text(85, 150, "Press ENTER to confirm", 7)
 
     def draw_options(self):
+        # TEMPLATE FOR OPTION SELECT
         pyxel.text(2, 182, "There is text here gotem", 1)
         pyxel.text(2, 189, "There is text here too very cool stuff very nice", 2)
 
