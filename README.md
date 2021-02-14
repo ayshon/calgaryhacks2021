@@ -1,8 +1,8 @@
 # calgaryhacks2021
 Group 80 - money masters. Chosen topic: Make a Canada themed game.
 
-Group Members:
-- [dengpris]()https://github.com/dengpris)
+**Group Members:**
+- [dengpris](https://github.com/dengpris)
 - [ruizhann](https://github.com/ruizhann)
 - [ceuvasm2](https://github.com/cuevasm2)
 - [ayshon](https://github.com/ayshon)
