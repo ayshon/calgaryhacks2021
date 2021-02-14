@@ -20,7 +20,11 @@ class App:
         self.option2 = Option(2,210,5,7)
         self.option3 = Option(2,220,5,7)
         self.option4 = Option(2,230,5,7)
+        
+        self.option_highlight = 0
+
         self.gender = 1
+
         self.storeText = 0
         self.cartText = 0
         
@@ -133,7 +137,19 @@ class App:
                         self.cart[1][self.cart[0].index("Tent")] += 1
                 if self.storeText == 0:
                     self.cartText = 1
-
+        if(pyxel.mouse_x > self.option1.x and pyxel.mouse_x < (self.option1.x + self.option1.side) and pyxel.mouse_y > self.option1.y and pyxel.mouse_y < (self.option1.y + self.option1.side)):
+            self.option_highlight = 1
+        elif(pyxel.mouse_x > self.option2.x and pyxel.mouse_x < (self.option2.x + self.option2.side) and pyxel.mouse_y > self.option2.y and pyxel.mouse_y < (self.option2.y + self.option2.side)):
+            self.option_highlight = 2
+        elif(pyxel.mouse_x > self.option3.x and pyxel.mouse_x < (self.option3.x + self.option3.side) and pyxel.mouse_y > self.option3.y and pyxel.mouse_y < (self.option3.y + self.option3.side)):
+            self.option_highlight = 3 
+        elif(pyxel.mouse_x > self.option4.x and pyxel.mouse_x < (self.option4.x + self.option4.side) and pyxel.mouse_y > self.option4.y and pyxel.mouse_y < (self.option4.y + self.option4.side)):
+            self.option_highlight = 4
+        else:
+            self.option_highlight = 0
+        
+        
+    
     def draw(self):
         # CLEAR SCREEN
         pyxel.cls(0)
@@ -163,56 +179,69 @@ class App:
         pyxel.rectb(200, 0, 56, 10, 0)
         pyxel.text(202, 3, "Cash:$" + str(self.cash), 0)
 
-        pyxel.rect(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
+        pyxel.rectb(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
         pyxel.text(10, self.option1.y, "Food", 3)
-        pyxel.rect(self.option1.x, self.option2.y, self.option1.side, self.option1.side, self.option1.color)
+        pyxel.rectb(self.option2.x, self.option2.y, self.option2.side, self.option2.side, self.option2.color)
         pyxel.text(10, self.option2.y, "Clothing", 3)
-        pyxel.rect(self.option1.x, self.option3.y, self.option1.side, self.option1.side, self.option1.color)
+        pyxel.rectb(self.option3.x, self.option3.y, self.option3.side, self.option3.side, self.option3.color)
         pyxel.text(10, self.option3.y, "Supplies", 3)
-        pyxel.rect(self.option1.x, self.option4.y, self.option4.side, self.option1.side, self.option1.color)
+        pyxel.rectb(self.option4.x, self.option4.y, self.option4.side, self.option4.side, self.option4.color)
         pyxel.text(10, self.option4.y, "Check your basket", 3)
         pyxel.text(2, 250, "Press Enter to checkout your basket.", 2)
 
+        # SHOW FOOD
         if(self.storeText == 1):
             pyxel.rect(0, 180, 256, 76, 0)
             pyxel.text(2, 182, "\"This is all the grub I have. Should keep your stomach filled.\"", 7)
-            pyxel.rect(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
             pyxel.text(10, self.option1.y, "Maple Syrup - $2", 2)
-            pyxel.rect(self.option1.x, self.option2.y, self.option1.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option2.x, self.option2.y, self.option2.side, self.option2.side, self.option2.color)
             pyxel.text(10, self.option2.y, "Bread - $5", 2)
-            pyxel.rect(self.option1.x, self.option3.y, self.option1.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option3.x, self.option3.y, self.option3.side, self.option3.side, self.option3.color)
             pyxel.text(10, self.option3.y, "Canned Beans - $10", 2)
-            pyxel.rect(self.option1.x, self.option4.y, self.option4.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option4.x, self.option4.y, self.option4.side, self.option4.side, self.option4.color)
             pyxel.text(10, self.option4.y, "Canadian Bacon - $25", 2)
             pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
 
+        # SHOW CLOTHING
         elif(self.storeText == 2):
             pyxel.rect(0, 180, 256, 76, 0)
             pyxel.text(2, 182, "\"Should keep yourselves warm. Gets pretty chilly here in Banff.\"", 7)
-            pyxel.rect(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
             pyxel.text(10, self.option1.y, "Mittens - $3", 2)
-            pyxel.rect(self.option1.x, self.option2.y, self.option1.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option2.x, self.option2.y, self.option2.side, self.option2.side, self.option2.color)
             pyxel.text(10, self.option2.y, "Toque - $7", 2)
-            pyxel.rect(self.option1.x, self.option3.y, self.option1.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option3.x, self.option3.y, self.option3.side, self.option3.side, self.option3.color)
             pyxel.text(10, self.option3.y, "Boots - $12", 2)
-            pyxel.rect(self.option1.x, self.option4.y, self.option4.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option4.x, self.option4.y, self.option4.side, self.option4.side, self.option4.color)
             pyxel.text(10, self.option4.y, "Coat - $20", 2)
             pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
 
+        # SHOW SUPPLIES
         elif(self.storeText == 3):
             pyxel.rect(0, 180, 256, 76, 0)
             pyxel.text(2, 182, "\"Ahh, you're one of those hiker folk. Got quality supplies here.\"", 7)
-            pyxel.rect(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
             pyxel.text(10, self.option1.y, "Fishing Rod - $20", 2)
-            pyxel.rect(self.option1.x, self.option2.y, self.option1.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option2.x, self.option2.y, self.option2.side, self.option2.side, self.option2.color)
             pyxel.text(10, self.option2.y, "Medicine - $25", 2)
-            pyxel.rect(self.option1.x, self.option3.y, self.option1.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option3.x, self.option3.y, self.option3.side, self.option3.side, self.option3.color)
             pyxel.text(10, self.option3.y, "Trap - $30", 2)
-            pyxel.rect(self.option1.x, self.option4.y, self.option4.side, self.option1.side, self.option1.color)
+            pyxel.rectb(self.option4.x, self.option4.y, self.option4.side, self.option4.side, self.option4.color)
             pyxel.text(10, self.option4.y, "Tent - $50", 2)
             pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
 
+        # HOVER ANIMATIONS
+        if(self.option_highlight == 1):
+            pyxel.rect(self.option1.x, self.option1.y, self.option1.side, self.option1.side, self.option1.color)
+        elif(self.option_highlight == 2):
+            pyxel.rect(self.option2.x, self.option2.y, self.option2.side, self.option2.side, self.option2.color)
+        elif(self.option_highlight == 3):
+            pyxel.rect(self.option3.x, self.option3.y, self.option3.side, self.option3.side, self.option3.color)
+        elif(self.option_highlight == 4):
+            pyxel.rect(self.option4.x, self.option4.y, self.option4.side, self.option4.side, self.option4.color)
 
+        # SHOW CART
         if(self.cartText == 1):
             pyxel.rect(0, 180, 256, 76, 0)
             pyxel.text(2, 182, "Cart:", 7)

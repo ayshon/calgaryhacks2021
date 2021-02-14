@@ -86,7 +86,7 @@ class App:
                         self.gender_option_b.color = 10
                         self.gender = 3
 
-            if((self.gender == 1 or self.gender == 2) and pyxel.btnp(pyxel.KEY_ENTER)):
+            if((self.gender == 1 or self.gender == 2 or self.gender == 3) and pyxel.btnp(pyxel.KEY_ENTER)):
                 self.active_scene = 2
         
 ########### ENTER NAME ##########
