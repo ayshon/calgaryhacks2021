@@ -24,6 +24,9 @@ class App:
         
     def update(self):
 
+        if pyxel.btnp(pyxel.KEY_ENTER) and self.split_road_state ==4:
+            pyxel.quit()
+        
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             if(pyxel.mouse_x > self.option1_r.x and pyxel.mouse_x < (self.option1_r.x + self.option1_r.side) and pyxel.mouse_y > self.option1_r.y and pyxel.mouse_y < (self.option1_r.y + self.option1_r.side)):
                 if(self.option1_r.color == 6):
@@ -34,9 +37,6 @@ class App:
                         self.option1_r.color = 0
                         pyxel.image(0).load(0, 0, "assets/drive2.jpg")
                         self.split_road_state =3
-                        if pyxel.btnp(pyxel.KEY_ENTER):
-                            pyxel.quit()
-                            #TRANSITION HERE REPLACE THE PYXEL.QUIT()
                 else:
                     self.option1_r.color = 6
 
@@ -83,8 +83,8 @@ class App:
             pyxel.rect(self.option3_r.x, self.option3_r.y, self.option3_r.side, self.option3_r.side, self.option3_r.color)
             pyxel.text(10, self.option3_r.y, "Make Camp", 5)
         
-        elif self.split_road_state == 3:
+        elif self.split_road_state == 3 or self.split_road_state == 4:
             pyxel.text(2, 182, "You were found in the morning passed out from the darkness!", 7)
             pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \n offered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
-
+            self.split_road_state = 4
 App()

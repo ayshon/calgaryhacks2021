@@ -484,12 +484,18 @@ class App:
             if self.page ==4 and pyxel.btnp(pyxel.KEY_ENTER):
                 self.active_scene = 10
                 pyxel.image(0).load(0, 0, "assets/sunset.png")
-        
+
 ########### TWO PATHS ############
         elif(self.active_scene == 10):
+
+            if pyxel.btnp(pyxel.KEY_ENTER) and self.split_road_state ==4:
+                self.active_scene = 11
+                pyxel.image(0).load(0, 0, "assets/lake_louise.jpg")    
+
             if(pyxel.mouse_x > self.option1_r.x and pyxel.mouse_x < (self.option1_r.x + self.option1_r.side) and pyxel.mouse_y > self.option1_r.y and pyxel.mouse_y < (self.option1_r.y + self.option1_r.side)):
                 self.option_r_highlight = 1
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                   
                     if(self.option1_r.color == 6):
                         if self.split_road_state == 1:
                             self.split_road_state = 2
@@ -497,11 +503,7 @@ class App:
                         else:
                             self.option1_r.color = 8
                             pyxel.image(0).load(0, 0, "assets/drive2.jpg")
-                            self.split_road_state = 3
-                            if pyxel.btnp(pyxel.KEY_ENTER):
-                                pyxel.quit()
-                                self.active_scene = 11
-                                #TRANSITION HERE REPLACE THE PYXEL.QUIT()
+                            self.split_road_state =3
                     else:
                         self.option1_r.color = 6
 
@@ -518,6 +520,19 @@ class App:
                 self.option_r_highlight = 3
             else:
                 self.option_r_highlight = 0
+
+########### ARRIVING AT LAKE LOUISE ############
+        elif(self.active_scene == 11):
+            pyxel.image(0).load(0, 0, "assets/lake_louise.jpg")
+            if pyxel.btnp(pyxel.KEY_ENTER):
+                self.active_scene = 12
+                pyxel.image(0).load(0, 0, "assets/endcard.png")
+
+########### PAINTING ENDING ############
+        elif(self.active_scene == 12):
+            pyxel.image(0).load(0, 0, "assets/endcard.png")
+            if pyxel.btnp(pyxel.KEY_ENTER):
+                self.active_scene = 13
 
 ########### DEFAULT ##########        
         else:
@@ -614,11 +629,17 @@ class App:
         
         elif(self.active_scene == 10):
             self.draw_twopaths()
+        
+        elif(self.active_scene == 11):
+            self.draw_lakeLouise()
+        
+        elif(self.active_scene == 12):
+            self.draw_endcard()
 
         # OPTIONS
         # elif(self.active_scene != 1):
         #     self.draw_options()
-    
+
 ########## TITLE ############
     def draw_title(self):
         # BACKGROUND
@@ -1022,7 +1043,7 @@ class App:
             pyxel.rectb(self.option3_r.x, self.option3_r.y, self.option3_r.side, self.option3_r.side, self.option3_r.color)
             pyxel.text(10, self.option3_r.y, "Make Camp", 5)
         
-        elif self.split_road_state == 3:
+        elif self.split_road_state == 3 or self.split_road_state == 4:
             pyxel.text(2, 182, "You were found in the morning passed out from the darkness!", 7)
             pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \n offered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
         
@@ -1032,6 +1053,35 @@ class App:
             pyxel.rect(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
         elif self.option_r_highlight == 3:
             pyxel.rect(self.option3_r.x, self.option3_r.y, self.option3_r.side, self.option3_r.side, self.option3_r.color)
+            self.split_road_state = 4
+            
+
+########## LAKE LOUISE ############
+    def draw_lakeLouise(self):
+        pyxel.image(0).load(0, 0, "assets/lake_louise.jpg")
+        pyxel.blt(0, 0, 1, 0, 0, 256, 256)
+        pyxel.text(0, 190,
+            """
+        You arrive at a beautiful blue-green lake.
+        You can see a soaring white mountain in the background and 
+        the sun just peaking from behind.
+
+        Your sould overwhelms with awe and wonder and you turn to 
+        your paintbrush. Your hands move careful as to capture every
+        inch of its beauty. You have traveled long and far but alas, 
+        you have found your new muse.
+                
+            """, 7)
+
+    ########## END CARD ############
+    def draw_endcard(self):
+        pyxel.image(0).load(0, 0, "assets/endcard.png")
+        pyxel.blt(0, 0, 1, 0, 0, 256, 256)
+        pyxel.text(0, 190,
+            """
+            Congratulations! You have painted Lake Louise!
+                        What a masterpiece!
+            """, 7)
 
 ########## DEFAULT ############
     def draw_options(self):
