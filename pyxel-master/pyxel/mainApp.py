@@ -39,9 +39,9 @@ class App:
         # STORE SCENE
 
         # TRAVELLING DAYS
-        self.option1_t = Option(2,200,5,6)
-        self.option2_t = Option(2,210,5,6)
-        self.option3_t = Option(2,220,5,6)
+        self.option1_t = Option(2,232,5,6)
+        self.option2_t = Option(2,240,5,6)
+        self.option3_t = Option(2,248,5,6)
         self.day_state =1 #1 for morning, #2 for afternoon, #3 for evening 
         self.choice = 1 #1 for new state, #2 for lost, #3 for camp
         self.previous_state = 1
