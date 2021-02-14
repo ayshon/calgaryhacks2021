@@ -32,7 +32,10 @@ class App:
         # 25 - CHAPTER
         # 3 - STORE
         # 4 - Travelling Days
-        
+        # 5 - Camp at night
+        # 6 - Morning
+        # 7 - TRACKS
+
         #   TITLE
         self.active_scene = 0
         self.blurbText = 0
@@ -76,6 +79,9 @@ class App:
         self.choice = 1 #1 for new state, #2 for lost, #3 for camp
         self.previous_state = 1
 
+        # TRAVELLING HIGHLIGHT
+        self.option_t_highlight = 0
+
         # CAMP NIGHT TIME
         self.activeBank = 0
         self.gender = 0
@@ -85,8 +91,10 @@ class App:
 
         # MORNING - NO OTHER VARIABLES
 
-        # TRAVELLING HIGHLIGHT
-        self.option_t_highlight = 0
+        # TRACKS
+        self.option1_tracks = Option(64,236,5,12)
+        self.option2_tracks = Option(146,236,5,12)
+        self.option_tracks_highlight = 0
 
         # EVERYTHING MUST BE ABOVE THIS LINE
         pyxel.run(self.update, self.draw)
@@ -224,7 +232,6 @@ class App:
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     self.active_scene = 3
                  
-
 ########### STORE ##########
         elif self.active_scene == 3:
             pyxel.image(0).load(0, 0, "assets/store.jpg")
@@ -407,6 +414,22 @@ class App:
             if pyxel.btnp(pyxel.KEY_ENTER):
                 self.active_scene = 7
 
+# ########## TRACKS ############
+        elif self.active_scene == 7:
+            pyxel.image(0).load(0, 0, "assets/moose_tracks.jpg")
+            if(pyxel.mouse_x > self.option1_tracks.x and pyxel.mouse_x < (self.option1_tracks.x + self.option1_tracks.side) and pyxel.mouse_y > self.option1_tracks.y and pyxel.mouse_y < (self.option1_tracks.y + self.option1_tracks.side)):
+                self.option_tracks_highlight = 1
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    if(self.option1_tracks.color == 6):
+                        self.option1_tracks.color = 8
+                        # pyxel.image(0).load(0, 0, "assets/forest.png") REPLACE WITH CONSEQUENCE
+            if(pyxel.mouse_x > self.option2_tracks.x and pyxel.mouse_x < (self.option2_tracks.x + self.option2_tracks.side) and pyxel.mouse_y > self.option2_tracks.y and pyxel.mouse_y < (self.option2_tracks.y + self.option2_tracks.side)):
+                self.option_tracks_highlight = 2
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    if(self.option2_tracks.color == 6):
+                        self.option2_tracks.color = 8
+                        # GO TO 2 PATHS
+
 ########### DEFAULT ##########        
         else:
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
@@ -489,6 +512,10 @@ class App:
         #   MORNING
         elif(self.active_scene == 6):
             self.draw_morning()
+
+        #   TRACKS
+        elif(self.active_scene == 7):
+            self.draw_tracks()
 
         # OPTIONS
         # elif(self.active_scene != 1):
@@ -757,6 +784,25 @@ class App:
         pyxel.text(2, 214, "You yawn and stretch your stiff limbs.", 7)
         
         pyxel.text(2, 228, "It's time to move.", 7)
+
+########## TRACKS ############
+    def draw_tracks(self):
+        pyxel.rectb(self.option1_tracks.x, self.option1_tracks.y, self.option1_tracks.side, self.option1_tracks.side, self.option1_tracks.color)
+        pyxel.text(74, self.option1_tracks.y, "Investigate", 2)
+        pyxel.rectb(self.option2_tracks.x, self.option2_tracks.y, self.option2_tracks.side, self.option2_tracks.side, self.option2_tracks.color)
+        pyxel.text(156, self.option2_tracks.y, "Ignore them", 8)
+
+        if self.option_tracks_highlight == 1:
+            pyxel.rect(self.option1_tracks.x, self.option1_tracks.y, self.option1_tracks.side, self.option1_tracks.side, self.option1_tracks.color)
+        if self.option_tracks_highlight == 2:
+            pyxel.rect(self.option2_tracks.x, self.option2_tracks.y, self.option2_tracks.side, self.option2_tracks.side, self.option2_tracks.color)
+        
+
+        pyxel.text(4, 188, "You encounter animal tracks along the trail you are traveling", 7)
+        pyxel.text(4, 198, "along. You are not an expert in wildlife so you are unsure", 7)
+        pyxel.text(4, 208, "as to whose prints it belongs to. However, your curiosity is ", 7)
+        pyxel.text(4, 218, "getting the better of you. What do you do?", 7)
+
 
 ########## DEFAULT ############
     def draw_options(self):
