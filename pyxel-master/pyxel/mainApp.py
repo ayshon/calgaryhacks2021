@@ -58,6 +58,7 @@ class App:
         self.gender_option_f = Option(202,200,5,12)
         self.gender_option_b = Option(102,200,5,12)
         self.gender = 0
+        self.option_gender_highlight = 0
 
         # ENETER NAME
         self.name = ""
@@ -111,6 +112,7 @@ class App:
         self.option2_r = Option(2,240,5,6)
         self.option3_r = Option(2,248,5,6)
         self.split_road_state = 1
+        self.option_r_highlight = 0
 
         # EVERYTHING MUST BE ABOVE THIS LINE
         pyxel.run(self.update, self.draw)
@@ -145,9 +147,11 @@ class App:
             pyxel.image(1).load(0, 0, "assets/nonbinary.jpg")
             pyxel.image(2).load(0, 0, "assets/female.jpg")
             #pyxel.image(3).load(0, 0, "assets/male.jpg")
-            if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
-                # MALE
-                if(pyxel.mouse_x > self.gender_option_m.x and pyxel.mouse_x < (self.gender_option_m.x + self.gender_option_m.side) and pyxel.mouse_y > self.gender_option_m.y and pyxel.mouse_y < (self.gender_option_m.y + self.gender_option_m.side)):
+            
+            # MALE
+            if(pyxel.mouse_x > self.gender_option_m.x and pyxel.mouse_x < (self.gender_option_m.x + self.gender_option_m.side) and pyxel.mouse_y > self.gender_option_m.y and pyxel.mouse_y < (self.gender_option_m.y + self.gender_option_m.side)):
+                self.option_gender_highlight = 1
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     if(self.gender_option_m.color == 12):
                         # if(self.gender_option_f.color == 0 and self.gender_option_b == 0):
                         self.gender_option_f.color = 12
@@ -156,9 +160,11 @@ class App:
 
                         self.gender_option_m.color = 10
                         self.gender = 2
-                
-                # FEMALE
-                if(pyxel.mouse_x > self.gender_option_f.x and pyxel.mouse_x < (self.gender_option_f.x + self.gender_option_f.side) and pyxel.mouse_y > self.gender_option_f.y and pyxel.mouse_y < (self.gender_option_f.y + self.gender_option_f.side)):
+            
+            # FEMALE
+            elif(pyxel.mouse_x > self.gender_option_f.x and pyxel.mouse_x < (self.gender_option_f.x + self.gender_option_f.side) and pyxel.mouse_y > self.gender_option_f.y and pyxel.mouse_y < (self.gender_option_f.y + self.gender_option_f.side)):
+                self.option_gender_highlight = 2
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     if(self.gender_option_f.color == 12):
                         # if(self.gender_option_m.color == 0 and self.gender_option_b == 0):
                         self.gender_option_m.color = 12
@@ -166,14 +172,18 @@ class App:
                         self.gender_option_f.color = 10
                         self.gender = 1
 
-                # NON-BINARY
-                if(pyxel.mouse_x > self.gender_option_b.x and pyxel.mouse_x < (self.gender_option_b.x + self.gender_option_b.side) and pyxel.mouse_y > self.gender_option_b.y and pyxel.mouse_y < (self.gender_option_b.y + self.gender_option_b.side)):
+            # NON-BINARY
+            elif(pyxel.mouse_x > self.gender_option_b.x and pyxel.mouse_x < (self.gender_option_b.x + self.gender_option_b.side) and pyxel.mouse_y > self.gender_option_b.y and pyxel.mouse_y < (self.gender_option_b.y + self.gender_option_b.side)):
+                self.option_gender_highlight =3
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     if(self.gender_option_b.color == 12):
                         # if(self.gender_option_m.color == 0 and self.gender_option_f.color == 0):
                         self.gender_option_m.color = 12
                         self.gender_option_f.color = 12
                         self.gender_option_b.color = 10
                         self.gender = 3
+            else:
+                self.option_gender_highlight = 0
 
             if((self.gender == 1 or self.gender == 2 or self.gender == 3) and pyxel.btnp(pyxel.KEY_ENTER)):
                 # self.play_music(0)
@@ -250,6 +260,8 @@ class App:
                 self.option_chapter_highlight = 1
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     self.active_scene = 3
+            else:
+                self.option_chapter_highlight = 0
                  
 ########### STORE ##########
         elif self.active_scene == 3:
@@ -440,11 +452,13 @@ class App:
                 self.option_tracks_highlight = 1
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     self.active_scene = 8
-            if(pyxel.mouse_x > self.option2_tracks.x and pyxel.mouse_x < (self.option2_tracks.x + self.option2_tracks.side) and pyxel.mouse_y > self.option2_tracks.y and pyxel.mouse_y < (self.option2_tracks.y + self.option2_tracks.side)):
+            elif(pyxel.mouse_x > self.option2_tracks.x and pyxel.mouse_x < (self.option2_tracks.x + self.option2_tracks.side) and pyxel.mouse_y > self.option2_tracks.y and pyxel.mouse_y < (self.option2_tracks.y + self.option2_tracks.side)):
                 self.option_tracks_highlight = 2
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     self.option2_tracks.color = 8
                     # GO TO 2 PATHS
+            else:
+                self.option_tracks_highlight = 0
 
 ########### CARIBOU ############
         elif self.active_scene == 8:
@@ -455,12 +469,14 @@ class App:
                     self.option1_caribou.color = 8
                     self.active_scene = 9
                     # GO TO CONSEQUENCE
-            if(pyxel.mouse_x > self.option2_caribou.x and pyxel.mouse_x < (self.option2_caribou.x + self.option2_caribou.side) and pyxel.mouse_y > self.option2_caribou.y and pyxel.mouse_y < (self.option2_caribou.y + self.option2_caribou.side)):
+            elif(pyxel.mouse_x > self.option2_caribou.x and pyxel.mouse_x < (self.option2_caribou.x + self.option2_caribou.side) and pyxel.mouse_y > self.option2_caribou.y and pyxel.mouse_y < (self.option2_caribou.y + self.option2_caribou.side)):
                 self.option_caribou_highlight = 2
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     self.option2_caribou.color = 8
                     self.active_scene = 10
                     # GO TO 2 PATHS
+            else:
+                self.option_caribou_highlight = 0
 
 ########### CONSEQUENCE ############
         elif(self.active_scene == 9):
@@ -468,34 +484,55 @@ class App:
             if self.page ==4 and pyxel.btnp(pyxel.KEY_ENTER):
                 self.active_scene = 10
                 pyxel.image(0).load(0, 0, "assets/sunset.png")
-        
+
 ########### TWO PATHS ############
         elif(self.active_scene == 10):
-           
-            if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
-                if(pyxel.mouse_x > self.option1_r.x and pyxel.mouse_x < (self.option1_r.x + self.option1_r.side) and pyxel.mouse_y > self.option1_r.y and pyxel.mouse_y < (self.option1_r.y + self.option1_r.side)):
+
+            if pyxel.btnp(pyxel.KEY_ENTER) and self.split_road_state ==4:
+                self.active_scene = 11
+                pyxel.image(0).load(0, 0, "assets/lake_louise.jpg")    
+
+            if(pyxel.mouse_x > self.option1_r.x and pyxel.mouse_x < (self.option1_r.x + self.option1_r.side) and pyxel.mouse_y > self.option1_r.y and pyxel.mouse_y < (self.option1_r.y + self.option1_r.side)):
+                self.option_r_highlight = 1
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                   
                     if(self.option1_r.color == 6):
                         if self.split_road_state == 1:
                             self.split_road_state = 2
                             pyxel.image(0).load(0, 0, "assets/twopaths.jpg")
                         else:
-                            self.option1_r.color = 0
+                            self.option1_r.color = 8
                             pyxel.image(0).load(0, 0, "assets/drive2.jpg")
                             self.split_road_state =3
-                            if pyxel.btnp(pyxel.KEY_ENTER):
-                                pyxel.quit()
-                                self.active_scene = 11
-                                #TRANSITION HERE REPLACE THE PYXEL.QUIT()
                     else:
                         self.option1_r.color = 6
 
-                if(pyxel.mouse_x > self.option2_r.x and pyxel.mouse_x < (self.option2_r.x + self.option2_r.side) and pyxel.mouse_y > self.option2_r.y and pyxel.mouse_y < (self.option2_r.y + self.option2_r.side)):
+            elif(pyxel.mouse_x > self.option2_r.x and pyxel.mouse_x < (self.option2_r.x + self.option2_r.side) and pyxel.mouse_y > self.option2_r.y and pyxel.mouse_y < (self.option2_r.y + self.option2_r.side)):
+                self.option_r_highlight = 2
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                     if(self.option2_r.color == 6):
-                        self.option2_r.color = 0
+                        self.option2_r.color = 8
                         pyxel.image(0).load(0, 0, "assets/lost.jpg")
                     else:
                         self.option2_r.color = 6
                         pyxel.image(0).load(0, 0, "assets/twopaths.jpg")
+            elif(pyxel.mouse_x > self.option3_r.x and pyxel.mouse_x < (self.option3_r.x + self.option3_r.side) and pyxel.mouse_y > self.option3_r.y and pyxel.mouse_y < (self.option3_r.y + self.option3_r.side)):
+                self.option_r_highlight = 3
+            else:
+                self.option_r_highlight = 0
+
+########### ARRIVING AT LAKE LOUISE ############
+        elif(self.active_scene == 11):
+            pyxel.image(0).load(0, 0, "assets/lake_louise.jpg")
+            if pyxel.btnp(pyxel.KEY_ENTER):
+                self.active_scene = 12
+                pyxel.image(0).load(0, 0, "assets/endcard.png")
+
+########### PAINTING ENDING ############
+        elif(self.active_scene == 12):
+            pyxel.image(0).load(0, 0, "assets/endcard.png")
+            if pyxel.btnp(pyxel.KEY_ENTER):
+                self.active_scene = 13
 
 ########### DEFAULT ##########        
         else:
@@ -592,11 +629,17 @@ class App:
         
         elif(self.active_scene == 10):
             self.draw_twopaths()
+        
+        elif(self.active_scene == 11):
+            self.draw_lakeLouise()
+        
+        elif(self.active_scene == 12):
+            self.draw_endcard()
 
         # OPTIONS
         # elif(self.active_scene != 1):
         #     self.draw_options()
-    
+
 ########## TITLE ############
     def draw_title(self):
         # BACKGROUND
@@ -632,12 +675,19 @@ class App:
         pyxel.text(91, 186, "Choose your gender:", 7)
 
         # OPTIONS
-        pyxel.rect(self.gender_option_m.x, self.gender_option_m.y, self.gender_option_m.side, self.gender_option_m.side, self.gender_option_m.color)
+        pyxel.rectb(self.gender_option_m.x, self.gender_option_m.y, self.gender_option_m.side, self.gender_option_m.side, self.gender_option_m.color)
         pyxel.text(10, self.gender_option_m.y, "Male", 2)
-        pyxel.rect(self.gender_option_f.x, self.gender_option_f.y, self.gender_option_f.side, self.gender_option_f.side, self.gender_option_f.color)
+        pyxel.rectb(self.gender_option_f.x, self.gender_option_f.y, self.gender_option_f.side, self.gender_option_f.side, self.gender_option_f.color)
         pyxel.text(210, self.gender_option_f.y, "Female", 8)
-        pyxel.rect(self.gender_option_b.x, self.gender_option_b.y, self.gender_option_b.side, self.gender_option_b.side, self.gender_option_b.color)
+        pyxel.rectb(self.gender_option_b.x, self.gender_option_b.y, self.gender_option_b.side, self.gender_option_b.side, self.gender_option_b.color)
         pyxel.text(110, self.gender_option_b.y, "Non-Binary", 5)
+
+        if self.option_gender_highlight == 1:
+             pyxel.rect(self.gender_option_m.x, self.gender_option_m.y, self.gender_option_m.side, self.gender_option_m.side, self.gender_option_m.color)
+        if self.option_gender_highlight == 2:
+            pyxel.rect(self.gender_option_f.x, self.gender_option_f.y, self.gender_option_f.side, self.gender_option_f.side, self.gender_option_f.color)
+        if self.option_gender_highlight == 3:
+            pyxel.rect(self.gender_option_b.x, self.gender_option_b.y, self.gender_option_b.side, self.gender_option_b.side, self.gender_option_b.color)
 
         # TEXT CONFIRMATION AFTER SELECTION
         # replaces background image
@@ -976,9 +1026,9 @@ class App:
             pyxel.text(2, 189, "You see two paths, one leads north, the other leads north west. \nThe north road looks dangerous.\nWhich way do you go?", 7)
 
             # OPTIONS
-            pyxel.rect(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
+            pyxel.rectb(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
             pyxel.text(10, self.option1_r.y, "Go North Road", 3)
-            pyxel.rect(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
+            pyxel.rectb(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
             pyxel.text(10, self.option2_r.y, "Go Nort West Road", 4)
 
         elif self.split_road_state == 1:
@@ -986,17 +1036,50 @@ class App:
             pyxel.text(2, 189, "It's 6pm, in the evening. Where would you like to go?", 7)
 
             # OPTIONS
-            pyxel.rect(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
+            pyxel.rectb(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
             pyxel.text(10, self.option1_r.y, "Go North", 3)
-            pyxel.rect(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
+            pyxel.rectb(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
             pyxel.text(10, self.option2_r.y, "Go West", 4)
-            pyxel.rect(self.option3_r.x, self.option3_r.y, self.option3_r.side, self.option3_r.side, self.option3_r.color)
+            pyxel.rectb(self.option3_r.x, self.option3_r.y, self.option3_r.side, self.option3_r.side, self.option3_r.color)
             pyxel.text(10, self.option3_r.y, "Make Camp", 5)
         
-        elif self.split_road_state == 3:
+        elif self.split_road_state == 3 or self.split_road_state == 4:
             pyxel.text(2, 182, "You were found in the morning passed out from the darkness!", 7)
-            pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \noffered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
+            pyxel.text(2, 189, "Fortunately, some kind strangers saw you on the road and \n offered to take you where you need to go! \n\n\nPress ENTER to continue", 7)
+            self.split_road_state = 4
+
+        if self.option_r_highlight == 1:
+            pyxel.rect(self.option1_r.x, self.option1_r.y, self.option1_r.side, self.option1_r.side, self.option1_r.color)
+        elif self.option_r_highlight == 2:
+            pyxel.rect(self.option2_r.x, self.option2_r.y, self.option2_r.side, self.option2_r.side, self.option2_r.color)
             
+
+########## LAKE LOUISE ############
+    def draw_lakeLouise(self):
+        pyxel.image(0).load(0, 0, "assets/lake_louise.jpg")
+        pyxel.blt(0, 0, 1, 0, 0, 256, 256)
+        pyxel.text(0, 190,
+            """
+        You arrive at a beautiful blue-green lake.
+        You can see a soaring white mountain in the background and 
+        the sun just peaking from behind.
+
+        Your sould overwhelms with awe and wonder and you turn to 
+        your paintbrush. Your hands move careful as to capture every
+        inch of its beauty. You have traveled long and far but alas, 
+        you have found your new muse.
+                
+            """, 7)
+
+    ########## END CARD ############
+    def draw_endcard(self):
+        pyxel.image(0).load(0, 0, "assets/endcard.png")
+        pyxel.blt(0, 0, 1, 0, 0, 256, 256)
+        pyxel.text(0, 190,
+            """
+            Congratulations! You have painted Lake Louise!
+                        What a masterpiece!
+            """, 7)
 
 ########## DEFAULT ############
     def draw_options(self):
