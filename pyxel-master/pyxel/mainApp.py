@@ -141,6 +141,7 @@ class App:
 ####### TITLE #######
         if self.active_scene == 0:
             if pyxel.btnp(pyxel.KEY_ENTER):
+                self.play_music(0)
                 if(self.blurbText == 1):
                     self.active_scene = 1
                 self.blurbText = 1
@@ -195,7 +196,6 @@ class App:
                 self.option_gender_highlight = 0
 
             if((self.gender == 1 or self.gender == 2 or self.gender == 3) and pyxel.btnp(pyxel.KEY_ENTER)):
-                self.play_music(0)
                 self.active_scene = 2
         
 ########### ENTER NAME ##########
