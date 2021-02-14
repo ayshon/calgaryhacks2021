@@ -215,6 +215,7 @@ class App:
             pyxel.text(10, self.option4.y, "Tent - $50", 2)
             pyxel.text(2, 250, "Press R to return to General Store - Main.", 2)
 
+
         if(self.cartText == 1):
             pyxel.rect(0, 180, 256, 76, 0)
             pyxel.text(2, 182, "Cart:", 7)
