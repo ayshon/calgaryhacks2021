@@ -549,9 +549,9 @@ class App:
         # OPTIONS
         # One letter - 5x4
         # Where the remaining cash amount will be.
-        pyxel.rect(200, 0, 56, 10, 13)
-        pyxel.rectb(200, 0, 56, 10, 0)
-        pyxel.text(202, 3, "Cash:$" + str(self.cash), 0)
+        pyxel.rect(0, 170, 56, 10, 9)
+        pyxel.rectb(0, 170, 56, 10,0)
+        pyxel.text(2, 173, "Cash:$" + str(self.cash), 0)
 
         pyxel.rectb(self.option1_g.x, self.option1_g.y, self.option1_g.side, self.option1_g.side, self.option1_g.color)
         pyxel.text(10, self.option1_g.y, "Food", 3)
