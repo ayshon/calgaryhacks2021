@@ -29,7 +29,8 @@ class App:
 
         # CHOOSE YOUR GENDER
         self.gender_option_m = Option(2, 200, 5, 12)
-        self.gender_option_f = Option(102,200,5,12)
+        self.gender_option_f = Option(202,200,5,12)
+        self.gender_option_b = Option(102,200,5,12)
         self.gender = 0
 
         # ENETER NAME
@@ -38,40 +39,54 @@ class App:
         # STORE SCENE
 
         # TRAVELLING DAYS
-        self.option1_t = Option(2,200,5,6)
-        self.option2_t = Option(2,210,5,6)
-        self.option3_t = Option(2,220,5,6)
+        self.option1_t = Option(2,232,5,6)
+        self.option2_t = Option(2,240,5,6)
+        self.option3_t = Option(2,248,5,6)
         self.day_state =1 #1 for morning, #2 for afternoon, #3 for evening 
         self.choice = 1 #1 for new state, #2 for lost, #3 for camp
         self.previous_state = 1
 
+        self.option_t_highlight = 0
 
         # EVERYTHING MUST BE ABOVE THIS LINE
         pyxel.run(self.update, self.draw)
         
     def update(self):
-
 ####### CHOOSE YOUR GENDER #######
         if self.active_scene == 1:
             pyxel.image(0).load(0, 0, "assets/choose gender.jpg")
             if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
                 
-                # FEMALE 
+                # MALE
                 if(pyxel.mouse_x > self.gender_option_m.x and pyxel.mouse_x < (self.gender_option_m.x + self.gender_option_m.side) and pyxel.mouse_y > self.gender_option_m.y and pyxel.mouse_y < (self.gender_option_m.y + self.gender_option_m.side)):
                     if(self.gender_option_m.color == 12):
-                        if(self.gender_option_f.color == 0):
-                            self.gender_option_f.color = 12
-                        self.gender_option_m.color = 0
+                        # if(self.gender_option_f.color == 0 and self.gender_option_b == 0):
+                        self.gender_option_f.color = 12
+                        self.gender_option_b.color = 12
+                        #^shift tab
+
+                        self.gender_option_m.color = 10
                         self.gender = 2
                 
-                # MALE
+                # FEMALE
                 if(pyxel.mouse_x > self.gender_option_f.x and pyxel.mouse_x < (self.gender_option_f.x + self.gender_option_f.side) and pyxel.mouse_y > self.gender_option_f.y and pyxel.mouse_y < (self.gender_option_f.y + self.gender_option_f.side)):
                     if(self.gender_option_f.color == 12):
-                        if(self.gender_option_m.color == 0):
-                            self.gender_option_m.color = 12
-                        self.gender_option_f.color = 0
+                        # if(self.gender_option_m.color == 0 and self.gender_option_b == 0):
+                        self.gender_option_m.color = 12
+                        self.gender_option_b.color = 12
+                        self.gender_option_f.color = 10
                         self.gender = 1
-            if((self.gender == 1 or self.gender == 2) and pyxel.btnp(pyxel.KEY_ENTER)):
+
+                # NON-BINARY
+                if(pyxel.mouse_x > self.gender_option_b.x and pyxel.mouse_x < (self.gender_option_b.x + self.gender_option_b.side) and pyxel.mouse_y > self.gender_option_b.y and pyxel.mouse_y < (self.gender_option_b.y + self.gender_option_b.side)):
+                    if(self.gender_option_b.color == 12):
+                        # if(self.gender_option_m.color == 0 and self.gender_option_f.color == 0):
+                        self.gender_option_m.color = 12
+                        self.gender_option_f.color = 12
+                        self.gender_option_b.color = 10
+                        self.gender = 3
+
+            if((self.gender == 1 or self.gender == 2 or self.gender == 3) and pyxel.btnp(pyxel.KEY_ENTER)):
                 self.active_scene = 2
         
 ########### ENTER NAME ##########
@@ -149,7 +164,6 @@ class App:
                 #CHOICE THAT CHANGES DAY STATE
                 if(pyxel.mouse_x > self.option1_t.x and pyxel.mouse_x < (self.option1_t.x + self.option1_t.side) and pyxel.mouse_y > self.option1_t.y and pyxel.mouse_y < (self.option1_t.y + self.option1_t.side)):
                     if(self.option1_t.color == 6):
-                        self.option1_t.color = 0
                         if(self.day_state == 1):
                             pyxel.image(0).load(0, 0, "assets/afternoon.jpg")
                             self.day_state = 2 #GOES INTO AFTERNOON WORDS
@@ -163,34 +177,28 @@ class App:
 
                     else:
                         self.day_state = self.previous_state #ELSE GO TO MORNING
-                        self.option1_t.color = 6
                         pyxel.image(0).load(0, 0, "assets/morning.jpg")
 
                 #LOST CHOICE
                 if(pyxel.mouse_x > self.option2_t.x and pyxel.mouse_x < (self.option2_t.x + self.option2_t.side) and pyxel.mouse_y > self.option2_t.y and pyxel.mouse_y < (self.option2_t.y + self.option2_t.side)):
                     if(self.option2_t.color == 6):
-                        self.option2_t.color = 0
                         pyxel.image(0).load(0, 0, "assets/lost.jpg")
                         self.day_state = 1  #MAINTAINS MORNING
                         self.choice = 2     #GOES INTO LOST CHOICE
                     else:
                         self.choice = 1     #MAINTAINS RIGHT CHOICE
                         self.day_state = 1  #GOES INTO LOST CHOICE
-                        self.option2_t.color = 6
                         pyxel.image(0).load(0, 0, "assets/morning.jpg")
 
                 #CAMP CHOICE
                 if(pyxel.mouse_x > self.option3_t.x and pyxel.mouse_x < (self.option3_t.x + self.option3_t.side) and pyxel.mouse_y > self.option3_t.y and pyxel.mouse_y < (self.option3_t.y + self.option3_t.side)):
                     if(self.option3_t.color == 6):
-                        self.option3_t.color = 0
                         pyxel.image(0).load(0, 0, "assets/camp.png")
                         self.day_state = 1
                         self.choice = 3  #GOES INTO CAMP CHOICE
                     else:
                         self.day_state = 1
                         self.choice = 2
-                        self.option3_t.color = 6
-
 
 ########### DEFAULT ##########        
         else:
@@ -215,6 +223,15 @@ class App:
                     else:
                         self.option3.color = 6
 
+########### HIGHLIGHT TRAVELLING SCENE #########
+        if(pyxel.mouse_x > self.option1_t.x and pyxel.mouse_x < (self.option1_t.x + self.option1_t.side) and pyxel.mouse_y > self.option1_t.y and pyxel.mouse_y < (self.option1_t.y + self.option1_t.side)):
+            self.option_t_highlight = 1
+        elif(pyxel.mouse_x > self.option2_t.x and pyxel.mouse_x < (self.option2_t.x + self.option2_t.side) and pyxel.mouse_y > self.option2_t.y and pyxel.mouse_y < (self.option2_t.y + self.option2_t.side)):
+            self.option_t_highlight = 2
+        elif(pyxel.mouse_x > self.option3_t.x and pyxel.mouse_x < (self.option3_t.x + self.option3_t.side) and pyxel.mouse_y > self.option3_t.y and pyxel.mouse_y < (self.option3_t.y + self.option3_t.side)):
+            self.option_t_highlight = 3 
+        else:
+            self.option_t_highlight = 0      
 
 #############################################################################
 #####################       DRAW FUNCTIONS     ##############################
@@ -254,19 +271,23 @@ class App:
 ########## GENDER OPTIONS ############
     def draw_gender_options(self):
         # TEXT
-        pyxel.text(2, 182, "Choose your gender", 3)
+        pyxel.text(2, 182, "Choose your gender and press ENTER", 3)
 
         # OPTIONS
         pyxel.rect(self.gender_option_m.x, self.gender_option_m.y, self.gender_option_m.side, self.gender_option_m.side, self.gender_option_m.color)
         pyxel.text(10, self.gender_option_m.y, "Male", 2)
         pyxel.rect(self.gender_option_f.x, self.gender_option_f.y, self.gender_option_f.side, self.gender_option_f.side, self.gender_option_f.color)
-        pyxel.text(110, self.gender_option_f.y, "Female", 8)
+        pyxel.text(210, self.gender_option_f.y, "Female", 8)
+        pyxel.rect(self.gender_option_b.x, self.gender_option_b.y, self.gender_option_b.side, self.gender_option_b.side, self.gender_option_b.color)
+        pyxel.text(110, self.gender_option_b.y, "Non-Binary", 5)
 
         # TEXT CONFIRMATION AFTER SELECTION
         if (self.gender == 1):
             pyxel.text(96, 232, "You are female.", 8)
         elif (self.gender == 2): 
             pyxel.text(96, 232, "You are male.", 2)
+        elif (self.gender == 3):
+            pyxel.text(96, 232, "You are non-binary.", 5)
 
 ########## ENTER NAME ############
     def draw_name(self):
@@ -290,12 +311,20 @@ class App:
         pyxel.rect(0, 180, 256, 76, 0)
         
         #CONSTANT OPTIONS
-        pyxel.rect(self.option1_t.x, self.option1_t.y, self.option1_t.side, self.option1_t.side, self.option1_t.color)
+        pyxel.rectb(self.option1_t.x, self.option1_t.y, self.option1_t.side, self.option1_t.side, self.option1_t.color)
         pyxel.text(10, self.option1_t.y, "Go North", 3)
-        pyxel.rect(self.option2_t.x, self.option2_t.y, self.option2_t.side, self.option2_t.side, self.option2_t.color)
+        pyxel.rectb(self.option2_t.x, self.option2_t.y, self.option2_t.side, self.option2_t.side, self.option2_t.color)
         pyxel.text(10, self.option2_t.y, "See what's in the west", 4)
-        pyxel.rect(self.option3_t.x, self.option3_t.y, self.option3_t.side, self.option3_t.side, self.option3_t.color)
+        pyxel.rectb(self.option3_t.x, self.option3_t.y, self.option3_t.side, self.option3_t.side, self.option3_t.color)
         pyxel.text(10, self.option3_t.y, "Make Camp", 5)
+        
+        # HOVER ANIMATIONS
+        if(self.option_t_highlight == 1):
+            pyxel.rect(self.option1_t.x, self.option1_t.y, self.option1_t.side, self.option1_t.side, self.option1_t.color)
+        elif(self.option_t_highlight == 2):
+            pyxel.rect(self.option2_t.x, self.option2_t.y, self.option2_t.side, self.option2_t.side, self.option2_t.color)
+        elif(self.option_t_highlight == 3):
+            pyxel.rect(self.option3_t.x, self.option3_t.y, self.option3_t.side, self.option3_t.side, self.option3_t.color)
 
         pyxel.text(2, 182, "Day 2 - MORNING - March 16, 1901 - Banff, Alberta", 7)
         pyxel.text(2, 189, "It's morning. Where would you like to go?", 7)
@@ -311,7 +340,7 @@ class App:
                 pyxel.text(2, 189, "Where would you like to go?", 7)
             elif self.choice == 3:
                 pyxel.rect(0, 180, 256, 20, 0)
-                pyxel.text(2, 182, "You camped too early! A day is wasted. You will lose more inventory.", 7)
+                pyxel.text(2, 182, "You camped too early! A day is wasted. You will lose life.", 7)
                 pyxel.text(2, 189, "Where would you like to go?", 7)
         elif self.day_state == 2:
             # SPEACH FOR AFTERNOON 
