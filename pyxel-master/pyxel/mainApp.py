@@ -36,6 +36,7 @@ class App:
         # 5 - Camp at night
         # 6 - Morning
         # 7 - TRACKS
+        # 8 - CARIBOU
 
         #   TITLE
         self.active_scene = 0
@@ -96,6 +97,11 @@ class App:
         self.option1_tracks = Option(64,236,5,12)
         self.option2_tracks = Option(146,236,5,12)
         self.option_tracks_highlight = 0
+
+        #   CARIBOU
+        self.option1_caribou = Option(66,242,5,12)
+        self.option2_caribou = Option(146,242,5,12)
+        self.option_caribou_highlight = 0
 
         # EVERYTHING MUST BE ABOVE THIS LINE
         pyxel.run(self.update, self.draw)
@@ -159,7 +165,7 @@ class App:
                         self.gender = 3
 
             if((self.gender == 1 or self.gender == 2 or self.gender == 3) and pyxel.btnp(pyxel.KEY_ENTER)):
-                self.play_music(0)
+                # self.play_music(0)
                 self.active_scene = 2
         
 ########### ENTER NAME ##########
@@ -410,27 +416,38 @@ class App:
             if pyxel.btnp(pyxel.KEY_ENTER):
                 self.active_scene = 6
 
-# ########## MORNING ############
+########### MORNING ############
         elif(self.active_scene == 6):
             pyxel.image(0).load(0, 0, "assets/morning.jpg")
             if pyxel.btnp(pyxel.KEY_ENTER):
                 self.active_scene = 7
 
-# ########## TRACKS ############
+########### TRACKS ############
         elif self.active_scene == 7:
             pyxel.image(0).load(0, 0, "assets/moose_tracks.jpg")
             if(pyxel.mouse_x > self.option1_tracks.x and pyxel.mouse_x < (self.option1_tracks.x + self.option1_tracks.side) and pyxel.mouse_y > self.option1_tracks.y and pyxel.mouse_y < (self.option1_tracks.y + self.option1_tracks.side)):
                 self.option_tracks_highlight = 1
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
-                    if(self.option1_tracks.color == 6):
-                        self.option1_tracks.color = 8
-                        # pyxel.image(0).load(0, 0, "assets/forest.png") REPLACE WITH CONSEQUENCE
+                    self.active_scene = 8
             if(pyxel.mouse_x > self.option2_tracks.x and pyxel.mouse_x < (self.option2_tracks.x + self.option2_tracks.side) and pyxel.mouse_y > self.option2_tracks.y and pyxel.mouse_y < (self.option2_tracks.y + self.option2_tracks.side)):
                 self.option_tracks_highlight = 2
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
-                    if(self.option2_tracks.color == 6):
-                        self.option2_tracks.color = 8
-                        # GO TO 2 PATHS
+                    self.option2_tracks.color = 8
+                    # GO TO 2 PATHS
+
+########### CARIBOU ############
+        elif self.active_scene == 8:
+            pyxel.image(0).load(0, 0, "assets/caribou.png")
+            if(pyxel.mouse_x > self.option1_caribou.x and pyxel.mouse_x < (self.option1_caribou.x + self.option1_caribou.side) and pyxel.mouse_y > self.option1_caribou.y and pyxel.mouse_y < (self.option1_caribou.y + self.option1_caribou.side)):
+                self.option_caribou_highlight = 1
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    self.option1_caribou.color = 8
+                    # GO TO CONSEQUENCE
+            if(pyxel.mouse_x > self.option2_caribou.x and pyxel.mouse_x < (self.option2_caribou.x + self.option2_caribou.side) and pyxel.mouse_y > self.option2_caribou.y and pyxel.mouse_y < (self.option2_caribou.y + self.option2_caribou.side)):
+                self.option_caribou_highlight = 2
+                if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+                    self.option2_caribou.color = 8
+                    # GO TO 2 PATHS
 
 ########### DEFAULT ##########        
         else:
@@ -518,6 +535,9 @@ class App:
         #   TRACKS
         elif(self.active_scene == 7):
             self.draw_tracks()
+
+        elif(self.active_scene == 8):
+            self.draw_caribou()
 
         # OPTIONS
         # elif(self.active_scene != 1):
@@ -800,12 +820,28 @@ class App:
         if self.option_tracks_highlight == 2:
             pyxel.rect(self.option2_tracks.x, self.option2_tracks.y, self.option2_tracks.side, self.option2_tracks.side, self.option2_tracks.color)
         
-
         pyxel.text(4, 188, "You encounter animal tracks along the trail you are traveling", 7)
         pyxel.text(4, 198, "along. You are not an expert in wildlife so you are unsure", 7)
         pyxel.text(4, 208, "as to whose prints it belongs to. However, your curiosity is ", 7)
         pyxel.text(4, 218, "getting the better of you. What do you do?", 7)
 
+########## CARIBOU ############
+    def draw_caribou(self):
+        pyxel.rectb(self.option1_caribou.x, self.option1_caribou.y, self.option1_caribou.side, self.option1_caribou.side, self.option1_caribou.color)
+        pyxel.text(76, self.option1_caribou.y, "Go closer", 2)
+        pyxel.rectb(self.option2_caribou.x, self.option2_caribou.y, self.option2_caribou.side, self.option2_caribou.side, self.option2_caribou.color)
+        pyxel.text(156, self.option2_caribou.y, "Stay still", 8)
+
+        if self.option_caribou_highlight == 1:
+            pyxel.rect(self.option1_caribou.x, self.option1_caribou.y, self.option1_caribou.side, self.option1_caribou.side, self.option1_caribou.color)
+        if self.option_caribou_highlight == 2:
+            pyxel.rect(self.option2_caribou.x, self.option2_caribou.y, self.option2_caribou.side, self.option2_caribou.side, self.option2_caribou.color)
+
+        pyxel.text(2, 188, "You followed the tracks and it led you to a small creek where", 7)
+        pyxel.text(2, 198, "you spot a caribou drinking from the clear waters. Its horns ", 7)
+        pyxel.text(2, 208, "are long and curved. It lifts its head up upon your approach.", 7)
+        pyxel.text(2, 218, "The majestic creature shifts nervously, and upon closer", 7)
+        pyxel.text(2, 228, "inspection, you can see that its fur is matted with blood.", 7)
 
 ########## DEFAULT ############
     def draw_options(self):
