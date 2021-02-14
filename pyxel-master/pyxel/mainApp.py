@@ -466,12 +466,18 @@ class App:
                 #CAMP CHOICE
                 if(pyxel.mouse_x > self.option3_t.x and pyxel.mouse_x < (self.option3_t.x + self.option3_t.side) and pyxel.mouse_y > self.option3_t.y and pyxel.mouse_y < (self.option3_t.y + self.option3_t.side)):
                     if(self.option3_t.color == 6):
-                        self.option3_t.color = 8
-                        pyxel.image(0).load(0, 0, "assets/camp.png")
+                        if(self.day_state == 3):
+                            self.active_scene = 5
+                        else:
+                            self.option3_t.color = 8
+                            pyxel.image(0).load(0, 0, "assets/camp.png")
+                            self.day_state = 1
+                            self.choice = 3  #GOES INTO CAMP CHOICE
+                            self.day += 1
+                    else:
                         self.day_state = 1
-                        self.choice = 3  #GOES INTO CAMP CHOICE
-                        self.day += 1
-                    
+                        self.choice = 2
+                        
 ########### CAMP NIGHT TIME  ##########
         elif(self.active_scene == 5):
             pyxel.image(0).load(0, 0, "assets/fire.jpg")
