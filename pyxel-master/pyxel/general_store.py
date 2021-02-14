@@ -14,7 +14,6 @@ class App:
         
         pyxel.mouse(True)
 
-        self.inventory = ["Compass", "Cash" "Painting Supplies"]
         self.cart = [[],[]]
         self.cash = 100
         self.option1 = Option(2,200,5,7)
