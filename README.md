@@ -4,7 +4,7 @@ Group 80 - money masters. Chosen topic: Make a Canada themed game.
 **Group Members:**
 - [dengpris](https://github.com/dengpris)
 - [ruizhann](https://github.com/ruizhann)
-- [ceuvasm2](https://github.com/cuevasm2)
+- [cuevasm2](https://github.com/cuevasm2)
 - [ayshon](https://github.com/ayshon)
 
 # The Great Canadian Masterpiece
